@@ -1,0 +1,127 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Almarai:wght@400&family=Inter:wght@500&display=swap');
+@import "header.css";
+@import "footer.css";
+@import "login.css";
+
+* {
+    font-family: 'Almarai', sans-serif;
+    color: var(--preto);
+    font-weight: 400;
+}
+
+body {
+    margin: 0;
+    overflow-x:hidden;
+}
+
+/* Variáveis */
+:root {
+    /* Cores */
+    --amarelo: #f2b705;
+    --branco: #ffffff;
+    --preto: #4b4b4b;
+    --cinza: #d9d9d9;
+    --cinza-escuro: #222222;
+}
+
+/* Classe para títulos maiores */
+.tituloMaior {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+}
+
+/* Classe para títulos menores */
+.tituloMenor {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+}
+
+/* Header e Footer, tem um txt junto nos arquivos explicando melhor */
+
+object {
+    width: 100%;
+    padding: 0;
+}
+
+#header {
+    margin-bottom: -53px;
+}
+
+#footer {
+    margin-bottom: -3px;
+}
+
+/* Main */
+
+main {
+    width: 1280px;
+    display: block;
+    margin: auto;
+}
+
+/* Cards de anúncio */
+.cardProduto {
+    width: 13%;
+    height: 15%;
+    box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    padding: 0px;
+    margin-right: 5px;
+    margin-bottom: 55px;
+
+}
+
+    .cardProduto:hover {
+        box-shadow: -1px 3px 27px -4px rgba(0,0,0,0.33);
+    }
+
+
+.infoEncerramento {
+    display: flex;
+}
+
+
+.infoTituloProduto {
+    width: 100%;
+    font-size: 15px;
+}
+
+
+.infoTituloProduto, .infoValorAtual {
+    border-top: thin solid;
+    color: #D9D9D9;
+    width: 100%;
+}
+
+/* Testes */
+
+.quadrado {
+    height: 40px;
+    width: 40px;
+}
+
+.q1 {
+    background-color: var(--amarelo);
+}
+
+.q2 {
+    background-color: var(--preto);
+}
+
+.q3 {
+    background-color: var(--branco);
+}
+
+.q4 {
+    background-color: var(--cinza);
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    background-color: var(--branco);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--amarelo);
+    border-radius: 50px;
+}
