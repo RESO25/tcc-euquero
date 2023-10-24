@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -45,6 +46,20 @@ namespace TCC_euquero
                 if(cartao.Usando)
                     cartaoAtual = cartao;
             }
+
+            string caminhoBase = Request.PhysicalApplicationPath + @"imagens/fotosPerfis";
+
+            DirectoryInfo diretorio = new DirectoryInfo(caminhoBase);
+            FileInfo[] listaArquivos = diretorio.GetFiles();
+
+            string caminhoFoto = "fotoPadrao.png";
+            foreach (FileInfo fi in listaArquivos)
+            {
+                if (fi.Name.Contains(Session["email"].ToString()))
+                    caminhoFoto = fi.Name;
+            }
+
+            litFotoPerfil.Text = $"<img src='imagens/fotosPerfil/{caminhoFoto}' class='imgPerfil'>";
 
             string[] nomes = usuario.Nome.Split(' ');
 

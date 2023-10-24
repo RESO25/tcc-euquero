@@ -13,7 +13,7 @@
                             
                         <div class="primeiraSessao">
                                 <div class="foto">
-                                    <img src="img/perfil/perfilIcon.png" class="imgPerfil">
+                                    <asp:Literal ID="litFotoPerfil" runat="server"></asp:Literal>
                                 </div>
 
                                 <div class="nomeEmail">
