@@ -77,10 +77,27 @@ namespace TCC_euquero
             litCPF.Text = $"{trio1}.{trio2}.{trio3}-{duo}";
             litSaldo.Text = usuario.Saldo.ToString("C", new CultureInfo("pt-br"));
 
-            litNumeroCartao.Text = cartaoAtual.Digitos.ToString();
-            litCVV.Text = cartaoAtual.Cvv.ToString();
-            //litDataVencimento.Text = cartaoAtual.Vencimento.ToString();
-            //litNomeTitular.Text = cartaoAtual.NomeTitular.ToString();
+            if (cartaoAtual.Digitos > 0)
+            {
+                string digitos = cartaoAtual.Digitos.ToString();
+                string q1 = digitos.Substring(0, 4);
+                string q2 = digitos.Substring(4, 4);
+                string q3 = digitos.Substring(8, 4);
+
+                litNumeroCartao.Text = $"{q1} {q2} {q3}";
+            }
+            else
+            {
+                litNumeroCartao.Text = $"---";
+            }
+
+            if (cartaoAtual.Cvv > 0)
+                litCVV.Text = cartaoAtual.Cvv.ToString();
+            else
+                litCVV.Text = "---";
+
+            litDataVencimento.Text = cartaoAtual.Vencimento.ToString();
+            litNomeTitular.Text = cartaoAtual.NomeTitular.ToString();
 
         }
 
