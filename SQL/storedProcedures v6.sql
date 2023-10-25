@@ -120,7 +120,7 @@ end$$
 Drop Procedure If Exists CriarCartão$$
 Create Procedure CriarCartão(vEmailUsuario varchar(200), vDigito bigint(12), vNomeTitular varchar(200), vDataVencimento varchar(5), vCVV int)
 begin
-	Insert into cartao9(nm_email_usuario, cd_digitos, nm_titular, dt_vencimento, cd_cvv, ic_usando) Values(vEmailUsuario, vDigito, vNomeTitular, vDataVencimento, vCVV, true);
+	Insert into cartao(nm_email_usuario, cd_digitos, nm_titular, dt_vencimento, cd_cvv, ic_usando) Values(vEmailUsuario, vDigito, vNomeTitular, vDataVencimento, vCVV, true);
 end$$
 
 -- -----------------------------------------------------

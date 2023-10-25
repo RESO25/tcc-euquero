@@ -10,7 +10,6 @@ call CadastrarUsuarioFisico("jãoAlmeida@hotmail.com", "38625551866", "João Alm
 call CadastrarUsuarioFisico("raphaelresende10@gmail.com", "55502213269", "Raphael Resende", "amominhamulher");
 call CriarCartao("raphaelresende10@gmail.com", 1111222233334444, "Raphael Resende", "12/27", 265);
 call AdicionarSaldo("raphaelresende10@gmail.com", 100000);
-select vl_saldo from usuario where nm_email_usuario = "raphaelresende10@gmail.com";
 
 call CadastrarUsuarioFisico("fabimnhomaia@gmail.com", "22233344455", "Fábio Maia", "pepino123");
 call AdicionarSaldo("fabimnhomaia@gmail.com", 100000);

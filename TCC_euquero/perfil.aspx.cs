@@ -59,21 +59,35 @@ namespace TCC_euquero
                     caminhoFoto = fi.Name;
             }
 
-            litFotoPerfil.Text = $"<img src='imagens/fotosPerfil/{caminhoFoto}' class='imgPerfil'>";
+            litFotoPerfil.Text = $"<img src='imagens/fotosPerfis/{caminhoFoto}' class='imgPerfil'>";
 
             string[] nomes = usuario.Nome.Split(' ');
 
             litNomeUsuario.Text = $"{nomes[0]} {nomes[nomes.Length-1]}";
             litEmailUsuario.Text = Session["email"].ToString();
             litNomeCompletoUsuario.Text = usuario.Nome;
-            litCPF.Text = usuario.Cpf.ToString();
+
+            string cpf = usuario.Cpf.ToString();
+            string trio1 = cpf.Substring(0, 3);
+            string trio2 = cpf.Substring(3, 3);
+            string trio3 = cpf.Substring(6, 3);
+            string duo = cpf.Substring(9, 2);
+
+
+            litCPF.Text = $"{trio1}.{trio2}.{trio3}-{duo}";
             litSaldo.Text = usuario.Saldo.ToString("C", new CultureInfo("pt-br"));
 
             litNumeroCartao.Text = cartaoAtual.Digitos.ToString();
             litCVV.Text = cartaoAtual.Cvv.ToString();
-            litDataVencimento.Text = cartaoAtual.Vencimento.ToString();
-            litNomeTitular.Text = cartaoAtual.NomeTitular.ToString();
+            //litDataVencimento.Text = cartaoAtual.Vencimento.ToString();
+            //litNomeTitular.Text = cartaoAtual.NomeTitular.ToString();
 
+        }
+
+        protected void btnSair_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Redirect("index.aspx");
         }
     }
 }

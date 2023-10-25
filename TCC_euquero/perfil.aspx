@@ -124,7 +124,10 @@
 
 
                             </div>
-                    </div>  
+                            <div>
+                                <asp:Button ID="btnSair" CssClass="btnAdicionarSaldo" runat="server" Text="Sair" OnClick="btnSair_Click" />
+                            </div>
+                    </div>
         </div>
         
         <%-- Meus Anúncios --------------------------------------------------------------------------------------------------------------------------------------------%>
