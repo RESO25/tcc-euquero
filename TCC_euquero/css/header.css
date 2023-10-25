@@ -1,5 +1,6 @@
 ﻿@import "estiloGeral.css";
 
+
 header {
     position: sticky;
     top: 0;
@@ -17,6 +18,25 @@ header {
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
 }
 
+p {
+    font-weight: bold;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+.valor {
+    color: #FFC000;
+}
+
+.btnEntrar div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: nowrap;
+}
+
 .logoepesquisa {
     display: flex;
     align-items: center;
@@ -27,6 +47,9 @@ header {
 
 .entraremais {
     display: flex;
+    justify-content: space-between;
+    width: 478px;
+    height: 51px;
 }
 
 header ul {
@@ -74,63 +97,24 @@ input {
     font-size: 16px;
     background: var(--branco);
     color: var(--preto);
-    padding: 12px;
     position: relative;
     z-index: 1;
     overflow: hidden;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 3px;
     border-left: 2px solid var(--black-tcc, #4B4B4B);
     border-bottom: none;
     border-top: none;
     border-right: none;
-    width: 120px;
+    width: 185px;
     cursor: pointer;
 }
 
-    .btnEntrar:hover {
-        color: var(--branco);
-        border-left: 2px solid var(--black-tcc, #4B4B4B);
-        border-bottom: 2px solid var(--black-tcc, #4B4B4B);
-        border-top: 2px solid var(--black-tcc, #4B4B4B);
-        border-right: 2px solid var(--black-tcc, #4B4B4B);
-        border-radius: 5px;
-    }
-
-    .btnEntrar::after {
-        content: "";
-        background: var(--preto);
-        position: absolute;
-        z-index: -1;
-        padding: 0.85em 0.75em;
-        display: block;
-    }
-
-    .btnEntrar[class^="slide"]::after {
-        transition: all 0.35s;
-    }
-
-    .btnEntrar[class^="slide"]:hover::after {
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        transition: all 0.35s;
-    }
-
-    .btnEntrar.slide_from_left::after {
-        top: 0;
-        bottom: 0;
-        left: -100%;
-        right: 100%;
-    }
-
     .btnEntrar img {
-        font-size: 20px;
+        width: 44px;
     }
-
 
 
 .dropbtn {
@@ -204,3 +188,22 @@ input {
     .subcatego:hover {
         background-color: #ffbf0067;
     }
+
+header a{
+    text-decoration:none;
+}
+
+header a:visited {
+    text-decoration: none;
+    color:initial;
+}
+
+header a:active {
+    text-decoration: none;
+    color: initial;
+}
+
+#fotoPerfil{
+    border:2px solid var(--amarelo);
+    border-radius:80%;
+}

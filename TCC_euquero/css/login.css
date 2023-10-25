@@ -48,6 +48,11 @@
 
 #textoLogin{
     margin: auto 0;
+    color:var(--branco);
+}
+
+#inputs p{
+    color:var(--branco);
 }
 
 #dadosLogin {
@@ -68,6 +73,7 @@
     font-weight: 700;
     line-height: normal;
     margin-bottom: 15px;
+    color:var(--branco);
 }
 
 #tipoConta {
@@ -86,9 +92,10 @@
     color: var(--branco);
 }
 
-.dadosLogin label {
+ label {
     color: var(--branco);
 }
+
 
 .input {
     display: flex;

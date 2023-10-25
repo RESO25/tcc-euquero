@@ -152,6 +152,7 @@
     <Content Include="imagens\fotosAnuncios\7-1.jpeg" />
     <Content Include="imagens\fotosAnuncios\8-1.jpeg" />
     <Content Include="imagens\fotosAnuncios\9-1.jpeg" />
+    <Content Include="imagens\fotosPerfis\fotoPadrao.png" />
     <Content Include="imagens\header\perfil.png" />
     <Content Include="imagens\header\search.png" />
     <Content Include="imagens\header\setainversa.png" />
@@ -172,7 +173,6 @@
     <Content Include="imagens\index\Tractor.png" />
     <Content Include="imagens\login\backgroundLogin.png" />
     <Content Include="imagens\logo.png" />
-    <Content Include="js\anuncio.js" />
     <Content Include="js\login.js" />
     <Content Include="perfil.aspx" />
     <Content Include="Web.config" />
@@ -237,9 +237,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="imagens\fotosPerfis\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

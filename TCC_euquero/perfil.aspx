@@ -13,7 +13,7 @@
                             
                         <div class="primeiraSessao">
                                 <div class="foto">
-                                    <img src="img/perfil/perfilIcon.png" class="imgPerfil">
+                                    <asp:Literal ID="litFotoPerfil" runat="server"></asp:Literal>
                                 </div>
 
                                 <div class="nomeEmail">
@@ -124,7 +124,10 @@
 
 
                             </div>
-                    </div>  
+                            <div>
+                                <asp:Button ID="btnSair" CssClass="btnAdicionarSaldo" runat="server" Text="Sair" OnClick="btnSair_Click" />
+                            </div>
+                    </div>
         </div>
         
         <%-- Meus Anúncios --------------------------------------------------------------------------------------------------------------------------------------------%>

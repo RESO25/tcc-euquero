@@ -18,15 +18,30 @@ namespace TCC_euquero.Logica
             Conectar();
 
             MySqlDataReader dados = ConsultarProcedure("BuscarCartaoUsuario", lista);
-            while (dados.Read())
+            if (dados.HasRows)
+            {
+                while (dados.Read())
+                {
+
+                    Cartao cartao = new Cartao();
+                    cartao.EmailUsuario = dados.GetString(0);
+                    cartao.Digitos = dados.GetInt64(1);
+                    cartao.NomeTitular = dados.GetString(2);
+                    cartao.Vencimento = dados.GetString(3);
+                    cartao.Cvv = dados.GetInt32(4);
+                    cartao.Usando = dados.GetBoolean(5);
+                    cartoes.Add(cartao);
+                }
+            }
+            else
             {
                 Cartao cartao = new Cartao();
-                cartao.EmailUsuario = dados.GetString(0);
-                cartao.Digitos = dados.GetInt64(1);
-                cartao.NomeTitular = dados.GetString(2);
-                cartao.Vencimento = dados.GetString(3);
-                cartao.Cvv = dados.GetInt32(4);
-                cartao.Usando = dados.GetBoolean(5);
+                cartao.EmailUsuario = "---";
+                cartao.Digitos = 0;
+                cartao.NomeTitular = "---";
+                cartao.Vencimento = "---";
+                cartao.Cvv = 0;
+                cartao.Usando = true;
                 cartoes.Add(cartao);
             }
 

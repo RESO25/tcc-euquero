@@ -1,12 +1,11 @@
-﻿const btnEntrar = document.querySelector(".btnEntrar");
-//const btnDarLance = document.querySelector("#btnDarLance");
+﻿const btnEntrar = document.querySelector("#btnEntrar");
+
 btnEntrar.addEventListener('click', ExibirLogin);
 
 
 const divLogin = document.getElementById("filho");
 
 divLogin.style.visibility = "hidden";
-//btnDarLance.addEventListener('click', ExibirLogin);
 
 function ExibirLogin() {
     event.preventDefault();
@@ -20,23 +19,4 @@ function ExibirLogin() {
     }
 }
 
-function BemVindo() {
-    const email = document.getElementById("email").textContent;
-    if (email != null)
-    {
-        btnEntrar.style.visibility = "hidden";
-        const text = document.querySelector("#bemvindo");
-        const nome = document.getElementById("nome").textContent;
-        text.innerText = "Bem vindo " + nome ; 
-    }
 
-}
-
-BemVindo();
-//const body = document.getElementsByTagName("body");
-//body.addEventListener('click', FecharLogin);
-
-//function FecharLogin() {
-//    event.preventDefault();
-//    divLogin.style.visibility = "hidden";
-//}
