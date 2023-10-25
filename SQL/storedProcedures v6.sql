@@ -218,8 +218,12 @@ end$$
 Drop Procedure if exists CriarAnuncio$$
 Create Procedure CriarAnuncio(pEmail varchar(200), pEncerramento datetime, pNomeProduto varchar(200), pDescricao text, pValorMin decimal(10,2), pValorMax decimal(10,2))
 begin
-	insert into anuncio (nm_email_usuario, dt_anuncio, dt_encerramento_anuncio, nm_produto, ds_produto, vl_minimo, vl_maximo, ic_encerrado) 
-	values (pEmail, now(), pEncerramento, pNomeProduto, pDescricao, pValorMin, pValorMax, false);
+	declare vTotal int default 0;
+	declare vCodAnuncio int default 0;
+    select VerificarCodigoUltimoAnuncio() into vTotal;
+    set vCodAnuncio = vTotal +1;    
+	insert into anuncio (cd_anuncio, nm_email_usuario, dt_anuncio, dt_encerramento_anuncio, nm_produto, ds_produto, vl_minimo, vl_maximo, ic_encerrado) 
+	values (vCodAnuncio, pEmail, now(), pEncerramento, pNomeProduto, pDescricao, pValorMin, pValorMax, false);
 end$$
 
 -- -----------------------------------------------------
