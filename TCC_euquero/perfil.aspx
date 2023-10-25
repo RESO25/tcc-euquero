@@ -36,8 +36,6 @@
 
                                 <div class="CPF_RG">
                                     <h1 class="info">CPF: </h1> <h1 class="dadoInicial"><asp:Literal ID="litCPF" runat="server"></asp:Literal></h1>
-
-                                    <h1 class="info">RG: </h1> <h1 class="dado">99-999-999.99</h1>
                                 </div>    
                             </div>
 
@@ -111,9 +109,6 @@
                                         <h1 class="info">Data de Vencimento: </h1> <h1 class="dadoInicial">
                                             <asp:Literal ID="litDataVencimento" runat="server"></asp:Literal></h1>
                                     </div>
-
-
-                                    <button class="btnExibirDados">Exibir Dados</button> 
 
                                 </div>                                    
                                     

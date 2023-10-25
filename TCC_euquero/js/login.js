@@ -2,10 +2,7 @@
 
 btnEntrar.addEventListener('click', ExibirLogin);
 
-
 const divLogin = document.getElementById("filho");
-
-divLogin.style.visibility = "hidden";
 
 function ExibirLogin() {
     event.preventDefault();
@@ -15,7 +12,6 @@ function ExibirLogin() {
     }
     else {
         divLogin.style.visibility = "hidden";
-
     }
 }
 
