@@ -38,14 +38,16 @@ namespace TCC_euquero
 
                 string nome = $"{nomes[0]} {nomes[nomes.Length - 1]}";
 
-                litPerfil.Text = $@"<a class='slide_from_left tituloMaior btnEntrar' href='perfil.aspx'> 
-                                        <img id='fotoPerfil' src='imagens/fotosPerfis/{caminhoFoto}'> 
+
+                string perfil = $@"<a id='aPerfil' class='slide_from_left tituloMaior btnperfil' href='perfil.aspx'>
+                                        <img id='fotoPerfil' src='imagens/fotosPerfis/{caminhoFoto}'>
                                         <div>
                                             <p>{nome.ToUpper()}</p>
                                             <p class='valor'>{usuario.Saldo.ToString("C", new CultureInfo("pt-br"))}</p>
                                         </div>
                                     </a>";
 
+                litPerfil.Text = perfil;
             }
             else
             {

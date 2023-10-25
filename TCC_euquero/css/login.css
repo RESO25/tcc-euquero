@@ -115,7 +115,7 @@
     border-bottom: 1px solid #B3B3B3;
 }
 
-    #acesso #btnEntrar {
+    #acesso #btnLogin {
         width: 317px;
         height: 35px;
         color: #4B4B4B;
@@ -139,11 +139,11 @@
     align-items: center;
 }
 
-#btnEntrar:hover{
+#btnLogin:hover{
     cursor:pointer;
 }
 
-#criarConta #btnEntrar {
+#criarConta #btnLogin {
     width: 200px;
     height: 35px;
     background-color: #FFC000;

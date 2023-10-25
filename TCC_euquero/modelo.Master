@@ -10,7 +10,7 @@
     <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form1" runat="server" defaultbutton="btnLogin">
         <%----------------------------------------------------------------------------------------------------------------------------------------------------%>
         <header>
             <asp:Literal ID="litEmail" runat="server"></asp:Literal>
@@ -49,7 +49,7 @@
 
                 <%-- Pop-up de login --%>
 
-                <div id="filho">
+                <div id="filho" style="visibility:hidden">
                     <div id="dadosLogin">
                         <h1 id="textoLogin">Login</h1>
                         <div id="tipoConta">
@@ -61,7 +61,7 @@
                             <div class="form-inline">
                                 <div class="form-group">
                                     <label for="email">Email</label>
-                                    <asp:TextBox ID="txtEmail" runat="server" class="form-field" placeholder="Email"></asp:TextBox>
+                                    <asp:TextBox ID="txtEmail" runat="server" class="form-field" placeholder="Email" ></asp:TextBox>
                                     <%--<input required="" type="text" id="email" name="email" class="form-field" placeholder="Email">--%>
                                 </div>
                             </div>
@@ -75,7 +75,7 @@
                             </div>
         
                             <div id="acesso">
-                                <asp:Button ID="btnEntrar" runat="server" Text="Entrar" OnClick="btnEntrar_Click" />
+                                <asp:Button ID="btnLogin" runat="server" Text="Entrar" OnClick="btnEntrar_Click" />
                                 <%--<button>Entrar</button>--%>
                                 <a><p>Esqueci minha senha</p></a>
                             </div>
