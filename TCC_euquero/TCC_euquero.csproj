@@ -119,6 +119,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="anuncio.aspx" />
+    <Content Include="cadastro.aspx" />
     <Content Include="css\anuncio.css" />
     <Content Include="css\cadastro.css" />
     <Content Include="css\erro.css" />
@@ -185,6 +186,13 @@
     </Compile>
     <Compile Include="anuncio.aspx.designer.cs">
       <DependentUpon>anuncio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="cadastro.aspx.cs">
+      <DependentUpon>cadastro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="cadastro.aspx.designer.cs">
+      <DependentUpon>cadastro.aspx</DependentUpon>
     </Compile>
     <Compile Include="Logica\Banco.cs" />
     <Compile Include="Logica\EnvioDeEmail.cs" />
