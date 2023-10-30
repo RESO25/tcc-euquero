@@ -127,6 +127,7 @@
     <Content Include="css\footer.css" />
     <Content Include="css\header.css" />
     <Content Include="css\index.css" />
+    <Content Include="css\input.css" />
     <Content Include="css\login.css" />
     <Content Include="css\perfil.css" />
     <Content Include="imagens\anuncio\proximoLance.png" />
@@ -175,6 +176,7 @@
     <Content Include="imagens\login\backgroundLogin.png" />
     <Content Include="imagens\logo.png" />
     <Content Include="js\login.js" />
+    <Content Include="login.aspx" />
     <Content Include="perfil.aspx" />
     <Content Include="Web.config" />
     <Content Include="index.aspx" />
@@ -200,6 +202,13 @@
     <Compile Include="Logica\GerenciarCadastro.cs" />
     <Compile Include="Logica\GerenciarCartao.cs" />
     <Compile Include="Logica\GerenciarLance.cs" />
+    <Compile Include="login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="modelo.Master.cs">
       <DependentUpon>modelo.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

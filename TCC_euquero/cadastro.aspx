@@ -1,10 +1,25 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/modelo.Master" AutoEventWireup="true" CodeBehind="cadastro.aspx.cs" Inherits="TCC_euquero.cadastro" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link rel="stylesheet" href="css/cadastro.css" />
-    <title>Eu Quero - Home</title>
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="main" runat="server">
-    <div class="bgCadastro">
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="cadastro.aspx.cs" Inherits="TCC_euquero.cadastro" %>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../css/cadastro.css" rel="stylesheet">
+    <link href="../css/cadastro.css" rel="stylesheet">
+    
+    <title>Cadastro</title>
+</head>
+
+    <header>
+    <img class="euQueroLogo" src="../imagens/logo.png">
+    </header>
+
+<body>
+    <form id="form1" runat="server">
+        <div class="bgCadastro">
             <div class="formCadastro">
                 <div class="alinharConteudo">
 
@@ -85,7 +100,7 @@
                             <div class="form-inline input">
                                 <div class="form-group">
                                     <label for="Senha" class="labelinput">Repetir Senha</label>
-                                    <input required="" type="text" id="Senha2" name="Senha" class="form-field" placeholder="Repita a Senha">
+                                    <input required="" type="text" id="Senha" name="Senha" class="form-field" placeholder="Repita a Senha">
                                 </div>
                             </div>
                         </div>
@@ -161,4 +176,11 @@
             </div>
 
     </div>
-</asp:Content>
+    </form>
+</body>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</html>
