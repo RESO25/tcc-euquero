@@ -1,5 +1,5 @@
-html{
-    font-family: 'Almarai', sans-serif;
+﻿html {
+    font-family: 'Inter', sans-serif;
 }
 
 
@@ -8,16 +8,13 @@ html{
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
-    width: 180px;
+    width: 345px;
 }
 
-.form-inline .form-group {
-    --modifier: calc(30ch - 100%);
-    flex-basis: calc(var(--modifier)*999);
-    flex-grow: 1;
-    grid-template-areas: "group";
-    
-}
+    .form-inline .form-group {
+        flex-grow: 1;
+        grid-template-areas: "group";
+    }
 
 .form-group {
     grid-gap: 0.5em;
@@ -25,86 +22,42 @@ html{
     width: min(100%,40ch);
 }
 
-.form-inline .form-group label {
+.form-inline .form-group .labelinput {
     align-self: start;
     background-image: linear-gradient(to top,var(--color-background-alt) 0 calc(50% - 2px),var(--color-background) calc(50% - 2px));
-    font-size: .9rem;
-    padding-left: 0.5em;
-    padding-right: 0.5em;
+    padding-left: 0.2em;
+    padding-right: 0.2em;
     position: relative;
     transform: translate(0.5rem,-50%);
     width: max-content;
+    background-color: #4B4B4B;
+    font-size: 15px;
+    color: white;
 }
 
-.form-inline .form-group>* {
+.form-inline .form-group > * {
     grid-area: group;
+    color: #d9d9d9;
+    width: 100%;
+    font-size: 20px;
 }
 
-.form-group .inputMinMax {
+.form-group input {
     min-height: 35px;
     width: 180px;
 }
 
 
-.form-group .inputMinMax, .form-group textarea {
+.form-group input, .form-group textarea {
     --outline-color: var(--color-primary);
     background-color: var(--color-background-alt);
-    border: 2px solid;
+    border: 1px solid;
     border-radius: 4px;
     font: inherit;
-    padding: 0 0.5em;
+    padding: 0.2rem 0.5rem 0.2rem;
     width: 100%;
 }
 
-label{
-    background-color: rgb(255, 255, 255);
+.form-field::placeholder {
+    color: #ecececa1;
 }
-
-.inputMinMax{
-    display: flex;
-    justify-content: space-around;
-    color: #d9d9d9;
-    align-items: center;
-}
-
-.inputMinMax div{
-    display: flex;
-}
-
-.inputMinMax div img{
-    width: 27px;
-    height: 28px;
-}
-
-#menos{
-    border: none;
-    background: none;
-    font-size: 26px;
-}
-#mais{
-    border: none;
-    background: none;
-    font-size: 26px;
-}
-
-.num{
-    border: none;
-    font-size: 25px;
-    width: 165px;
-    color: #FFC000;
-    font-weight: bold;
-}
-
-.num:focus{
-    outline: 0;
-    width: 165px;
-}
-
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    
-    -webkit-appearance: none;
-    margin: 0; 
-}
-

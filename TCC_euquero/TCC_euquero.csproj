@@ -119,6 +119,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="anuncio.aspx" />
+    <Content Include="cadastro.aspx" />
     <Content Include="css\anuncio.css" />
     <Content Include="css\cadastro.css" />
     <Content Include="css\erro.css" />
@@ -126,6 +127,7 @@
     <Content Include="css\footer.css" />
     <Content Include="css\header.css" />
     <Content Include="css\index.css" />
+    <Content Include="css\input.css" />
     <Content Include="css\login.css" />
     <Content Include="css\perfil.css" />
     <Content Include="imagens\anuncio\proximoLance.png" />
@@ -174,6 +176,7 @@
     <Content Include="imagens\login\backgroundLogin.png" />
     <Content Include="imagens\logo.png" />
     <Content Include="js\login.js" />
+    <Content Include="login.aspx" />
     <Content Include="perfil.aspx" />
     <Content Include="Web.config" />
     <Content Include="index.aspx" />
@@ -186,12 +189,26 @@
     <Compile Include="anuncio.aspx.designer.cs">
       <DependentUpon>anuncio.aspx</DependentUpon>
     </Compile>
+    <Compile Include="cadastro.aspx.cs">
+      <DependentUpon>cadastro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="cadastro.aspx.designer.cs">
+      <DependentUpon>cadastro.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Logica\Banco.cs" />
     <Compile Include="Logica\EnvioDeEmail.cs" />
     <Compile Include="Logica\GerenciarAnuncios.cs" />
     <Compile Include="Logica\GerenciarCadastro.cs" />
     <Compile Include="Logica\GerenciarCartao.cs" />
     <Compile Include="Logica\GerenciarLance.cs" />
+    <Compile Include="login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="modelo.Master.cs">
       <DependentUpon>modelo.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
