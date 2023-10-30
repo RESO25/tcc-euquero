@@ -18,7 +18,9 @@ namespace TCC_euquero
             if (Session["email"] != null)
             {
                 GerenciarLance gerenciar = new GerenciarLance();
+                litSaldoUsuario.Text = "Seu saldo é de: " + gerenciar.ConsultarSaldo(Session["email"].ToString()).ToString();
 
+                txtLance.Enabled = true;
             }
 
             if (String.IsNullOrEmpty(Request["codProduto"]))
@@ -46,9 +48,7 @@ namespace TCC_euquero
             litLances.Text = anuncio.QntLances.ToString();
             litLeiloeiro.Text = anuncio.NomeUsuario;
             litGanhador.Text = anuncio.GanhadorAtual;
-
-            litLanceAtual.Text = anuncio.LanceAtual.ToString("C", new CultureInfo("pt-br"));
-
+            litLanceAtual.Text = anuncio.LanceAtual.ToString();
             litValorInicial.Text = anuncio.ValorMinimo.ToString("C", new CultureInfo("pt-br"));
 
 
@@ -135,7 +135,7 @@ namespace TCC_euquero
                 {
                     valorLance = decimal.Parse(txtLance.Text);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     throw new Exception("Não foi possível converter o valor da caixa de texto em decimal.");
                 }
@@ -144,24 +144,24 @@ namespace TCC_euquero
 
                 decimal saldo = gerenciarLance.ConsultarSaldo(email);
                 
-                //litRespostaSistema.Text = "-";
+                litRespostaSistema.Text = "-";
 
                 if (saldo >= valorLance)
                 {
-                    gerenciarLance.DarLance(cdAnuncio, email, valorLance);
+                    gerenciarLance.DarLance(cdAnuncio, email, decimal.Parse(litLanceAtual.Text), valorLance);
 
                     //Dar Refresh na página
                     Response.Redirect(Page.Request.Url.ToString());
-                    //litRespostaSistema.Text = "Seu lance foi efetuado com sucesso!";
+                    litRespostaSistema.Text = "Seu lance foi efetuado com sucesso!";
                 }
                 else
                 {
-                    //litRespostaSistema.Text = "Saldo insuficiente!";
+                    litRespostaSistema.Text = "Saldo insuficiente!";
                 }
             }
             else
             {
-                //litRespostaSistema.Text = "Você não está cadastrado!";
+                litRespostaSistema.Text = "Você não está cadastrado!";
             }
         }
 
