@@ -31,7 +31,7 @@ namespace TCC_euquero.Logica
             List<Parametro> lista = new List<Parametro>();
             lista.Add(new Parametro("pAnuncio", pAnuncio.ToString()));
             lista.Add(new Parametro("pEmail", pEmail));
-            lista.Add(new Parametro("pValor", pValor.ToString()));
+            lista.Add(new Parametro("pValor", pValor.ToString().Replace(',','.')));
 
             ExecutarProcedure("DarLance", lista);
         }

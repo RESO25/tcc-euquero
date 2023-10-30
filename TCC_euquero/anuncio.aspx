@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/modelo.Master" AutoEventWireup="true" CodeBehind="anuncio.aspx.cs" Inherits="TCC_euquero.anuncio" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" href="css/anuncio.css" />
+    <link rel="stylesheet" href="css/input.css" />
     <title><asp:Literal ID="litTitle" runat="server"></asp:Literal></title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="main" runat="server">
@@ -48,7 +49,7 @@
                 <section class="infoLance">
                     <div class= "parteLanceAtual"> 
                         <h5 class="lanceAtual">Lance Atual:    
-                            <strong class="valorLance">
+                            <strong id="lanceAtual" class="valorLance">
                                 <asp:Literal ID="litLanceAtual" runat="server"></asp:Literal>
                             </strong>
                         </h5>  
@@ -63,20 +64,16 @@
                 <section class="darLance">
                     <br />
 
-                    <div style="width:70%; margin:auto">
-                        <%--<input id=""  runat="server" placeholder="Insira aqui o valor do lance:" Enable="false"/>--%>
-                        <asp:TextBox ID="txtLance" type="number" runat="server" placeholder="Insira aqui o valor do lance:" Enabled="false"></asp:TextBox>
+                <div class="inputMinMax">
+                    <%--<asp:ImageButton ID="btnMenos" runat="server" ImageUrl="~/imagens/anuncio/botaoMenos.png" />--%>
+                    <button type="button" id="menos" onclick="less()"><img src="/imagens/anuncio/botaoMenos.png" /></button>
+                    
+                    <div>
+                        <asp:TextBox ID="txtLance" runat="server" CssClass="num"></asp:TextBox>
                     </div>
-
-                    <br />
-
-                    <asp:Literal ID="litSaldoUsuario" runat="server">Seu saldo é de:</asp:Literal>
-                        
-                    <br />
-
-                    <asp:Literal ID="litRespostaSistema" runat="server">-</asp:Literal>
-
-                    <br />
+                    <%--<asp:ImageButton ID="btnMais" runat="server" ImageUrl="~/imagens/anuncio/botaoMais.png" />--%>
+                    <button type="button" id="mais" onclick="more()"><img src="/imagens/anuncio/botaoMais.png" /></button>
+                </div>
                       
                     <asp:Button ID="btnDarLance" runat="server" Text="Dar Lance" CssClass="btnDarLance" OnClick="btnDarLance_Click" />
                 </section>
@@ -135,4 +132,5 @@
                 <asp:Literal ID="litCardProduto" runat="server"></asp:Literal>        
             </div>
     </div>
+    <script src="js/input.js"></script>
 </asp:Content>
