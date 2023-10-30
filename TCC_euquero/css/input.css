@@ -1,0 +1,110 @@
+html{
+    font-family: 'Almarai', sans-serif;
+}
+
+
+.form-inline {
+    align-items: flex-end;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 180px;
+}
+
+.form-inline .form-group {
+    --modifier: calc(30ch - 100%);
+    flex-basis: calc(var(--modifier)*999);
+    flex-grow: 1;
+    grid-template-areas: "group";
+    
+}
+
+.form-group {
+    grid-gap: 0.5em;
+    display: grid;
+    width: min(100%,40ch);
+}
+
+.form-inline .form-group label {
+    align-self: start;
+    background-image: linear-gradient(to top,var(--color-background-alt) 0 calc(50% - 2px),var(--color-background) calc(50% - 2px));
+    font-size: .9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    position: relative;
+    transform: translate(0.5rem,-50%);
+    width: max-content;
+}
+
+.form-inline .form-group>* {
+    grid-area: group;
+}
+
+.form-group .inputMinMax {
+    min-height: 35px;
+    width: 180px;
+}
+
+
+.form-group .inputMinMax, .form-group textarea {
+    --outline-color: var(--color-primary);
+    background-color: var(--color-background-alt);
+    border: 2px solid;
+    border-radius: 4px;
+    font: inherit;
+    padding: 0 0.5em;
+    width: 100%;
+}
+
+label{
+    background-color: rgb(255, 255, 255);
+}
+
+.inputMinMax{
+    display: flex;
+    justify-content: space-around;
+    color: #d9d9d9;
+    align-items: center;
+}
+
+.inputMinMax div{
+    display: flex;
+}
+
+.inputMinMax div img{
+    width: 27px;
+    height: 28px;
+}
+
+#menos{
+    border: none;
+    background: none;
+    font-size: 26px;
+}
+#mais{
+    border: none;
+    background: none;
+    font-size: 26px;
+}
+
+.num{
+    border: none;
+    font-size: 25px;
+    width: 165px;
+    color: #FFC000;
+    font-weight: bold;
+}
+
+.num:focus{
+    outline: 0;
+    width: 165px;
+}
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    
+    -webkit-appearance: none;
+    margin: 0; 
+}
+

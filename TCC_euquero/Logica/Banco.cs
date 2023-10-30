@@ -82,9 +82,9 @@ namespace TCC_euquero.Logica
 
                 cSQL.ExecuteNonQuery();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw new Exception("Não foi possível executar a procedure");
+                throw ex;
             }
             finally
             {
