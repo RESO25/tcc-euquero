@@ -10,7 +10,6 @@ call CadastrarUsuarioFisico("jãoAlmeida@hotmail.com", "38625551866", "João Alm
 call CadastrarUsuarioFisico("raphaelresende10@gmail.com", "55502213269", "Raphael Resende", "amominhamulher");
 call CriarCartao("raphaelresende10@gmail.com", 1111222233334444, "Raphael Resende", "12/27", 265);
 call AdicionarSaldo("raphaelresende10@gmail.com", 100000);
-select vl_saldo from usuario where nm_email_usuario = "raphaelresende10@gmail.com";
 
 call CadastrarUsuarioFisico("fabimnhomaia@gmail.com", "22233344455", "Fábio Maia", "pepino123");
 call AdicionarSaldo("fabimnhomaia@gmail.com", 100000);
@@ -50,7 +49,7 @@ call CriarEndereço("juridico@nathaneantoniaferragensme.com.br", 59065100, "Rua 
 -- CATEGORIA
 INSERT INTO categoria VALUES(01, "IMÓVEIS");
 INSERT INTO categoria VALUES(02, "ARTE E DECORAÇÃO");
-INSERT INTO categoria VALUES(03, "VEÍCULOS");
+INSERT INTO categoria VALUES(03, "CARROS");
 INSERT INTO categoria VALUES(04, "CAMINHÕES E ÔNIBUS");
 INSERT INTO categoria VALUES(05, "EMBARCAÇÕES");
 INSERT INTO categoria VALUES(06, "ELETRO");
@@ -58,32 +57,6 @@ INSERT INTO categoria VALUES(07, "MÁQUINAS AGRÍCOLAS");
 INSERT INTO categoria VALUES(08, "TECNOLOGIA");
 INSERT INTO categoria VALUES(09, "RECICLAGEM");
 INSERT INTO categoria VALUES(10, "INDUSTRIAL");
-INSERT INTO categoria VALUES(11, "EXTRAS");
-
--- SUBCATEGORIA
-INSERT INTO subcategoria VALUES(01, "Terrenos e Lotes", 01);
-INSERT INTO subcategoria VALUES(02, "Imóveis Industriais", 01);
-INSERT INTO subcategoria VALUES(03, "Imóveis Rurais", 01);
-INSERT INTO subcategoria VALUES(04, "Imóveis Comerciais", 01);
-INSERT INTO subcategoria VALUES(05, "Imóveis Residencias", 01);
-
-INSERT INTO subcategoria VALUES(01, "Escritório", 02);
-INSERT INTO subcategoria VALUES(02, "Residencial", 02);
-
-INSERT INTO subcategoria VALUES(01, "Carros", 03);
-INSERT INTO subcategoria VALUES(02, "Motos", 03);
-INSERT INTO subcategoria VALUES(03, "Partes e Peças - Carros e motos", 03);
-INSERT INTO subcategoria VALUES(04, "Área de Revenda", 03);
-
-INSERT INTO subcategoria VALUES(01, "Ônibus", 04);
-INSERT INTO subcategoria VALUES(02, "Caminhões", 04);
-INSERT INTO subcategoria VALUES(03, "Partes e Peças - Ônibus e caminhões", 04);
-
-INSERT INTO subcategoria VALUES(01, "Embarcações e navios", 05);
-INSERT INTO subcategoria VALUES(02, "Peças e Acessórios", 05);
-INSERT INTO subcategoria VALUES(03, "Lanchas e barcos", 05);
-
-INSERT INTO subcategoria VALUES(01, "Colecionáveis", 11);
 
 
 -- ANÚNCIO
@@ -107,21 +80,39 @@ call CriarAnuncio("juridico@nathaneantoniaferragensme.com.br", "2023-10-3", "Esc
 
 
 -- ANÚNCIO SUBCATEGORIA
-INSERT INTO anuncio_subcategoria VALUES (1, 03, 03);
+INSERT INTO anuncio_categoria VALUES (1, 03);
 
-INSERT INTO anuncio_subcategoria VALUES (2, 01, 02);
-INSERT INTO anuncio_subcategoria VALUES (2, 02, 02);
+INSERT INTO anuncio_categoria VALUES (2, 02);
 
-INSERT INTO anuncio_subcategoria VALUES (3, 01, 11);
+INSERT INTO anuncio_categoria VALUES (3, 10);
 
-INSERT INTO anuncio_subcategoria VALUES (4, 01, 02);
-INSERT INTO anuncio_subcategoria VALUES (4, 02, 02);
+INSERT INTO anuncio_categoria VALUES (4, 02);
 
-INSERT INTO anuncio_subcategoria VALUES (5, 01, 11);
+INSERT INTO anuncio_categoria VALUES (5, 10);
 
--- INSERT INTO anuncio_subcategoria VALUES (6, );
+INSERT INTO anuncio_categoria VALUES (6, 1);
 
-INSERT INTO anuncio_subcategoria VALUES (7, 01, 11);
+INSERT INTO anuncio_categoria VALUES (7, 3);
+
+INSERT INTO anuncio_categoria VALUES (8, 1);
+
+INSERT INTO anuncio_categoria VALUES (9, 4);
+
+INSERT INTO anuncio_categoria VALUES (10, 4);
+
+INSERT INTO anuncio_categoria VALUES (11, 5);
+
+INSERT INTO anuncio_categoria VALUES (12, 5);
+
+INSERT INTO anuncio_categoria VALUES (13, 6);
+
+INSERT INTO anuncio_categoria VALUES (14, 6);
+
+INSERT INTO anuncio_categoria VALUES (15, 7);
+
+INSERT INTO anuncio_categoria VALUES (16, 8);
+
+INSERT INTO anuncio_categoria VALUES (17, 9);
 
 
 -- DAR LANCES

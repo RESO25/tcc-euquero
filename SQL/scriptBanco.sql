@@ -14,6 +14,7 @@ CREATE TABLE IF NOT EXISTS usuario (
   ic_validado bool,
   vl_saldo decimal(10, 2),
   ic_banido tinyint(1),
+  cd_telefone bigint(11),
   PRIMARY KEY (nm_email_usuario)
 );
 
@@ -178,33 +179,12 @@ CREATE TABLE IF NOT EXISTS categoria (
 );
 
 -- -----------------------------------------------------
--- Table subcategoria
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS subcategoria (
-  cd_subcategoria INT ,
-  nm_subcategoria varchar(200),
-  cd_categoria INT ,
-  PRIMARY KEY (cd_subcategoria, cd_categoria ) ,
-  CONSTRAINT fk_subcategoria_categoria1
-    FOREIGN KEY (cd_categoria )
-    REFERENCES categoria (cd_categoria )
-);
-
--- -----------------------------------------------------
 -- Table anuncio_subcategoria
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS anuncio_subcategoria (
+CREATE TABLE IF NOT EXISTS anuncio_categoria (
   cd_anuncio INT,
-  cd_subcategoria INT,
   cd_categoria INT,
-  PRIMARY KEY (cd_anuncio, cd_subcategoria, cd_categoria) ,
-  CONSTRAINT fk_anuncio_subcategoria_anuncio1
-    FOREIGN KEY (cd_anuncio )
-    REFERENCES anuncio (cd_anuncio ),
-  CONSTRAINT fk_anuncio_subcategoria_subcategoria1
-    FOREIGN KEY (cd_subcategoria )
-    REFERENCES subcategoria (cd_subcategoria ),
-  CONSTRAINT fk_anuncio_subcategoria_categoria1
-	FOREIGN KEY (cd_categoria )
-	REFERENCES categoria (cd_categoria )
+  PRIMARY KEY (cd_anuncio,  cd_categoria),
+  Constraint fk_anuncio_categoria_anuncio Foreign Key (cd_anuncio) references anuncio (cd_anuncio),
+  Constraint fk_anuncio_categoria_categoria Foreign Key (cd_categoria) references categoria (cd_categoria)
 );

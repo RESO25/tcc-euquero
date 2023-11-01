@@ -26,7 +26,7 @@ Create Procedure CadastrarUsuarioFisico(pEmail varchar(200), pCPF bigint, pNome 
 begin
 	insert into usuario (nm_email_usuario, cd_cpf_usuario, nm_usuario, nm_senha, ic_validado, vl_saldo, ic_banido) 
     values (pEmail, pCPF, pNome, md5(pSenha), false, 0, false);
-	
+
     call CriarValidacao(pEmail);
 end$$
 Drop Procedure if exists CadastrarUsuarioJuridico$$
@@ -34,7 +34,7 @@ Create Procedure CadastrarUsuarioJuridico(pEmail varchar(200), pCNPJ bigint, pNo
 begin
 	insert into usuario (nm_email_usuario, cd_cnpj_usuario, nm_usuario, nm_senha, ic_validado, vl_saldo, ic_banido) 
 	values (pEmail, pCNPJ, pNome, md5(pSenha), false, 0, false);
-    
+
     call CriarValidacao(pEmail);
 end$$
 
@@ -86,7 +86,7 @@ Create Procedure CriarValidacao(pEmail varchar(200))
 begin
 	delete from validacao 
     where nm_email_usuario = pEmail;
-    
+
 	insert into validacao values (pEmail, (Select FLOOR(5 + RAND()*(999999-100000))));
 end$$
 
@@ -108,7 +108,7 @@ Create Procedure ValidarConta(pEmail varchar(200))
 begin
 	update usuario set ic_validado = true 
     where nm_email_usuario = pEmail;
-    
+
     delete from validacao 
     where nm_email_usuario = pEmail;
 end$$
@@ -169,11 +169,11 @@ Create Procedure AdicionarSaldo(pEmail varchar(200), pValor decimal(10, 2))
 begin
 	declare vSaldoAtual decimal(10, 2) default 0;
     declare vNovoSaldo decimal(10, 2) default 0; 
-    
+
     select vl_saldo into vSaldoAtual from usuario where nm_email_usuario = pEmail;
-    
+
     set vNovoSaldo = vSaldoAtual + pValor;
-    
+
 	update usuario set vl_saldo = vNovoSaldo where nm_email_usuario = pEmail;
 end$$
 
@@ -185,11 +185,11 @@ Create Procedure SubtrairSaldo(pEmail varchar(200), pValor decimal(10, 2))
 begin
 	declare vSaldoAtual decimal(10, 2) default 0;
     declare vNovoSaldo decimal(10, 2) default 0; 
-    
+
     select vl_saldo into vSaldoAtual from usuario where nm_email_usuario = pEmail;
-    
+
     set vNovoSaldo = vSaldoAtual - pValor;
-    
+
 	update usuario set vl_saldo = vNovoSaldo where nm_email_usuario = pEmail;
 end$$
 
@@ -210,7 +210,7 @@ Create Function ValidarSaldo(pEmailUsuario varchar(200), pValorLance decimal(10,
 begin
 	declare vValorSaldoUsuario decimal (10, 2) default 0;
     select vl_saldo into vValorSaldoUsuario from usuario where nm_email_usuario = pEmailUsuario;
-    
+
     if vValorSaldoUsuario >= pValorLance then
 		return true;
 	else
@@ -305,7 +305,7 @@ Drop Procedure If Exists ListarDadosAnuncio$$
 Create Procedure ListarDadosAnuncio(pCodigoAnuncio int)
 begin
 	declare vLances int default 0;
-    
+
     select count(vl_lance) into vLances from lance where cd_anuncio = pCodigoAnuncio;
     if (vLances = 0) then
 		call ListarDadosAnuncioSemLance(pCodigoAnuncio);
@@ -345,10 +345,10 @@ Create Procedure DarLance(pAnuncio int, pEmail varchar(200), pValor decimal(10,2
 begin
 	declare vValidarSaldo decimal(10, 2) default 0;
 	declare vValidarLance bool default false;
-    
+
     select ValidarSaldo(pEmail, pValor) into vValidarSaldo;
     select ValidarLance(pAnuncio, pValor) into vValidarLance;
-    
+
     if vValidarSaldo = true then    
 		if vValidarLance = true then
 			insert into lance values (pAnuncio, pEmail, now(), pValor);
@@ -365,7 +365,7 @@ Create Function ValidarLance(pCodigoAnuncio int, pNovoValorLance decimal(10,2)) 
 begin
 	declare vValorLanceAtual decimal(10, 2) default 0;
     declare vEmailUsuarioLanceAtual varchar(200) default "";
-    
+
 	select max(vl_lance) as ValorLanceAtual into vValorLanceAtual from lance
 	where cd_anuncio = pCodigoAnuncio;
     select nm_email_usuario_cliente as EmailUsuarioLanceAtual into vEmailUsuarioLanceAtual from lance
@@ -374,7 +374,7 @@ begin
     if vValorLanceAtual is null then
 		select vl_minimo into vValorLanceAtual from anuncio where cd_anuncio = pCodigoAnuncio;
     end if;
-	
+
     if pNovoValorLance <= vValorLanceAtual then
 		return false; 
 	else
@@ -391,9 +391,35 @@ Create Procedure BuscarLanceAtual(pAnuncio int)
 begin	
    declare vValorMin decimal(10,2) default 0;
     select vl_minimo into vValorMin from anuncio where cd_anuncio = pAnuncio;
-    
+
 	select coalesce(max(vl_lance), vValorMin) as ValorLance from lance
 	where cd_anuncio = pAnuncio;
 end$$
 
+-- -----------------------------------------------------
+-- Buscar categoria pelo código
+-- -----------------------------------------------------
+drop procedure if exists BuscarCategoria$$
+Create Procedure BuscarCategoria(pCdCategoria int)
+begin	
+	select * from categoria where cd_categoria = pCdCategoria;
+end$$
+
+-- -----------------------------------------------------
+-- Buscar anuncios em card pela categoria
+-- -----------------------------------------------------
+drop procedure if exists BuscarAnunciosCategoria$$
+Create Procedure BuscarAnunciosCategoria(pCdCategoria int)
+begin	
+	   select a.cd_anuncio as CodigoAnuncio, a.nm_produto as NomeProduto, a.dt_encerramento_anuncio as DataEncerramento, a.vl_minimo as ValorMinimo, 
+		(select max(vl_lance) from lance join anuncio on (lance.cd_anuncio = anuncio.cd_anuncio) where lance.cd_anuncio = CodigoAnuncio) as LanceAtual
+   from anuncio a join anuncio_categoria ac on (a.cd_anuncio = ac.cd_anuncio)
+   where a.ic_encerrado = false and ac.cd_categoria = pCdCategoria;
+end$$
+
 Delimiter ;
+
+	   select a.cd_anuncio as CodigoAnuncio, a.nm_produto as NomeProduto, a.dt_encerramento_anuncio as DataEncerramento, a.vl_minimo as ValorMinimo, 
+		(select max(vl_lance) from lance join anuncio on (lance.cd_anuncio = anuncio.cd_anuncio) where lance.cd_anuncio = CodigoAnuncio) as LanceAtual
+   from anuncio a join anuncio_categoria ac on (a.cd_anuncio = ac.cd_anuncio)
+   where a.ic_encerrado = false and ac.cd_categoria = 10;
