@@ -24,7 +24,6 @@ namespace TCC_euquero.Modelo
         public int QntLances { get; set; }
         public int QntParticipantes { get; set; }
         public bool Encerrado { get; set; }
-        public Subcategoria Subcategoria { get; set; }
 
 
         public Anuncio()

@@ -120,8 +120,10 @@
   <ItemGroup>
     <Content Include="anuncio.aspx" />
     <Content Include="cadastro.aspx" />
+    <Content Include="categoria.aspx" />
     <Content Include="css\anuncio.css" />
     <Content Include="css\cadastro.css" />
+    <Content Include="css\categoria.css" />
     <Content Include="css\erro.css" />
     <Content Include="css\estiloGeral.css" />
     <Content Include="css\footer.css" />
@@ -133,6 +135,16 @@
     <Content Include="imagens\anuncio\proximoLance.png" />
     <Content Include="imagens\anuncio\U.png" />
     <Content Include="imagens\cadastro\paisagem_montanha.png" />
+    <Content Include="imagens\categorias\01.png" />
+    <Content Include="imagens\categorias\02.png" />
+    <Content Include="imagens\categorias\03.png" />
+    <Content Include="imagens\categorias\04.png" />
+    <Content Include="imagens\categorias\05.png" />
+    <Content Include="imagens\categorias\06.png" />
+    <Content Include="imagens\categorias\07.png" />
+    <Content Include="imagens\categorias\08.png" />
+    <Content Include="imagens\categorias\09.png" />
+    <Content Include="imagens\categorias\10.png" />
     <Content Include="imagens\footer\facebook.png" />
     <Content Include="imagens\footer\instagram.png" />
     <Content Include="imagens\footer\tiktok.png" />
@@ -163,7 +175,6 @@
     <Content Include="imagens\index\bannerCadastro.png" />
     <Content Include="imagens\index\Bus.png" />
     <Content Include="imagens\index\Car.png" />
-    <Content Include="imagens\index\exemplo.png" />
     <Content Include="imagens\index\Factory.png" />
     <Content Include="imagens\index\imoveis.png" />
     <Content Include="imagens\index\Microwave.png" />
@@ -197,11 +208,19 @@
     <Compile Include="cadastro.aspx.designer.cs">
       <DependentUpon>cadastro.aspx</DependentUpon>
     </Compile>
+    <Compile Include="categoria.aspx.cs">
+      <DependentUpon>categoria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="categoria.aspx.designer.cs">
+      <DependentUpon>categoria.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Logica\Banco.cs" />
     <Compile Include="Logica\EnvioDeEmail.cs" />
     <Compile Include="Logica\GerenciarAnuncios.cs" />
     <Compile Include="Logica\GerenciarCadastro.cs" />
     <Compile Include="Logica\GerenciarCartao.cs" />
+    <Compile Include="Logica\GerenciarCategorias.cs" />
     <Compile Include="Logica\GerenciarLance.cs" />
     <Compile Include="login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
@@ -227,7 +246,6 @@
     <Compile Include="Modelo\Lance.cs" />
     <Compile Include="Modelo\Mensagem.cs" />
     <Compile Include="Modelo\Parametro.cs" />
-    <Compile Include="Modelo\Subcategoria.cs" />
     <Compile Include="Modelo\Usuario.cs" />
     <Compile Include="perfil.aspx.cs">
       <DependentUpon>perfil.aspx</DependentUpon>

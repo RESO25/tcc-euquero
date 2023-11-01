@@ -47,7 +47,7 @@ namespace TCC_euquero.Logica
             }
         }
 
-        public string CadastrarUsuario(string emailUsuario, string cpf, string nomeUsuario, string senha)
+        public string CadastrarUsuarioFisico(string emailUsuario, string cpf, string nomeUsuario, string senha, Int64 telefone)
         {
             if(VerificarDisponibilidadeEmail(emailUsuario))
             {
@@ -56,8 +56,31 @@ namespace TCC_euquero.Logica
                 parametros.Add(new Parametro("pCPF", cpf));
                 parametros.Add(new Parametro("pNome", nomeUsuario));
                 parametros.Add(new Parametro("pSenha", senha));
+                parametros.Add(new Parametro("pTelefone", telefone.ToString()));
 
-                ExecutarProcedure("CadastrarUsuario", parametros);
+                ExecutarProcedure("CadastrarUsuarioFisico", parametros);
+                EnviarCodigoEmail(emailUsuario);
+
+                return "Seu cadastro foi efetuado com sucesso! Agora será necessário que você valide sua conta.";
+            }
+            else
+            {
+                return "O email inserido está cadastrado em outra conta!";
+            }
+        }
+        
+        public string CadastrarUsuarioJuridico(string emailUsuario, string cnpj, string nomeUsuario, string senha, Int64 telefone)
+        {
+            if(VerificarDisponibilidadeEmail(emailUsuario))
+            {
+                parametros.Clear();
+                parametros.Add(new Parametro("pEmail", emailUsuario));
+                parametros.Add(new Parametro("pCNPJ", cnpj));
+                parametros.Add(new Parametro("pNome", nomeUsuario));
+                parametros.Add(new Parametro("pSenha", senha));
+                parametros.Add(new Parametro("pTelefone", telefone.ToString()));
+
+                ExecutarProcedure("CadastrarUsuarioJuridico", parametros);
                 EnviarCodigoEmail(emailUsuario);
 
                 return "Seu cadastro foi efetuado com sucesso! Agora será necessário que você valide sua conta.";
