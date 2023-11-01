@@ -53,8 +53,6 @@
                     <div id="dadosLogin">
                         <h1 id="textoLogin">Login</h1>
                         <div id="tipoConta">
-                            <h5 id="pessoaFisica">Pessoa Física</h5>
-                            <h5 id="pessoaJuridica">Pessoa Jurídica</h5>
                         </div>
         
                         <div id="inputs">

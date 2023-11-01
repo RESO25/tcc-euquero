@@ -175,6 +175,7 @@
     <Content Include="imagens\index\Tractor.png" />
     <Content Include="imagens\login\backgroundLogin.png" />
     <Content Include="imagens\logo.png" />
+    <Content Include="js\input.js" />
     <Content Include="js\login.js" />
     <Content Include="login.aspx" />
     <Content Include="perfil.aspx" />
