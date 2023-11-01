@@ -10,6 +10,7 @@ call CadastrarUsuarioFisico("jãoAlmeida@hotmail.com", "38625551866", "João Alm
 call CadastrarUsuarioFisico("raphaelresende10@gmail.com", "55502213269", "Raphael Resende", "amominhamulher");
 call CriarCartao("raphaelresende10@gmail.com", 1111222233334444, "Raphael Resende", "12/27", 265);
 call AdicionarSaldo("raphaelresende10@gmail.com", 100000);
+select vl_saldo from usuario where nm_email_usuario = "raphaelresende10@gmail.com";
 
 call CadastrarUsuarioFisico("fabimnhomaia@gmail.com", "22233344455", "Fábio Maia", "pepino123");
 call AdicionarSaldo("fabimnhomaia@gmail.com", 100000);
@@ -133,7 +134,6 @@ call DarLance(1, "anajj@gmail.com", 110000.00);
 
 call DarLance(2, "raphaelresende10@gmail.com", 600000.00);
 call DarLance(2, "kaikeleimig@gmail.com", 750000.00);
-call DarLance(2, "raphaelresende10@gmail.com", 800000.00);
 call DarLance(2, "jeffersonsantos@outlook.com", 900000.00);
 call DarLance(2, "afonsoaa@outlook.com", 1000000.00);
 call DarLance(2, "jeffersonsantos@outlook.com", 1100000.00);
@@ -173,3 +173,13 @@ call DarLance(10, "anajj@gmail.com", 3600.00);
 call EncerrarAnuncio(3);
 call EncerrarAnuncio(4);
 call EncerrarAnuncio(5);
+
+select * from usuario;
+select * from anuncio;
+call AdicionarSaldo("raphaelresende10@gmail.com", 1310700);
+call AdicionarSaldo("raphaelresende10@gmail.com", 1000);
+
+select * from usuario where nm_email_usuario = 'fabimnhomaia@gmail.com';
+select * from usuario where nm_email_usuario = 'raphaelresende10@gmail.com';
+
+select * from lance
