@@ -45,32 +45,43 @@ namespace TCC_euquero.Logica
         public void EmailRessarcirSaldo(int pAnuncio, decimal pValor)
         {
             string emailUsuario = "";
-            MySqlDataReader dados = ConsultarComando($"select nm_email_usuario_cliente as EmailUsuarioCliente from lance where cd_anuncio = {pAnuncio} and vl_lance = {pValor.ToString().Replace(',', '.')};");
+            List<Parametro> parametros = new List<Parametro>();
+            parametros.Add(new Parametro("pCdAnuncio", pAnuncio.ToString()));
+            parametros.Add(new Parametro("pVlLance", pValor.ToString().Replace(',', '.')));
+
+            MySqlDataReader dados = ConsultarProcedure("BuscarEmailUsuarioCliente", parametros);
 
             if (dados.Read())
                 emailUsuario = dados["EmailUsuarioCliente"].ToString();
             
             dados.Close();
-            
-            MailMessage mail = new MailMessage("leilaoEuQuero@outlook.pt", emailUsuario);
-            EnvioDeEmail envioDeEmail = new EnvioDeEmail();
 
-            string CSS = "";
+            if (String.IsNullOrEmpty(emailUsuario))
+            {
+                return;
+            }
+            else
+            {
+                MailMessage mail = new MailMessage("leilaoEuQuero@outlook.pt", emailUsuario);
+                EnvioDeEmail envioDeEmail = new EnvioDeEmail();
 
-            mail.Subject = $"Saldo Ressarcido!";
-            mail.IsBodyHtml = true;
-            mail.Body = $@"     <html>
-                                    <body>
-                                        <div style={CSS}>
-                                            <p> O valor de {pValor.ToString("C", new CultureInfo("pt-br"))} foi ressarcido para você.</p>
-                                        </div>
-                                    </body>
-                                </html>";
+                string CSS = "";
 
-            mail.SubjectEncoding = Encoding.GetEncoding("UTF-8");
-            mail.BodyEncoding = Encoding.GetEncoding("UTF-8");
+                mail.Subject = $"Saldo Ressarcido!";
+                mail.IsBodyHtml = true;
+                mail.Body = $@"     <html>
+                                        <body>
+                                            <div style={CSS}>
+                                                <p> O valor de {pValor.ToString("C", new CultureInfo("pt-br"))} foi ressarcido para você.</p>
+                                            </div>
+                                        </body>
+                                    </html>";
 
-            envioDeEmail.Enviar(mail);
+                mail.SubjectEncoding = Encoding.GetEncoding("UTF-8");
+                mail.BodyEncoding = Encoding.GetEncoding("UTF-8");
+
+                envioDeEmail.Enviar(mail);
+            }
         }
     }
 }

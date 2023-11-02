@@ -37,7 +37,6 @@ namespace TCC_euquero
                 Response.Redirect("erro.aspx?codErro=2");
 
             anuncio.ListarDadosAnuncio(int.Parse(Request["codProduto"]));
-            litTitle.Text = "Anúncio | " + anuncio.NomeProduto;
             litNomeProduto.Text = anuncio.NomeProduto;
             litDescricao.Text = anuncio.DescricaoProduto;
             litDiasRestantes.Text = anuncio.DataEncerramento.Subtract(DateTime.Today).Days.ToString();

@@ -17,8 +17,6 @@ namespace TCC_euquero
         {
             if (Session["email"] != null)
             {
-                litEmail.Text = $"<span id='email' style='visibility:hidden; position:absolute' >{Session["email"].ToString()}</span>";
-                litNome.Text = $"<span id='nome' style='visibility:hidden; position:absolute' >{Session["nome"].ToString()}</span>";
 
                 string caminhoBase = Request.PhysicalApplicationPath + @"imagens/fotosPerfis";
                 DirectoryInfo diretorio = new DirectoryInfo(caminhoBase);

@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" href="css/anuncio.css" />
     <link rel="stylesheet" href="css/input.css" />
-    <title><asp:Literal ID="litTitle" runat="server"></asp:Literal></title>
+    <title>Eu Quero | Anúncio</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="main" runat="server">
     <div class="conteudo">

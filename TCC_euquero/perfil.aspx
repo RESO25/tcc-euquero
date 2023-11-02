@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/modelo.Master" AutoEventWireup="true" CodeBehind="perfil.aspx.cs" Inherits="TCC_euquero.perfil" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" href="css/perfil.css" />
-    <title><asp:Literal ID="litTitle" runat="server"></asp:Literal></title>
+    <title>Eu Quero | Perfil</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="main" runat="server">
         <div class="conteudo">
