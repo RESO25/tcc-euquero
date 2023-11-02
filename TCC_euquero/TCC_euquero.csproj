@@ -119,6 +119,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="anuncio.aspx" />
+    <Content Include="busca.aspx" />
     <Content Include="cadastro.aspx" />
     <Content Include="categoria.aspx" />
     <Content Include="css\anuncio.css" />
@@ -135,15 +136,15 @@
     <Content Include="imagens\anuncio\proximoLance.png" />
     <Content Include="imagens\anuncio\U.png" />
     <Content Include="imagens\cadastro\paisagem_montanha.png" />
-    <Content Include="imagens\categorias\01.png" />
-    <Content Include="imagens\categorias\02.png" />
-    <Content Include="imagens\categorias\03.png" />
-    <Content Include="imagens\categorias\04.png" />
-    <Content Include="imagens\categorias\05.png" />
-    <Content Include="imagens\categorias\06.png" />
-    <Content Include="imagens\categorias\07.png" />
-    <Content Include="imagens\categorias\08.png" />
-    <Content Include="imagens\categorias\09.png" />
+    <Content Include="imagens\categorias\1.png" />
+    <Content Include="imagens\categorias\2.png" />
+    <Content Include="imagens\categorias\3.png" />
+    <Content Include="imagens\categorias\4.png" />
+    <Content Include="imagens\categorias\5.png" />
+    <Content Include="imagens\categorias\6.png" />
+    <Content Include="imagens\categorias\7.png" />
+    <Content Include="imagens\categorias\8.png" />
+    <Content Include="imagens\categorias\9.png" />
     <Content Include="imagens\categorias\10.png" />
     <Content Include="imagens\footer\facebook.png" />
     <Content Include="imagens\footer\instagram.png" />
@@ -200,6 +201,13 @@
     </Compile>
     <Compile Include="anuncio.aspx.designer.cs">
       <DependentUpon>anuncio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="busca.aspx.cs">
+      <DependentUpon>busca.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="busca.aspx.designer.cs">
+      <DependentUpon>busca.aspx</DependentUpon>
     </Compile>
     <Compile Include="cadastro.aspx.cs">
       <DependentUpon>cadastro.aspx</DependentUpon>

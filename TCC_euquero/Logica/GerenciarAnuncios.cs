@@ -27,6 +27,29 @@ namespace TCC_euquero.Logica
 
             return anuncios;
         }
+        
+        public List<Anuncio> ListarAnunciosCategoria(int pCdCategoria) 
+        {
+            List<Anuncio> anuncios = new List<Anuncio>();
+
+            List<Parametro> parametros = new List<Parametro>();
+
+            parametros.Add(new Parametro("pCdCategoria", pCdCategoria.ToString()));
+
+            MySqlDataReader dados = ConsultarProcedure("ListarAnunciosCategoria", parametros); ;
+
+            while (dados.Read())
+            {
+                decimal valorLance = BuscarLanceAtual(dados.GetInt32(0));
+                Anuncio anuncio = new Anuncio(dados.GetInt32("CodigoAnuncio"), dados.GetDateTime("DataEncerramento"), dados.GetString("NomeProduto"), valorLance);
+                anuncios.Add(anuncio);
+            }
+
+            dados.Close();
+            Desconectar();
+
+            return anuncios;
+        }
 
         private decimal BuscarLanceAtual(int pAnuncio)
         {
@@ -34,6 +57,8 @@ namespace TCC_euquero.Logica
 
             List<Parametro> lista = new List<Parametro>();
             lista.Add(new Parametro("pAnuncio", pAnuncio.ToString()));
+
+            Conectar();
 
             MySqlDataReader dados = ConsultarProcedure("BuscarLanceAtual", lista);
             if (dados.Read())

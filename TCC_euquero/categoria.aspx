@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/modelo.Master" AutoEventWireup="true" CodeBehind="categoria.aspx.cs" Inherits="TCC_euquero.categoria" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <title><asp:Literal ID="litTitle" runat="server"></asp:Literal></title>
+    <title>Eu quero | Categoria</title>
     <link rel="stylesheet" href="css/categoria.css" />
 </asp:Content>
 
@@ -14,8 +14,8 @@
             <h1><asp:Literal ID="litNomeCategoria" runat="server"></asp:Literal></h1>
         </div>
 
-
-        <div class="filtrosBusca">
+        <%--Filtro de busca--%>
+        <%--<div class="filtrosBusca">
 
             <div class="areaInput">
                 <h2>Tipo de Evento</h2>
@@ -50,10 +50,14 @@
             </div>  
 
 
+        </div>--%>
+
+
+        <h3>Foram Encontrados <asp:Literal ID="litTotalResultados" runat="server"></asp:Literal> resultado(s)</h3>
+        
+        <div class="produtosCompreJa">
+            <asp:Literal ID="litCardProduto" runat="server"></asp:Literal>        
         </div>
-
-
-        <h3>Foram Encontrados <asp:Literal ID="litTotalResultados" runat="server"></asp:Literal> resultados</h3>
 
     </div>
 </asp:Content>

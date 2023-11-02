@@ -10,7 +10,7 @@
     <link href="../css/cadastro.css" rel="stylesheet">
     <link href="../css/cadastro.css" rel="stylesheet">
     
-    <title>Cadastro</title>
+    <title>Eu Quero | Cadastro</title>
 </head>
 
     <header>

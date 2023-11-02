@@ -12,7 +12,15 @@
 */
 
 
-
+#filho {
+    background-color: #4B4B4B;
+    opacity: 0.9;
+    width: 371px;
+    height: 458px;
+    position: absolute;
+    top: 115px;
+    right: 25px;
+}
 
 .dadosLogin {
     display: flex;
@@ -40,7 +48,7 @@
 }
 
 #textoLogin{
-    margin: auto 0;
+    margin: 20px 0;
     color:var(--branco);
 }
 
@@ -54,7 +62,7 @@
     padding-right: 0px;
     padding-bottom: 0px;
     padding-top: 0px;
-    height: 543px;
+    height: 500px;
     display: flex;
     justify-content: center;
     flex-direction: column;

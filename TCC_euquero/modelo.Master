@@ -13,8 +13,6 @@
     <form id="form1" runat="server" defaultbutton="btnLogin">
         <%----------------------------------------------------------------------------------------------------------------------------------------------------%>
         <header>
-            <asp:Literal ID="litEmail" runat="server"></asp:Literal>
-            <asp:Literal ID="litNome" runat="server"></asp:Literal>
             <div class="logoepesquisa">
                 <div>
                     <a href="index.aspx">
@@ -46,6 +44,7 @@
                 </ul> 
                 <asp:Literal ID="litPerfil" runat="server"></asp:Literal>
             </div>
+
 
                 <%-- Pop-up de login --%>
 
@@ -87,7 +86,6 @@
                 </div>
 
                 <%-- --------------- --%>
-
         </header>
         <%----------------------------------------------------------------------------------------------------------------------------------------------------%>
         <asp:ContentPlaceHolder ID="main" runat="server">

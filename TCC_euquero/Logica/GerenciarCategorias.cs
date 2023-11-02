@@ -26,5 +26,23 @@ namespace TCC_euquero.Logica
 
             return categoria;
         }
+
+        public int ContarCategorias()
+        {
+            int total = 0;
+
+            Conectar();
+
+            MySqlDataReader dados = ConsultarProcedure("ContarCategorias", null);
+            Categoria categoria = new Categoria();
+            if (dados.Read())
+                total = dados.GetInt32(0);
+
+            Desconectar();
+
+            return total;
+        }
+       
+
     }
 }
