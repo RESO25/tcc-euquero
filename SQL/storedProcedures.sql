@@ -397,6 +397,15 @@ begin
 end$$
 
 -- -----------------------------------------------------
+-- Buscar total de categorias
+-- -----------------------------------------------------
+drop procedure if exists ContarCategorias$$
+Create Procedure ContarCategorias()
+begin	
+	select count(cd_categoria) from categoria;
+end$$
+
+-- -----------------------------------------------------
 -- Buscar categoria pelo código
 -- -----------------------------------------------------
 drop procedure if exists BuscarCategoria$$
@@ -408,8 +417,8 @@ end$$
 -- -----------------------------------------------------
 -- Buscar anuncios em card pela categoria
 -- -----------------------------------------------------
-drop procedure if exists BuscarAnunciosCategoria$$
-Create Procedure BuscarAnunciosCategoria(pCdCategoria int)
+drop procedure if exists ListarAnunciosCategoria$$
+Create Procedure ListarAnunciosCategoria(pCdCategoria int)
 begin	
 	   select a.cd_anuncio as CodigoAnuncio, a.nm_produto as NomeProduto, a.dt_encerramento_anuncio as DataEncerramento, a.vl_minimo as ValorMinimo, 
 		(select max(vl_lance) from lance join anuncio on (lance.cd_anuncio = anuncio.cd_anuncio) where lance.cd_anuncio = CodigoAnuncio) as LanceAtual
@@ -417,9 +426,15 @@ begin
    where a.ic_encerrado = false and ac.cd_categoria = pCdCategoria;
 end$$
 
-Delimiter ;
+-- -----------------------------------------------------
+-- Buscar email do usuário cliente para ressarcimento do saldo
+-- -----------------------------------------------------
+drop procedure if exists BuscarEmailUsuarioCliente$$
+Create Procedure BuscarEmailUsuarioCliente(pCdAnuncio int, pVlLance decimal(10,2))
+begin	
+	select nm_email_usuario_cliente as EmailUsuarioCliente from lance where cd_anuncio = pCdAnuncio and vl_lance = pVlLance;
+end$$
 
-	   select a.cd_anuncio as CodigoAnuncio, a.nm_produto as NomeProduto, a.dt_encerramento_anuncio as DataEncerramento, a.vl_minimo as ValorMinimo, 
-		(select max(vl_lance) from lance join anuncio on (lance.cd_anuncio = anuncio.cd_anuncio) where lance.cd_anuncio = CodigoAnuncio) as LanceAtual
-   from anuncio a join anuncio_categoria ac on (a.cd_anuncio = ac.cd_anuncio)
-   where a.ic_encerrado = false and ac.cd_categoria = 10;
+
+
+Delimiter ;
