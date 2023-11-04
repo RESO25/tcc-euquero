@@ -21,11 +21,13 @@ namespace TCC_euquero
                 Response.Redirect("index.aspx");
             }
 
+            string email = Session["email"].ToString();
+
             GerenciarCadastro gerenciarCadastro = new GerenciarCadastro();
             Usuario usuario = new Usuario();
             try
             {
-                usuario = gerenciarCadastro.BuscarUsuarioPerfil(Session["email"].ToString());
+                usuario = gerenciarCadastro.BuscarUsuarioPerfil(email);
 
             }
             catch (Exception ex)
@@ -36,7 +38,7 @@ namespace TCC_euquero
             List<Cartao> listaCartao = new List<Cartao>();
             GerenciarCartao gerenciarCartao = new GerenciarCartao();
 
-            listaCartao = gerenciarCartao.BuscarCartaoUsuario(Session["email"].ToString());
+            listaCartao = gerenciarCartao.BuscarCartaoUsuario(email);
 
 
             usuario.Cartoes = listaCartao;
@@ -55,7 +57,7 @@ namespace TCC_euquero
             string caminhoFoto = "fotoPadrao.png";
             foreach (FileInfo fi in listaArquivos)
             {
-                if (fi.Name.Contains(Session["email"].ToString()))
+                if (fi.Name.Contains(email))
                     caminhoFoto = fi.Name;
             }
 
@@ -64,7 +66,7 @@ namespace TCC_euquero
             string[] nomes = usuario.Nome.Split(' ');
 
             litNomeUsuario.Text = $"{nomes[0]} {nomes[nomes.Length-1]}";
-            litEmailUsuario.Text = Session["email"].ToString();
+            litEmailUsuario.Text = email;
             litNomeCompletoUsuario.Text = usuario.Nome;
 
             string cpf = usuario.Cpf.ToString();
@@ -99,6 +101,83 @@ namespace TCC_euquero
             litDataVencimento.Text = cartaoAtual.Vencimento.ToString();
             litNomeTitular.Text = cartaoAtual.NomeTitular.ToString();
 
+            // Listar anúncios do usuário -------------------------------------------------------------------------------------
+
+            GerenciarAnuncios gerenciarAnuncios = new GerenciarAnuncios();
+
+            List<Anuncio> anunciosUsuario = gerenciarAnuncios.ListarAnunciosUsuario(email);
+
+            if (anunciosUsuario.Count > 0)
+            {
+                foreach (Anuncio anuncio in anunciosUsuario)
+                {
+                    TimeSpan diasRestantes = anuncio.DataEncerramento.Subtract(DateTime.Today);
+
+                    litMeusAnuncios.Text += $@"
+                                            <div class='cardProduto'>
+                                                <a href='anuncio.aspx?codProduto={anuncio.Codigo}'> 
+                                                    <img src='imagens/fotosAnuncios/{anuncio.Codigo}-1.jpeg' class='imgProduto'>
+                
+                                                    <div class='infoEncerramento'>
+                                                        <h3 class='txtEncerra'>encerra em: </h3> <h4 class='txtDataEncerramento'>{diasRestantes.Days} dias</h4>
+                                                    </div>
+
+                                                    <div class='infoTituloProduto'>
+                                                        <h5>{anuncio.NomeProduto}</h5>
+                                                    </div>
+
+                                                    <div class='infoValorAtual'>
+                                                        <h6>valor a partir de:</h6>
+                                                        <p class='txtValorProduto'>{anuncio.LanceAtual.ToString("C", new CultureInfo("pt-br"))}</p>
+                                                    </div>
+
+                                                </a>
+                                            </div>
+                                            ";
+                }
+            }
+            else
+            {
+                litMeusAnuncios.Text =  "Você ainda não publicou nenhum anúncio.";
+            }
+
+            // Listar anúncios que o usuário já deu lances -------------------------------------------------------------------------------------
+
+            List<Anuncio> anunciosParticipo = gerenciarAnuncios.ListarAnunciosUsuarioParticipa(email);
+
+            if (anunciosParticipo.Count > 0)
+            {
+                foreach (Anuncio anuncio in anunciosParticipo)
+                {
+                    TimeSpan diasRestantes = anuncio.DataEncerramento.Subtract(DateTime.Today);
+
+                    litAnunciosParticipo.Text += $@"
+                                            <div class='cardProduto'>
+                                                <a href='anuncio.aspx?codProduto={anuncio.Codigo}'> 
+                                                    <img src='imagens/fotosAnuncios/{anuncio.Codigo}-1.jpeg' class='imgProduto'>
+                
+                                                    <div class='infoEncerramento'>
+                                                        <h3 class='txtEncerra'>encerra em: </h3> <h4 class='txtDataEncerramento'>{diasRestantes.Days} dias</h4>
+                                                    </div>
+
+                                                    <div class='infoTituloProduto'>
+                                                        <h5>{anuncio.NomeProduto}</h5>
+                                                    </div>
+
+                                                    <div class='infoValorAtual'>
+                                                        <h6>valor a partir de:</h6>
+                                                        <p class='txtValorProduto'>{anuncio.LanceAtual.ToString("C", new CultureInfo("pt-br"))}</p>
+                                                    </div>
+
+                                                </a>
+                                            </div>
+                                            ";
+                }
+            }
+            else
+            {
+                litAnunciosParticipo.Text = "Você não participa de nenhum leilão ainda.";
+            }
         }
 
         protected void btnSair_Click(object sender, EventArgs e)

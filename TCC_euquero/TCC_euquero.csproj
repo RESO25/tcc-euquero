@@ -135,7 +135,7 @@
     <Content Include="css\login.css" />
     <Content Include="css\perfil.css" />
     <Content Include="imagens\anuncio\proximoLance.png" />
-    <Content Include="imagens\anuncio\U.png" />
+    <Content Include="imagens\U.png" />
     <Content Include="imagens\cadastro\paisagem_montanha.png" />
     <Content Include="imagens\categorias\1.png" />
     <Content Include="imagens\categorias\2.png" />

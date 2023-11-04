@@ -406,10 +406,10 @@ begin
 end$$
 
 -- -----------------------------------------------------
--- Buscar anuncios em card pela categoria
+-- Listar anuncios em card pela categoria
 -- -----------------------------------------------------
-drop procedure if exists BuscarAnunciosCategoria$$
-Create Procedure BuscarAnunciosCategoria(pCdCategoria int)
+drop procedure if exists ListarAnunciosCategoria$$
+Create Procedure ListarAnunciosCategoria(pCdCategoria int)
 begin	
 	   select a.cd_anuncio as CodigoAnuncio, a.nm_produto as NomeProduto, a.dt_encerramento_anuncio as DataEncerramento, a.vl_minimo as ValorMinimo, 
 		(select max(vl_lance) from lance join anuncio on (lance.cd_anuncio = anuncio.cd_anuncio) where lance.cd_anuncio = CodigoAnuncio) as LanceAtual
@@ -421,12 +421,36 @@ end$$
 -- Listar resultados da busca
 -- -----------------------------------------------------
 drop procedure if exists ListarAnunciosBusca$$
-Create Procedure ListarAnunciosBusca(pNmAnuncio int)
+Create Procedure ListarAnunciosBusca(pNmAnuncio varchar(200))
 begin	
 	   select cd_anuncio as CodigoAnuncio, nm_produto as NomeProduto, dt_encerramento_anuncio as DataEncerramento, vl_minimo as ValorMinimo, 
 		(select max(vl_lance) from lance join anuncio on (lance.cd_anuncio = anuncio.cd_anuncio) where lance.cd_anuncio = CodigoAnuncio) as LanceAtual
    from anuncio
    where ic_encerrado = false and nm_produto like pNmAnuncio;
+end$$
+
+-- -----------------------------------------------------
+-- Listar anúncios do usuário
+-- -----------------------------------------------------
+drop procedure if exists ListarAnunciosUsuario$$
+Create Procedure ListarAnunciosUsuario(pEmailUsuario varchar(200))
+begin
+	   select cd_anuncio as CodigoAnuncio, nm_produto as NomeProduto, dt_encerramento_anuncio as DataEncerramento, vl_minimo as ValorMinimo, 
+		(select max(vl_lance) from lance join anuncio on (lance.cd_anuncio = anuncio.cd_anuncio) where lance.cd_anuncio = CodigoAnuncio) as LanceAtual
+   from anuncio
+   where ic_encerrado = false and nm_email_usuario = pEmailUsuario;
+end$$
+
+-- -----------------------------------------------------
+-- Listar anúncios que o usuário participa
+-- -----------------------------------------------------
+drop procedure if exists ListarAnunciosUsuarioParticipa$$
+Create Procedure ListarAnunciosUsuarioParticipa(pEmailUsuario varchar(200))
+begin	
+	   select a.cd_anuncio as CodigoAnuncio, a.nm_produto as NomeProduto, a.dt_encerramento_anuncio as DataEncerramento, a.vl_minimo as ValorMinimo, 
+		(select max(vl_lance) from lance join anuncio on (lance.cd_anuncio = anuncio.cd_anuncio) where lance.cd_anuncio = CodigoAnuncio) as LanceAtual
+   from anuncio a join lance l on (a.cd_anuncio = l.cd_anuncio)
+   where a.ic_encerrado = false and l.nm_email_usuario_cliente = pEmailUsuario;
 end$$
 
 Delimiter ;

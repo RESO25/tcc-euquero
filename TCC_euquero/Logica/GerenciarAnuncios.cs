@@ -42,7 +42,39 @@ namespace TCC_euquero.Logica
 
             parametros.Add(new Parametro("pNmAnuncio", $"%{pNmAnuncio}%"));
 
-            MySqlDataReader dados = ConsultarProcedure("ListarAnunciosCategoria", parametros); ;
+            MySqlDataReader dados = ConsultarProcedure("ListarAnunciosBusca", parametros);
+
+            List<Anuncio> anuncios = ListarAnuncios(dados);
+
+            Desconectar();
+
+            return anuncios;
+        }
+        
+        public List<Anuncio> ListarAnunciosUsuario(string pEmailUsuario) 
+        {
+
+            List<Parametro> parametros = new List<Parametro>();
+
+            parametros.Add(new Parametro("pEmailUsuario", pEmailUsuario));
+
+            MySqlDataReader dados = ConsultarProcedure("ListarAnunciosUsuario", parametros);
+
+            List<Anuncio> anuncios = ListarAnuncios(dados);
+
+            Desconectar();
+
+            return anuncios;
+        }
+        
+        public List<Anuncio> ListarAnunciosUsuarioParticipa(string pEmailUsuario) 
+        {
+
+            List<Parametro> parametros = new List<Parametro>();
+
+            parametros.Add(new Parametro("pEmailUsuario", pEmailUsuario));
+
+            MySqlDataReader dados = ConsultarProcedure("ListarAnunciosUsuarioParticipa", parametros);
 
             List<Anuncio> anuncios = ListarAnuncios(dados);
 

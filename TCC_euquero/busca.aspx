@@ -12,7 +12,7 @@
         </div>
 
 
-        <h3>Foram encontrados <asp:Literal ID="litTotalResultados" runat="server"></asp:Literal> resultado(s)</h3>
+        <h3><asp:Literal ID="litTotalResultados" runat="server"></asp:Literal></h3>
         
         <div class="produtosCompreJa">
             <asp:Literal ID="litCardProduto" runat="server"></asp:Literal>        

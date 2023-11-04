@@ -129,90 +129,16 @@
 
         <h2 class="Ttmp"> Meus anúncios</h2>
 
-        <div class="cardsTtmp">
-            <div class="cardProduto">
-            <a href="produto/produto.html"><img src="img\home\produto.png" class="imgProduto"></a>
-                
-            
-                <div class="infoEncerramento">
-                    <h3 class="txtEncerra">encerra em: </h3> <h4 class="txtDataEncerramento">30 dias</h4>
-                </div>
-
-
-                <div class="infoTituloProduto">
-                    <h5>Prédio Comercial 4.042m² Em São Caetano Do Sul/SP sdfsdf</h5>
-                </div>
-
-
-            <div class="infoValorAtual">
-                <h6>valor atual:</h6>
-                <p class="txtValorProduto"> R$30.000,00</p>
-            </div>
-
-            </div>
-
-            <div class="cardProduto">
-        <a href="produto/produto.html"><img src="img\home\produto.png" class="imgProduto"></a>
-            
-        
-            <div class="infoEncerramento">
-                <h3 class="txtEncerra">encerra em: </h3> <h4 class="txtDataEncerramento">30 dias</h4>
-            </div>
-
-
-            <div class="infoTituloProduto">
-                <h5>Prédio Comercial 4.042m² Em São Caetano Do Sul/SP sdfsdf</h5>
-            </div>
-
-
-        <div class="infoValorAtual">
-            <h6>valor atual:</h6>
-            <p class="txtValorProduto"> R$30.000,00</p>
+        <div class="produtosCompreJa">
+            <asp:Literal ID="litMeusAnuncios" runat="server"></asp:Literal>
         </div>
-
-            </div>
-
-            <div class="cardProduto">
-        <a href="produto/produto.html"><img src="img\home\produto.png" class="imgProduto"></a>
             
-        
-            <div class="infoEncerramento">
-                <h3 class="txtEncerra">encerra em: </h3> <h4 class="txtDataEncerramento">30 dias</h4>
-            </div>
+        <%-- Anúncios que participo --------------------------------------------------------------------------------------------------------------------------------------------%>
 
+        <h2 class="Ttmp"> Anúncios que participo</h2>
 
-            <div class="infoTituloProduto">
-                <h5>Prédio Comercial 4.042m² Em São Caetano Do Sul/SP sdfsdf</h5>
-            </div>
-
-
-        <div class="infoValorAtual">
-            <h6>valor atual:</h6>
-            <p class="txtValorProduto"> R$30.000,00</p>
-        </div>
-
-            </div>
-
-            <div class="cardProduto">
-        <a href="produto/produto.html"><img src="img\home\produto.png" class="imgProduto"></a>
-            
-        
-            <div class="infoEncerramento">
-                <h3 class="txtEncerra">encerra em: </h3> <h4 class="txtDataEncerramento">30 dias</h4>
-            </div>
-
-
-            <div class="infoTituloProduto">
-                <h5>Prédio Comercial 4.042m² Em São Caetano Do Sul/SP sdfsdf</h5>
-            </div>
-
-
-        <div class="infoValorAtual">
-            <h6>valor atual:</h6>
-            <p class="txtValorProduto"> R$30.000,00</p>
-        </div>
-
-            </div>
+        <div class="produtosCompreJa">
+            <asp:Literal ID="litAnunciosParticipo" runat="server"></asp:Literal>
         </div>
 
     </div>
