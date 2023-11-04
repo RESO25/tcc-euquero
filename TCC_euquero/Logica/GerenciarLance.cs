@@ -12,16 +12,14 @@ namespace TCC_euquero.Logica
 {
     public class GerenciarLance : Banco
     {
-        List<Parametro> parametros = new List<Parametro>();
-
         public decimal ConsultarSaldo(string pEmail)
         {
-            List<Parametro> lista = new List<Parametro>();
-            lista.Add(new Parametro("pEmail", pEmail));
+            List<Parametro> parametros = new List<Parametro>();
+            parametros.Add(new Parametro("pEmail", pEmail));
 
             decimal saldo = 0;
 
-            MySqlDataReader dados = ConsultarProcedure("ConsultarSaldo", lista);
+            MySqlDataReader dados = ConsultarProcedure("ConsultarSaldo", parametros);
             if (dados.Read())
                 saldo = dados.GetDecimal(0);
 
@@ -33,18 +31,19 @@ namespace TCC_euquero.Logica
 
         public void DarLance(int pAnuncio, string pEmailGanhadorNovo, decimal pValorAnterior, decimal pValorNovo)
         {
-            List<Parametro> lista = new List<Parametro>();
-            lista.Add(new Parametro("pAnuncio", pAnuncio.ToString()));
-            lista.Add(new Parametro("pEmail", pEmailGanhadorNovo));
-            lista.Add(new Parametro("pValor", pValorNovo.ToString().Replace(',', '.')));
+            List<Parametro> parametros = new List<Parametro>();
+            parametros.Add(new Parametro("pAnuncio", pAnuncio.ToString()));
+            parametros.Add(new Parametro("pEmail", pEmailGanhadorNovo));
+            parametros.Add(new Parametro("pValor", pValorNovo.ToString().Replace(',', '.')));
 
-            ExecutarProcedure("DarLance", lista);
+            ExecutarProcedure("DarLance", parametros);
             EmailRessarcirSaldo(pAnuncio, pValorAnterior);
         }
 
         public void EmailRessarcirSaldo(int pAnuncio, decimal pValor)
         {
             string emailUsuario = "";
+
             List<Parametro> parametros = new List<Parametro>();
             parametros.Add(new Parametro("pCdAnuncio", pAnuncio.ToString()));
             parametros.Add(new Parametro("pVlLance", pValor.ToString().Replace(',', '.')));
@@ -55,6 +54,7 @@ namespace TCC_euquero.Logica
                 emailUsuario = dados["EmailUsuarioCliente"].ToString();
             
             dados.Close();
+            Desconectar();
 
             if (String.IsNullOrEmpty(emailUsuario))
             {

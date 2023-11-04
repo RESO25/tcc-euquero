@@ -12,14 +12,9 @@ h1 {
 }
 
 header {
-    position: sticky;
-    top: 0;
-    left: 0;
-    width: 103%;
-    height: 132px;
     background-color: var(--branco);
     box-sizing: border-box;
-    padding: 16px 70px;
+    padding: 25px 70px;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
@@ -55,9 +50,6 @@ label {
 
 .bgCadastro {
     background-image: url("../imagens/cadastro/paisagem_montanha.png");
-    background-repeat: no-repeat;
-    position: relative;
-    height: 86vh;
     /* adicionando imagem de fundo */
     background-size: cover;
 }
@@ -160,7 +152,7 @@ label {
     margin-right: 10px;
 }
 
-#RG {
+#Telefone {
     width: 175px;
 }
 
@@ -235,6 +227,9 @@ button {
 }
 
 input[typer=number] {
-    -webkit-appearance: none;
+    -moz-appearance: textfield;
+    appearance: textfield;
 }
 
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;

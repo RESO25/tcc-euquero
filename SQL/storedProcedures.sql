@@ -22,18 +22,18 @@ end$$
 -- Cadastrar usuário 
 -- -----------------------------------------------------
 Drop Procedure if exists CadastrarUsuarioFisico$$
-Create Procedure CadastrarUsuarioFisico(pEmail varchar(200), pCPF bigint, pNome varchar(200), pSenha varchar(64))
+Create Procedure CadastrarUsuarioFisico(pEmail varchar(200), pCPF bigint, pNome varchar(200), pSenha varchar(64), pTelefone bigint(11))
 begin
-	insert into usuario (nm_email_usuario, cd_cpf_usuario, nm_usuario, nm_senha, ic_validado, vl_saldo, ic_banido) 
-    values (pEmail, pCPF, pNome, md5(pSenha), false, 0, false);
+	insert into usuario (nm_email_usuario, cd_cpf_usuario, nm_usuario, nm_senha, ic_validado, vl_saldo, ic_banido, cd_telefone) 
+    values (pEmail, pCPF, pNome, md5(pSenha), false, 0, false, pTelefone);
 
     call CriarValidacao(pEmail);
 end$$
 Drop Procedure if exists CadastrarUsuarioJuridico$$
-Create Procedure CadastrarUsuarioJuridico(pEmail varchar(200), pCNPJ bigint, pNome varchar(200), pSenha varchar(64))
+Create Procedure CadastrarUsuarioJuridico(pEmail varchar(200), pCNPJ bigint, pNome varchar(200), pSenha varchar(64), pTelefone bigint(11))
 begin
-	insert into usuario (nm_email_usuario, cd_cnpj_usuario, nm_usuario, nm_senha, ic_validado, vl_saldo, ic_banido) 
-	values (pEmail, pCNPJ, pNome, md5(pSenha), false, 0, false);
+	insert into usuario (nm_email_usuario, cd_cnpj_usuario, nm_usuario, nm_senha, ic_validado, vl_saldo, ic_banido, cd_telefone) 
+	values (pEmail, pCNPJ, pNome, md5(pSenha), false, 0, false, pTelefone);
 
     call CriarValidacao(pEmail);
 end$$
