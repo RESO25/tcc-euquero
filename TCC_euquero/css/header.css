@@ -128,16 +128,24 @@ h1 {
     margin-top: 0;
 }
 
+#pesquisa {
+    display: flex;
+    align-items: center;
+}
+
+#btnBusca{
+    height:25px;
+}
+
 #txtPesquisa {
     padding-left: 16px;
-    width: 410px;
+    width: 370px;
     height: 32px;
     flex-shrink: 0;
     border-radius: 5px;
     border: 1px solid var(--cinza-tcc, #D9D9D9);
-    background: #f1f1f1 url("../img/search.png") no-repeat 13px;
-    background-position: 395px;
     outline: 0;
+    margin-right: 10px;
 }
 
     #txtPesquisa:focus {

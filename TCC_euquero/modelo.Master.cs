@@ -77,5 +77,15 @@ namespace TCC_euquero
                 Response.Redirect(Request.Url.ToString());
             }
         }
+
+        protected void btnBusca_Click(object sender, ImageClickEventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtPesquisa.Text))
+            {
+                return;
+            }
+
+            Response.Redirect($"busca.aspx?pesquisa={txtPesquisa.Text}");
+        }
     }
 }

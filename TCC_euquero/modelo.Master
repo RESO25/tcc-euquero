@@ -21,8 +21,10 @@
                 </div>
                 
                 <div class="pesquiecategoria">
-                    <div>            
-                        <input type="text" name="search" placeholder="Busque pelo produto" class="tituloMenor" >
+                    <div id="pesquisa"> 
+                        <asp:TextBox ID="txtPesquisa" runat="server" Text="Busque pelo produto" CssClass="tituloMenor" ></asp:TextBox>
+                        <asp:ImageButton ID="btnBusca" runat="server" ImageUrl="~/imagens/header/search.png" OnClick="btnBusca_Click"/>
+                        <%--<input id="txtPesquisa" type="text" name="search" placeholder="Busque pelo produto" class="tituloMenor" >--%>
                     </div>
                     
                     <div class="dropdown" style="float:left;">

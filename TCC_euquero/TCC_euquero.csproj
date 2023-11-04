@@ -123,6 +123,7 @@
     <Content Include="cadastro.aspx" />
     <Content Include="categoria.aspx" />
     <Content Include="css\anuncio.css" />
+    <Content Include="css\busca.css" />
     <Content Include="css\cadastro.css" />
     <Content Include="css\categoria.css" />
     <Content Include="css\erro.css" />

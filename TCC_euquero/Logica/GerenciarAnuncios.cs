@@ -10,33 +10,50 @@ namespace TCC_euquero.Logica
 {
     public class GerenciarAnuncios : Banco
     {
-        public List<Anuncio> ListarAnunciosCard() 
-        {
-            List<Anuncio> anuncios = new List<Anuncio>();
+        public List<Anuncio> ListarAnunciosCard()
+        {           
             MySqlDataReader dados = ConsultarProcedure("ListarAnunciosCard", null); ;
 
-            while (dados.Read())
-            {
-                decimal valorLance = BuscarLanceAtual(dados.GetInt32(0));
-                Anuncio anuncio = new Anuncio(dados.GetInt32("CodigoAnuncio"), dados.GetDateTime("DataEncerramento"), dados.GetString("NomeProduto"), valorLance);
-                anuncios.Add(anuncio);
-            }
+            List<Anuncio> anuncios = ListarAnuncios(dados);
 
-            dados.Close();
             Desconectar();
 
             return anuncios;
         }
         
-        public List<Anuncio> ListarAnunciosCategoria(int pCdCategoria) 
+        public List<Anuncio> ListarAnunciosCategoria(int pCdCategoria)
         {
-            List<Anuncio> anuncios = new List<Anuncio>();
-
             List<Parametro> parametros = new List<Parametro>();
 
             parametros.Add(new Parametro("pCdCategoria", pCdCategoria.ToString()));
 
+            MySqlDataReader dados = ConsultarProcedure("ListarAnunciosCategoria", parametros);
+
+            List<Anuncio> anuncios = ListarAnuncios(dados);
+
+            Desconectar();
+
+            return anuncios;
+        }
+        public List<Anuncio> ListarAnunciosBusca(string pNmAnuncio) 
+        {
+
+            List<Parametro> parametros = new List<Parametro>();
+
+            parametros.Add(new Parametro("pNmAnuncio", $"%{pNmAnuncio}%"));
+
             MySqlDataReader dados = ConsultarProcedure("ListarAnunciosCategoria", parametros); ;
+
+            List<Anuncio> anuncios = ListarAnuncios(dados);
+
+            Desconectar();
+
+            return anuncios;
+        }
+
+        private List<Anuncio> ListarAnuncios(MySqlDataReader dados)
+        {
+            List<Anuncio> anuncios = new List<Anuncio>();
 
             while (dados.Read())
             {
@@ -46,10 +63,10 @@ namespace TCC_euquero.Logica
             }
 
             dados.Close();
-            Desconectar();
 
             return anuncios;
         }
+
 
         private decimal BuscarLanceAtual(int pAnuncio)
         {

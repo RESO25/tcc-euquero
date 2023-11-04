@@ -397,15 +397,6 @@ begin
 end$$
 
 -- -----------------------------------------------------
--- Buscar total de categorias
--- -----------------------------------------------------
-drop procedure if exists ContarCategorias$$
-Create Procedure ContarCategorias()
-begin	
-	select count(cd_categoria) from categoria;
-end$$
-
--- -----------------------------------------------------
 -- Buscar categoria pelo código
 -- -----------------------------------------------------
 drop procedure if exists BuscarCategoria$$
@@ -417,8 +408,8 @@ end$$
 -- -----------------------------------------------------
 -- Buscar anuncios em card pela categoria
 -- -----------------------------------------------------
-drop procedure if exists ListarAnunciosCategoria$$
-Create Procedure ListarAnunciosCategoria(pCdCategoria int)
+drop procedure if exists BuscarAnunciosCategoria$$
+Create Procedure BuscarAnunciosCategoria(pCdCategoria int)
 begin	
 	   select a.cd_anuncio as CodigoAnuncio, a.nm_produto as NomeProduto, a.dt_encerramento_anuncio as DataEncerramento, a.vl_minimo as ValorMinimo, 
 		(select max(vl_lance) from lance join anuncio on (lance.cd_anuncio = anuncio.cd_anuncio) where lance.cd_anuncio = CodigoAnuncio) as LanceAtual
@@ -427,14 +418,15 @@ begin
 end$$
 
 -- -----------------------------------------------------
--- Buscar email do usuário cliente para ressarcimento do saldo
+-- Listar resultados da busca
 -- -----------------------------------------------------
-drop procedure if exists BuscarEmailUsuarioCliente$$
-Create Procedure BuscarEmailUsuarioCliente(pCdAnuncio int, pVlLance decimal(10,2))
+drop procedure if exists ListarAnunciosBusca$$
+Create Procedure ListarAnunciosBusca(pNmAnuncio int)
 begin	
-	select nm_email_usuario_cliente as EmailUsuarioCliente from lance where cd_anuncio = pCdAnuncio and vl_lance = pVlLance;
+	   select cd_anuncio as CodigoAnuncio, nm_produto as NomeProduto, dt_encerramento_anuncio as DataEncerramento, vl_minimo as ValorMinimo, 
+		(select max(vl_lance) from lance join anuncio on (lance.cd_anuncio = anuncio.cd_anuncio) where lance.cd_anuncio = CodigoAnuncio) as LanceAtual
+   from anuncio
+   where ic_encerrado = false and nm_produto like pNmAnuncio;
 end$$
-
-
 
 Delimiter ;
