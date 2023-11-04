@@ -21,11 +21,11 @@ namespace TCC_euquero
                 Response.Redirect("index.aspx");
             }
 
-            GerenciarCadastro gerenciarCadastro = new GerenciarCadastro();
+            GerenciarLoginUsuario gerenciarLogin = new GerenciarLoginUsuario();
             Usuario usuario = new Usuario();
             try
             {
-                usuario = gerenciarCadastro.BuscarUsuarioPerfil(Session["email"].ToString());
+                usuario = gerenciarLogin.BuscarUsuarioPerfil(Session["email"].ToString());
 
             }
             catch (Exception ex)

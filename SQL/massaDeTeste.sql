@@ -125,27 +125,22 @@ call DarLance(1, "anajj@gmail.com", 110000.00);
 
 call DarLance(2, "raphaelresende10@gmail.com", 600000.00);
 call DarLance(2, "kaikeleimig@gmail.com", 750000.00);
-call DarLance(2, "jeffersonsantos@outlook.com", 900000.00);
 call DarLance(2, "afonsoaa@outlook.com", 1000000.00);
 call DarLance(2, "jeffersonsantos@outlook.com", 1100000.00);
-call DarLance(2, "jeffersonsantos@outlook.com", 1300000.00);
 
 call DarLance(6, "jeffersonsantos@outlook.com", 1300.00);
 call DarLance(6, "raphaelresende10@gmail.com", 2000.00);
 call DarLance(6, "afonsoaa@outlook.com", 1300.00);
 
 call DarLance(7, "raphaelresende10@gmail.com", 2650.00);
-call DarLance(7, "kaikeleimig@gmail.com", 2870.00);
 call DarLance(7, "anajj@gmail.com", 2900.00);
 call DarLance(7, "kaikeleimig@gmail.com", 3200.00);
 
 call DarLance(8, "fabimnhomaia@gmail.com", 500.00);
 call DarLance(8, "kaikeleimig@gmail.com", 600.00);
 call DarLance(8, "raphaelresende10@gmail.com", 650.00);
-call DarLance(8, "kaikeleimig@gmail.com", 750.00);
 call DarLance(8, "fabimnhomaia@gmail.com", 900.00);
 
-call DarLance(9, "raphaelresende10@gmail.com", 600.00);
 call DarLance(9, "kaikeleimig@gmail.com", 700.00);
 call DarLance(9, "raphaelresende10@gmail.com", 800.00);
 call DarLance(9, "jeffersonsantos@outlook.com", 900.00);
@@ -164,13 +159,3 @@ call DarLance(10, "anajj@gmail.com", 3600.00);
 call EncerrarAnuncio(3);
 call EncerrarAnuncio(4);
 call EncerrarAnuncio(5);
-
-select * from usuario;
-select * from anuncio;
-call AdicionarSaldo("raphaelresende10@gmail.com", 1310700);
-call AdicionarSaldo("raphaelresende10@gmail.com", 1000);
-
-select * from usuario where nm_email_usuario = 'fabimnhomaia@gmail.com';
-select * from usuario where nm_email_usuario = 'raphaelresende10@gmail.com';
-
-select * from lance

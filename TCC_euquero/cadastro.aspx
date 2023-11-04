@@ -29,8 +29,8 @@
 
                             <div class="form-inline">
                                 <div class="form-group">
-                                  <label for="email" class="labelinput">CPF</label>
-                                  <input required="" type="text" id="CPF" name="CPF" class="form-field" placeholder="Coloque o CPF">
+                                    <label for="CPF" class="labelinput">CPF</label>
+                                    <input required="" id="CPF" type="number" name="CPF" class="form-field" placeholder="Coloque o CPF" runat="server"/>
                                 </div>
                             </div>
                         
@@ -40,12 +40,12 @@
 
 
                             <div>
-                                <input type="radio" class="radioTipoPessoa" name="tipoPessoa" value="Física"/>
+                                <input id="PessoaFisica" type="radio" name="tipoPessoa" class="radioTipoPessoa" value="Física" runat="server"/>
                                 <label for="pessoaFisica">Pessoa Física</label>
                             </div>
                             
                             <div>    
-                                <input type="radio" class="radioTipoPessoa" name="tipoPessoa" value="Jurídica"/>
+                                <input id="PessoaJuridica" type="radio" name="tipoPessoa" class="radioTipoPessoa" value="Jurídica" runat="server"/>
                                 <label for="pessoaJuridica">Pessoa Jurídica</label>
                             </div>
 
@@ -55,26 +55,26 @@
                             <!-- Nome -->
                             <div class="form-inline input">
                                 <div class="form-group">
-                                    <label for="email" class="labelinput">Nome</label>
-                                    <input required="" type="text" id="Nome" name="Nome" class="form-field" placeholder="Nome Completo">
+                                    <label for="Nome" class="labelinput">Nome</label>
+                                    <input required="" id="Nome" type="text" name="Nome" class="form-field" placeholder="Nome Completo" runat="server"/>
                                 </div>
                             </div>
 
-                            <!-- RG -->
+                            <!-- Telefone -->
                             <div class="form-inline input">
                                 <div class="form-group">
-                                    <label for="RG" class="labelinput">RG</label>
-                                    <input required="" type="text" id="RG" name="RG" class="form-field" placeholder="Coloque o RG">
+                                    <label for="Telefone" class="labelinput">Telefone</label>
+                                    <input required="" type="number" id="Telefone" name="Telefone" class="form-field" placeholder="Coloque o seu Telefone" runat="server">
                                 </div>
                             </div>
 
                             <!-- Aniversario -->
-                            <div class="form-inline input">
+                            <%--<div class="form-inline input">
                                 <div class="form-group">
                                     <label for="RG" class="labelinput">Aniversario</label>
                                     <input required="" type="date" id="Aniversario" name="Aniversario" class="form-field" placeholder="Coloque o RG">
                                 </div>
-                            </div>
+                            </div>--%>
                         </div>
 
                         <div class="displaytt">
@@ -82,7 +82,7 @@
                             <div class="form-inline input">
                                 <div class="form-group">
                                     <label for="Email" class="labelinput">Email</label>
-                                    <input required="" type="text" id="Email" name="Email" class="form-field" placeholder="Coloque o Email">
+                                    <input required="" id="Email" type="text" name="Email" class="form-field" placeholder="Coloque o Email" runat="server"/>
                                 </div>
                             </div>
                         </div>
@@ -92,15 +92,15 @@
                             <div class="form-inline input">
                                 <div class="form-group">
                                     <label for="Senha" class="labelinput">Senha</label>
-                                    <input required="" type="text" id="Senha" name="Senha" class="form-field" placeholder="Crie uma Senha">
+                                    <input required="" id="Senha" type="password" name="Senha" class="form-field" placeholder="Crie uma Senha" runat="server"/>
                                 </div>
                             </div>
 
                             <!-- Repetir Senha -->
                             <div class="form-inline input">
                                 <div class="form-group">
-                                    <label for="Senha" class="labelinput">Repetir Senha</label>
-                                    <input required="" type="text" id="Senha" name="Senha" class="form-field" placeholder="Repita a Senha">
+                                    <label for="RepetirSenha" class="labelinput">Repetir Senha</label>
+                                    <input required="" id="RepetirSenha" type="password" name="RepetirSenha" class="form-field" placeholder="Repita a Senha" runat="server"/>
                                 </div>
                             </div>
                         </div>
@@ -111,8 +111,8 @@
                             <!-- CEP -->
                             <div class="form-inline input">
                                 <div class="form-group">
-                                    <label for="Senha" class="labelinput">CEP</label>
-                                    <input required="" type="number" id="CEP" name="CEP" class="form-field" placeholder="00000-000">
+                                    <label for="CEP" class="labelinput">CEP</label>
+                                    <asp:TextBox ID="CEP" name="CEP" class="form-field" placeholder="00000-000" runat="server" OnTextChanged="CEP_TextChanged" AutoPostBack="true"></asp:TextBox>
                                 </div>
                             </div>
 
@@ -120,7 +120,7 @@
                             <div class="form-inline input">
                                 <div class="form-group">
                                     <label for="UF" class="labelinput">UF</label>
-                                    <input required="" type="text" id="UF" name="UF" class="form-field" placeholder="Estado">
+                                    <input required="" id="UF" type="text" name="UF" class="form-field" placeholder="Estado" runat="server"/>
                                 </div>
                             </div>
 
@@ -128,7 +128,7 @@
                             <div class="form-inline input">
                                 <div class="form-group">
                                     <label for="Cidade" class="labelinput">Cidade</label>
-                                    <input required="" type="text" id="Cidade" name="Cidade" class="form-field" placeholder="Coloque a cidade">
+                                    <input required="" id="Cidade" type="text" name="Cidade" class="form-field" placeholder="Coloque a cidade" runat="server"/>
                                 </div>
                             </div>
                         </div>
@@ -139,7 +139,7 @@
                             <div class="form-inline input psrua">
                                 <div class="form-group">
                                     <label for="Rua" class="labelinput">Rua</label>
-                                    <input required="" type="text" id="Rua" name="Rua" class="form-field" placeholder="Coloque o nome da rua">
+                                    <input required="" id="Rua" type="text" name="Rua" class="form-field" placeholder="Coloque o nome da rua" runat="server"/>
                                 </div>
                             </div>
 
@@ -147,35 +147,32 @@
                             <div class="form-inline input psnumero">
                                 <div class="form-group">
                                     <label for="Número" class="labelinput">N°</label>
-                                    <input required="" type="number" id="Número" name="Número" class="form-field" placeholder="">
+                                    <input id="Número" type="text" name="Número" class="form-field" placeholder="" runat="server"/>
                                 </div>
                             </div>
 
                         </div>
 
                         <div class="displaytt">
-                            
-
                             <!-- Complemento -->
                             <div class="form-inline input">
                                 <div class="form-group">
                                     <label for="Complemento" class="labelinput">Complemento</label>
-                                    <input required="" type="text" id="Complemento" name="Complemento" class="form-field" placeholder="Complemento">
+                                    <input id="Complemento" type="text" name="Complemento" class="form-field" placeholder="Complemento" runat="server"/>
                                 </div>
                             </div>
                         </div>
 
                         <div class="linha"></div>
 
+                        <asp:Literal ID="litRespostaSistema" runat="server">-</asp:Literal>
+
                         <div class="btn">
-                            <button>Cadastrar</button>
+                            <asp:Button ID="btnCadastrar" runat="server" Text="Cadastrar" OnClick="btnCadastrar_Click"/>
                         </div>
-
                 </div>     
-      
             </div>
-
-    </div>
+        </div>
     </form>
 </body>
 

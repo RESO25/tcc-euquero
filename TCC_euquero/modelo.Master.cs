@@ -29,8 +29,8 @@ namespace TCC_euquero
                         caminhoFoto = fi.Name;
                 }
 
-                GerenciarCadastro gerenciarCadastro = new GerenciarCadastro();
-                Usuario usuario = gerenciarCadastro.BuscarUsuarioPerfil(Session["email"].ToString());
+                GerenciarLoginUsuario gerenciarLogin = new GerenciarLoginUsuario();
+                Usuario usuario = gerenciarLogin.BuscarUsuarioPerfil(Session["email"].ToString());
 
                 string[] nomes = usuario.Nome.Split(' ');
 
@@ -65,11 +65,11 @@ namespace TCC_euquero
                 return;
             }
 
-            GerenciarCadastro gerenciarCadastro = new GerenciarCadastro();
+            GerenciarLoginUsuario gerenciarLogin = new GerenciarLoginUsuario();
 
-            if (gerenciarCadastro.VerificarLogin(txtEmail.Text, txtSenha.Text))
+            if (gerenciarLogin.VerificarLogin(txtEmail.Text, txtSenha.Text))
             {
-                Usuario usuario = gerenciarCadastro.BuscarUsuarioLogin(txtEmail.Text);
+                Usuario usuario = gerenciarLogin.BuscarUsuarioLogin(txtEmail.Text);
 
                 Session["email"] = usuario.Email;
                 Session["nome"] = usuario.Nome;
