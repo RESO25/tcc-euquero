@@ -1,0 +1,240 @@
+﻿@import "input.css";
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+h1 {
+    color: #fff;
+    margin-top: 0px;
+    font-size: 45px;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 103%;
+    height: 132px;
+    background-color: var(--branco);
+    box-sizing: border-box;
+    padding: 16px 70px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    background: #FFF;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+}
+
+.espaçoDF {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+label {
+    font-size: 20px;
+}
+
+
+.alinharConteudo {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    padding: 30px;
+}
+
+
+
+.bgCadastro {
+    background-image: url("../imagens/cadastro/paisagem_montanha.png");
+    background-repeat: no-repeat;
+    position: relative;
+    height: 86vh;
+    /* adicionando imagem de fundo */
+    background-size: cover;
+}
+
+
+.euQueroLogo {
+}
+
+
+.formCadastro {
+    height: 100%;
+    background-color: #4B4B4B;
+    opacity: 0.9;
+    width: 810px;
+}
+
+input[type="radio"] {
+    -webkit-appearance: none;
+    background-color: #fff;
+    border-radius: 10px;
+    width: 20px;
+    height: 20px;
+}
+
+    input[type="radio"]:checked {
+        background-color: #f2b705;
+        border: solid 3px #fff;
+        padding: 5px;
+        box-shadow: inset 50px #4B4B4B;
+    }
+
+.form-inline {
+    align-items: flex-end;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 366px;
+    margin-bottom: 0px;
+}
+
+    .form-inline .form-group {
+        --modifier: calc(30ch - 100%);
+        flex-basis: calc(var(--modifier)*999);
+        flex-grow: 1;
+        grid-template-areas: "group";
+    }
+
+.form-group {
+    grid-gap: 0.5em;
+    display: grid;
+    width: min(100%,40ch);
+}
+
+.form-inline .form-group label {
+    align-self: start;
+    /* background-image: linear-gradient(to top,var(--color-background-alt) 0 calc(50% - 2px),var(--color-background) calc(50% - 2px)); */
+    font-size: .9rem;
+    background: #4B4B4B;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    position: relative;
+    transform: translate(0.5rem,-50%);
+    width: max-content;
+}
+
+.form-inline .form-group > * {
+    grid-area: group;
+    width: 312px;
+}
+
+.form-group input {
+    min-height: 35px;
+    width: 180px;
+}
+
+
+.form-group input, .form-group textarea {
+    --outline-color: var(--color-primary);
+    background-color: var(--color-background-alt);
+    border: 2px solid #bababa;
+    border-radius: 4px;
+    color: var(--color-on-background);
+    font: inherit;
+    padding: 0 0.5em;
+    width: 289px;
+}
+
+label {
+    color: #fff;
+}
+
+.displaytt {
+    display: flex;
+    margin-bottom: 30px;
+    justify-content: space-between;
+    width: 757px;
+}
+
+.input {
+    margin-right: 10px;
+}
+
+#RG {
+    width: 175px;
+}
+
+#Aniversario {
+    width: 173px;
+}
+
+#Email {
+    width: 728px;
+}
+
+#Senha {
+    width: 347px;
+}
+
+#CEP {
+    Width: 169px;
+}
+
+#UF {
+    width: 211px;
+}
+
+#Cidade {
+    width: 280px;
+}
+
+#Rua {
+    width: 648px;
+}
+
+.psrua {
+    width: 671px
+}
+
+#Número {
+    width: 45px;
+}
+
+.psnumero {
+    width: 66px;
+}
+
+#Complemento {
+    width: 728px;
+}
+
+.linha {
+    border: solid 1px #bababa54;
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 35px;
+}
+
+button {
+    width: 235px;
+    height: 50px;
+    font-size: 20px;
+    background-color: #FFC000;
+    color: rgb(255 255 255);
+    font-weight: 900;
+    margin-top: 10px;
+    border: solid 0px;
+    border-radius: 5px;
+    letter-spacing: 1px;
+}
+
+.btn {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+input[typer=number] {
+    -webkit-appearance: none;
+}
+

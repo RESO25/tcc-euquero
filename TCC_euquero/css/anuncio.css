@@ -1,0 +1,350 @@
+﻿@import "estiloGeral.css";
+@import "header.css";
+@import "footer.css";
+@import "index.css";
+
+.conteudo {
+    padding: 70px;
+    padding-top: 0;
+}
+
+.tituloproduto {
+    margin-top: 23px;
+    width: auto;
+    height: 90px;
+    padding-top: 20px;
+    box-sizing: border-box;
+}
+
+
+.areaInfoProduto {
+    display: flex;
+    margin: auto;
+    justify-content: space-between;
+}
+
+
+h1, .cardLeilao, .areaDocumentacao {
+    font-family: 'Inter', sans-serif;
+    color: var(--preto);
+}
+
+
+.cardLeilao {
+    width: 25%;
+    height: 50%;
+    box-shadow: 1px 1px 13px 2px #CECECE;
+    border-radius: 8px;
+}
+
+
+h2 {
+    text-align: center;
+}
+
+
+.diasHorasMinutos {
+    display: flex;
+    text-align: center;
+    align-content: stretch;
+    justify-content: center;
+    margin: auto;
+}
+
+
+.dias, .horas, .minutos {
+    padding-right: 10%;
+    text-align: center;
+    margin: auto;
+}
+
+
+.infoDataLeilao {
+    background-color: #FFC000;
+    border-radius: 3%;
+}
+
+.dataEncerramentoLeilao {
+    margin-left: 5%;
+    padding-top: 2%;
+}
+
+
+.participantesLances {
+    text-align: center;
+    justify-content: center;
+    padding-top: 1%;
+}
+
+.participantes {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.lances {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+
+.participantesLances, .infoLance {
+    padding: 8px 30px;
+    display: flex;
+    border-bottom: thin solid;
+    border-color: #e6e6e6;
+    justify-content: space-around;
+}
+
+.lanceAtual {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.parteLanceAtual {
+    display: flex;
+    flex-direction: column;
+}
+
+.ganhadorAtual {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.parteGanhadorAtual {
+    display: flex;
+}
+
+.fotoProduto {
+    width: 990px;
+    height: 609px;
+}
+
+.galeriadefotos {
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+}
+
+.maisfotoProduto {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    height: 457px;
+    width: 303px;
+    justify-content: space-between;
+    align-items: stretch;
+    margin-right: 3px;
+}
+
+.fotinhas {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 3px;
+}
+
+.boxDescricao {
+    border: thin solid;
+    border-color: #ebebeb;
+    border-radius: 10px;
+    width: 30%;
+    height: 180px;
+    font-size: 10px;
+}
+
+
+.infoLance {
+    display: flex;
+    flex-direction: column;
+    padding: 4px 44px
+}
+
+.margins {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+strong {
+    font-size: 25px;
+    padding-left: 3%;
+    color: #FFC000;
+}
+
+
+.darLance {
+    display: flex;
+    flex-direction: column;
+    padding: 4px 25px;
+    margin-bottom: 5%;
+    justify-content: center;
+}
+
+#txtLance {
+    width: 100%;
+    font-size: 18px;
+}
+
+.btnDarLance:hover {
+    /*cursor: pointer;*/
+}
+
+.btnDarLance {
+    background-color: #FFC000;
+    border-radius: 10px;
+    width: max-content;
+    height: 50px;
+    border: thin;
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffffff;
+    box-shadow: 0px 0px 15px -6px rgba(0,0,0,0.57);
+    margin: auto;
+    padding-left: 6px;
+}
+
+.proximoLanceTeste {
+    width: 50%;
+    height: 50px;
+    margin-top: 5%;
+    padding-right: 0%;
+}
+
+
+
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+    /* Hide default HTML checkbox */
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+input:checked + .slider {
+    background-color: #FFC000;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+    .slider.round:before {
+        border-radius: 50%;
+    }
+
+
+.icConfirmacaoLance {
+    display: flex;
+    padding-left: 5%;
+}
+
+
+.txtDesativaLance {
+    color: #ccc;
+    font-size: 13px;
+    width: 35%;
+    padding-left: 3%;
+}
+
+.loja, .leiloeiro, .vendedor, .valorInicial {
+    display: flex;
+    margin-bottom: -2%;
+}
+
+
+.infoAbertura {
+    font-size: 12px;
+    padding-top: 0px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 12px;
+}
+
+
+.info {
+    padding-left: 4%;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+
+.areaDocumentacao {
+    display: flex;
+    margin-left: 35px;
+}
+
+.boxDescricao {
+    box-shadow: 0px 0px 1px 0px black;
+    width: 965px;
+    height: 205px;
+    font-size: 10px;
+    font-family: 'Inter', sans-serif;
+    color: #000000;
+    background-color: #ffffff;
+    border: aliceblue;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+.txtDescricao {
+    text-align: left;
+}
+
+
+.boxVerDocumentacao {
+    height: 225px;
+    width: 443px;
+    box-shadow: -1px 3px 27px -4px rgba(0,0,0,0.33);
+    border-radius: 15px;
+}
+
+.maisinfo {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 10px;
+}

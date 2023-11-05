@@ -1,0 +1,11 @@
+﻿@import "estiloGeral.css";
+@import "header.css";
+@import "footer.css";
+
+
+.divRespostaSistema{
+    width: 90%;
+    height: 100%;
+    margin: auto;
+    text-align: center;
+}
