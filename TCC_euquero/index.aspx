@@ -9,7 +9,7 @@
                 <h1 class="tituloMaior tituloBanner">bem vindo ao site !!</h1>
                 <p class="tituloMenor textoBanner">Descubra uma experiência única que irá transformar sua vida. Explore nosso site e mergulhe em um mundo de possibilidades infinitas. Não espere mais, dê o primeiro passo e comece a sua jornada conosco.</p>
                 <div>
-                    <button class=" btnCadastrar"> Cadastrar <img src="imagens/index/seta.png"></button>
+                    <a href="cadastro.aspx" class=" btnCadastrar"> Cadastrar <img src="imagens/index/seta.png"></a>
                 </div>
             </div>
 

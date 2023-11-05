@@ -628,3 +628,5 @@ C:\Users\mauro\Desktop\tcc-euquero\TCC_euquero\obj\Debug\TCC_euquero.csproj.Core
 C:\Users\mauro\Desktop\tcc-euquero\TCC_euquero\obj\Debug\TCC_euquero.csproj.CopyComplete
 C:\Users\mauro\Desktop\tcc-euquero\TCC_euquero\obj\Debug\TCC_euquero.dll
 C:\Users\mauro\Desktop\tcc-euquero\TCC_euquero\obj\Debug\TCC_euquero.pdb
+C:\Users\mauro\Desktop\tcc-euquero\TCC_euquero\bin\Correios.dll
+C:\Users\mauro\Desktop\tcc-euquero\TCC_euquero\bin\Correios.pdb

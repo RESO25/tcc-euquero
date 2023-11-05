@@ -1,12 +1,16 @@
-﻿using System;
+﻿using Correios;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using TCC_euquero.Logica;
 
 namespace TCC_euquero.Modelo
 {
-    public class Endereço
+    public class Endereço : Banco
     {
+        #region Props
+
         public int _codigo;
         public int Codigo
         {
@@ -55,5 +59,42 @@ namespace TCC_euquero.Modelo
             get { return _preferencial; }
             set { _preferencial = value; }
         }
+
+        public string UF { get; set; }
+        public string Cidade { get; set; }
+        public string Rua { get; set; }
+
+        #endregion
+
+
+        #region Métodos
+
+        public void CadastrarEndereço(string pEmailUsuario, string pCep, string pNome, string pNumero, string pComplemento, int pPreferencial)
+        {
+            List<Parametro> parametros = new List<Parametro>();
+            parametros.Add(new Parametro("pEmailUsuario", pEmailUsuario));
+            parametros.Add(new Parametro("pCep", pCep));
+            parametros.Add(new Parametro("pNomeEndereço", pNome));
+            parametros.Add(new Parametro("pNumeroEndereço", pNumero));
+            parametros.Add(new Parametro("pComplemento", pComplemento));
+            parametros.Add(new Parametro("pPreferencial", pPreferencial.ToString()));
+
+            ExecutarProcedure("CriarEndereço", parametros);
+        }
+
+        public Endereço BuscarEndereço(string cep)
+        {
+            CorreiosApi correiosApi = new CorreiosApi();
+
+            Endereço endereço = new Endereço();
+            endereço.UF = correiosApi.consultaCEP(cep).uf;
+            endereço.Cidade = correiosApi.consultaCEP(cep).cidade;
+            endereço.Rua = correiosApi.consultaCEP(cep).end;
+            endereço.Numero = correiosApi.consultaCEP(cep).complemento;
+
+            return endereço;
+        }
+
+        #endregion
     }
 }
