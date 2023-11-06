@@ -34,14 +34,7 @@ namespace TCC_euquero
             }
             else
             {
-                if (anuncios.Count == 1)
-                {
-                    resposta = $"Foi encontrado {anuncios.Count} resultado.";
-                }
-                else
-                {
-                    resposta = $"Foram encontrados {anuncios.Count} resultados.";
-                }
+                resposta = $"{anuncios.Count} resultado(s) encontrado(s).";
 
                 foreach (Anuncio anuncio in anuncios)
                 {
