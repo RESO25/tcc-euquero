@@ -6,6 +6,7 @@
     <title>Eu Quero | Novo Anúncio</title>
     <link rel="stylesheet" href="css/cadastroAnuncio.css">
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="main" runat="server">
     <div class="conteudo">
         <div class="tituloSubtitulo">
@@ -19,6 +20,7 @@
             <h3>e-mail</h3>
             <input id="txtEmail" type="text"  placeholder="insira seu e-mail" runat="server"/>
         </div>
+        </div>
 
 
         <div class="datas">
@@ -31,8 +33,7 @@
                 <h3>Data de Encerramento</h3>
                 <input id="txtDataEncerramento" class="inputData" type="datetime-local" runat="server" />
             </div>    
-        </div>  
-    </div>    
+        </div>     
 
     <div class="nomeDesc">
         <div class="areaInput" id="areaNome">
@@ -48,8 +49,6 @@
     </div>
 
 
-
-    <div class="valores">
         <div class="areaInput">
             <h3>Valor Mínimo</h3>
             <input id="txtValorMinimo" class="valor" type="number" placeholder="R$-,--" runat="server"/>
@@ -60,9 +59,9 @@
             <h3>Valor Máximo</h3>
             <input id="txtValorMaximo" class="valor" type="number" placeholder="R$-,--" runat="server"/>
         </div>
-    </div>
 
         <div class="areaBtn">
             <asp:Button ID="btnCriarAnuncio" class="btnCriarAnuncio" runat="server" Text="Criar" OnClick="btnCriarAnuncio_Click"/>
-        </div>  
+        </div> 
+        </div>
 </asp:Content>

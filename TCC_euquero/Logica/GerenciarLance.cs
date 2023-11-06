@@ -63,7 +63,7 @@ namespace TCC_euquero.Logica
             else
             {
                 MailMessage mail = new MailMessage("leilaoEuQuero@outlook.pt", emailUsuario);
-                EnvioDeEmail envioDeEmail = new EnvioDeEmail();
+                EnviarEmail envioDeEmail = new EnviarEmail();
 
                 string CSS = "";
 

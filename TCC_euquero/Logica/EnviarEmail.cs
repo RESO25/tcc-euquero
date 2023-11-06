@@ -12,7 +12,7 @@ using TCC_euquero.Logica;
 
 namespace TCC_euquero.Logica
 {
-    public class EnvioDeEmail : Banco
+    public class EnviarEmail : Banco
     {
         public void Enviar(MailMessage mail)
         {

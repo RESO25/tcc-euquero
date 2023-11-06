@@ -11,62 +11,20 @@ namespace TCC_euquero.Modelo
     public class Anuncio : Banco
     {
         #region Props
-        public int Codigo
-        {
-            get; set;
-        }
-        public string EmailUsuario
-        {
-            get; set;
-        }
-        public string NomeUsuario
-        {
-            get; set;
-        }
-        public DateTime DataInicio
-        {
-            get; set;
-        }
-        public DateTime DataEncerramento
-        {
-            get; set;
-        }
-        public string NomeProduto
-        {
-            get; set;
-        }
-        public string DescricaoProduto
-        {
-            get; set;
-        }
-        public decimal ValorMinimo
-        {
-            get; set;
-        }
-        public decimal ValorMaximo
-        {
-            get; set;
-        }
-        public decimal LanceAtual
-        {
-            get; set;
-        }
-        public string GanhadorAtual
-        {
-            get; set;
-        }
-        public int QntLances
-        {
-            get; set;
-        }
-        public int QntParticipantes
-        {
-            get; set;
-        }
-        public bool Encerrado
-        {
-            get; set;
-        }
+        public int Codigo { get; set; }
+        public string EmailUsuario { get; set; }
+        public string NomeUsuario { get; set; }
+        public DateTime DataInicio { get; set; }
+        public DateTime DataEncerramento { get; set; }
+        public string NomeProduto { get; set; }
+        public string DescricaoProduto { get; set; }
+        public decimal ValorMinimo { get; set; }
+        public decimal ValorMaximo { get; set; }
+        public decimal LanceAtual { get; set; }
+        public string GanhadorAtual { get; set; }
+        public int QntLances { get; set; }
+        public int QntParticipantes { get; set; }
+        public bool Encerrado { get; set; }
         #endregion
 
 
@@ -77,10 +35,10 @@ namespace TCC_euquero.Modelo
 
         public Anuncio(int codigo, DateTime dataEncerramento, string nomeProduto, decimal lanceAtual)
         {
-            Codigo = codigo;
+            Codigo           = codigo;
             DataEncerramento = dataEncerramento;
-            NomeProduto = nomeProduto;
-            LanceAtual = lanceAtual;
+            NomeProduto      = nomeProduto;
+            LanceAtual       = lanceAtual;
         }
 
         public Anuncio(int codigo, DateTime dataEncerramento, string nomeProduto, decimal lanceAtual, bool encerrado)
@@ -133,38 +91,36 @@ namespace TCC_euquero.Modelo
             Desconectar();
         }
 
-        public bool VerificarEstadoAnuncio()
+        public bool VerificarEstadoAnuncio(int pCodigoAnuncio)
         {
             List<Parametro> parametros = new List<Parametro>();
-            parametros.Add(new Parametro("pCodigoAnuncio", Codigo.ToString()));
+            parametros.Add(new Parametro("pCodigoAnuncio", pCodigoAnuncio.ToString()));
 
             MySqlDataReader dados = ConsultarProcedure("ConsultarEstadoAnuncio", parametros);
             dados.Read();
 
             if (dados.GetBoolean("EstadoAnuncio"))
             {
-                //Anúncio encerrado
                 dados.Close();
                 Desconectar();
                 return true;
             }
             else
             {
-                //Anúncio aberto
                 dados.Close();
                 Desconectar();
                 return false;
             }
         }
 
-        public void FecharAnuncio()
+        public void FecharAnuncio(int pCodigoAnuncio)
         {
-            EnvioDeEmail enviarEmail = new EnvioDeEmail();
+            EnviarEmail enviarEmail = new EnviarEmail();
             List<Parametro> parametros = new List<Parametro>();
-            parametros.Add(new Parametro("pCodigoAnuncio", Codigo.ToString()));
+            parametros.Add(new Parametro("pCodigoAnuncio", pCodigoAnuncio.ToString()));
 
             ExecutarProcedure("EncerrarAnuncio", parametros);
-            enviarEmail.NotificarVitoria(Codigo);
+            enviarEmail.NotificarVitoria(pCodigoAnuncio);
 
             return;
         }

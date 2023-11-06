@@ -89,8 +89,8 @@ namespace TCC_euquero
                 litHorasRestantes.Text = anuncio.DataEncerramento.Subtract(DateTime.UtcNow).Hours.ToString().Replace('-', ' ');
                 litMinutosRestantes.Text = anuncio.DataEncerramento.Subtract(DateTime.UtcNow).Minutes.ToString().Replace('-', ' ');
 
-                if(!anuncio.VerificarEstadoAnuncio())
-                    anuncio.FecharAnuncio();
+                if (!anuncio.VerificarEstadoAnuncio(int.Parse(Request["codProduto"].ToString())))
+                    anuncio.FecharAnuncio(int.Parse(Request["codProduto"].ToString()));
             }
                
         }
