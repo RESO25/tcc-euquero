@@ -15,53 +15,48 @@ namespace TCC_euquero
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["email"] != null)
-            {
-                GerenciarLance gerenciar = new GerenciarLance();
-
-                txtLance.Enabled = true;
-            }
-
-            if (String.IsNullOrEmpty(Request["codProduto"]))
-                Response.Redirect("erro.aspx?codErro=1");
-
-            GerenciarAnuncios gerenciarAnuncios = new GerenciarAnuncios();
-            int totalAnuncios = gerenciarAnuncios.ContarAnuncios();
-
-            if (int.Parse(Request["codProduto"]) > totalAnuncios)
-                Response.Redirect("erro.aspx?codErro=1");
-
             Anuncio anuncio = new Anuncio();
-
-            if (anuncio.VerificarEstadoAnuncio(int.Parse(Request["codProduto"])))
-                Response.Redirect("erro.aspx?codErro=2");
-
-            anuncio.ListarDadosAnuncio(int.Parse(Request["codProduto"]));
-            litNomeProduto.Text = anuncio.NomeProduto;
-            litDescricao.Text = anuncio.DescricaoProduto;
-            litDiasRestantes.Text = anuncio.DataEncerramento.Subtract(DateTime.Today).Days.ToString();
-            litHorasRestantes.Text = anuncio.DataEncerramento.Subtract(DateTime.UtcNow).Hours.ToString();
-            litMinutosRestantes.Text = anuncio.DataEncerramento.Subtract(DateTime.UtcNow).Minutes.ToString();
-            litParticipantes.Text = anuncio.QntParticipantes.ToString();
-            litLances.Text = anuncio.QntLances.ToString();
-            litLeiloeiro.Text = anuncio.NomeUsuario;
-            litGanhador.Text = anuncio.GanhadorAtual;
-            litLanceAtual.Text = anuncio.LanceAtual.ToString("C", new CultureInfo("pt-br"));
-            litValorInicial.Text = anuncio.ValorMinimo.ToString("C", new CultureInfo("pt-br"));
+            GerenciarAnuncios gerenciarAnuncios = new GerenciarAnuncios();
 
 
-            CarregarImagens();
-
-
-            List<Anuncio> anuncios = gerenciarAnuncios.ListarAnunciosCard();
-
-            litCardProduto.Text = "";
-
-            for (int i = 0; i < anuncios.Count; i++)
+            if (!anuncio.VerificarEstadoAnuncio(int.Parse(Request["codProduto"])))
             {
-                TimeSpan diasRestantes = anuncios[i].DataEncerramento.Subtract(DateTime.Today);
+                anuncio.ListarDadosAnuncio(int.Parse(Request["codProduto"]));
 
-                litCardProduto.Text += $@"
+                if (!(anuncio.DataEncerramento.Subtract(DateTime.Today).Days <= 0 && anuncio.DataEncerramento.Subtract(DateTime.UtcNow).Hours <= 0 && anuncio.DataEncerramento.Subtract(DateTime.UtcNow).Minutes <= 0))
+                {
+                    if (Session["email"] != null)
+                    {
+                        txtLance.Enabled = true;
+                    }
+
+                    int totalAnuncios = gerenciarAnuncios.ContarAnuncios();
+                    if (String.IsNullOrEmpty(Request["codProduto"]) || int.Parse(Request["codProduto"]) > totalAnuncios)
+                        Response.Redirect("erro.aspx?codErro=1");
+
+                    litNomeProduto.Text = anuncio.NomeProduto;
+                    litDescricao.Text = anuncio.DescricaoProduto;
+                    litDiasRestantes.Text = anuncio.DataEncerramento.Subtract(DateTime.Today).Days.ToString();
+                    litHorasRestantes.Text = anuncio.DataEncerramento.Subtract(DateTime.UtcNow).Hours.ToString();
+                    litMinutosRestantes.Text = anuncio.DataEncerramento.Subtract(DateTime.UtcNow).Minutes.ToString();
+                    litParticipantes.Text = anuncio.QntParticipantes.ToString();
+                    litLances.Text = anuncio.QntLances.ToString();
+                    litLeiloeiro.Text = anuncio.NomeUsuario;
+                    litGanhador.Text = anuncio.GanhadorAtual;
+                    litLanceAtual.Text = anuncio.LanceAtual.ToString("C", new CultureInfo("pt-br"));
+                    litValorInicial.Text = anuncio.ValorMinimo.ToString("C", new CultureInfo("pt-br"));
+
+                    CarregarImagens();
+
+                    List<Anuncio> anuncios = gerenciarAnuncios.ListarAnunciosCard();
+
+                    litCardProduto.Text = "";
+
+                    for (int i = 0; i < anuncios.Count; i++)
+                    {
+                        TimeSpan diasRestantes = anuncios[i].DataEncerramento.Subtract(DateTime.Today);
+
+                        litCardProduto.Text += $@"
                                         <div class='cardProduto'>
                                             <a href='anuncio.aspx?codProduto={anuncios[i].Codigo}'> 
                                                 <img src='imagens/fotosAnuncios/{anuncios[i].Codigo}-1.jpeg' class='imgProduto'>
@@ -82,6 +77,18 @@ namespace TCC_euquero
                                             </a>
                                         </div>
                                         ";
+                    }
+                }
+                else
+                {
+                    anuncio.FecharAnuncio(int.Parse(Request["codProduto"]));
+                    Response.Redirect(Page.Request.Url.ToString());
+                }
+            }
+            else
+            {
+                // FAZER POP-UP DIZENDO QUE O ANUNCIO JA FOI ENCERRADO E FALANDO O NOME DO VENCER OU AVISANDO O USUARIO QUE O ANUNCIO FOI ENCERRADO
+                litDiasRestantes.Text = "ACABOU MANO";
             }
         }
 

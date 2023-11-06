@@ -138,6 +138,7 @@
     <Content Include="css\input.css" />
     <Content Include="css\login.css" />
     <Content Include="css\perfil.css" />
+    <Content Include="css\validarEmail.css" />
     <Content Include="imagens\anuncio\proximoLance.png" />
     <Content Include="imagens\U.png" />
     <Content Include="imagens\cadastro\paisagem_montanha.png" />
@@ -196,6 +197,7 @@
     <Content Include="js\login.js" />
     <Content Include="login.aspx" />
     <Content Include="perfil.aspx" />
+    <Content Include="validarEmail.aspx" />
     <Content Include="Web.config" />
     <Content Include="index.aspx" />
   </ItemGroup>
@@ -276,6 +278,13 @@
     </Compile>
     <Compile Include="index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="validarEmail.aspx.cs">
+      <DependentUpon>validarEmail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="validarEmail.aspx.designer.cs">
+      <DependentUpon>validarEmail.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

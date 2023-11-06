@@ -7,14 +7,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="../css/cadastro.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/imagens/U.png">
     <link href="../css/cadastro.css" rel="stylesheet">
     
     <title>Eu Quero | Cadastro</title>
 </head>
 
     <header>
-    <img class="euQueroLogo" src="../imagens/logo.png">
+    <a href="index.aspx"><img class="euQueroLogo" src="../imagens/logo.png"></a>
     </header>
 
 <body>
@@ -168,7 +168,7 @@
                         <asp:Literal ID="litRespostaSistema" runat="server">-</asp:Literal>
 
                         <div class="btn">
-                            <asp:Button ID="btnCadastrar" runat="server" Text="Cadastrar" OnClick="btnCadastrar_Click"/>
+                            <asp:Button ID="btnCadastrar" runat="server" Text="Próximo" OnClick="btnCadastrar_Click"/>
                         </div>
                 </div>     
             </div>

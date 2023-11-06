@@ -113,6 +113,14 @@ begin
     where nm_email_usuario = pEmail;
 end$$
 
+-- -----------------------------------------------------
+-- Verificar se o usuário já está validado
+-- -----------------------------------------------------
+Drop Procedure if exists VerificarValidacao$$
+Create Procedure VerificarValidacao(pEmail varchar(200))
+begin
+	select ic_validado from usuario where nm_email_usuario = pEmail;
+end$$
 
 -- -----------------------------------------------------
 -- Cadastrar Cartão
@@ -453,4 +461,28 @@ begin
    where a.ic_encerrado = false and l.nm_email_usuario_cliente = pEmailUsuario;
 end$$
 
+-- -----------------------------------------------------
+-- Buscar dados minimos de comprador e vendedor
+-- -----------------------------------------------------
+Drop Procedure if Exists BuscarDadosMinimosCompradorVendedor$$
+Create Procedure BuscarDadosMinimosCompradorVendedor(pCodigoAnuncio int)
+begin
+	select lance.nm_email_usuario_cliente as EmailComprador, usuario.nm_usuario as NomeVendedor, usuario.cd_telefone as TelefoneVendedor, anuncio.nm_produto as NomeAnuncio
+	from anuncio join usuario on (anuncio.nm_email_usuario = usuario.nm_email_usuario)
+	join lance on (anuncio.cd_anuncio = lance.cd_anuncio)
+	where anuncio.cd_anuncio = pCodigoAnuncio and lance.vl_lance = (select RetornarLanceAtual(pCodigoAnuncio));
+end$$
+
+-- -----------------------------------------------------
+-- Retornar valor do lance atual do anúncio
+-- -----------------------------------------------------
+drop Function if exists RetornarLanceAtual$$
+Create Function RetornarLanceAtual(pAnuncio int) returns decimal(10,2)
+begin	
+   declare vValorMin decimal(10,2) default 0;
+    select vl_minimo into vValorMin from anuncio where cd_anuncio = pAnuncio;
+
+	return (select coalesce(max(vl_lance), vValorMin) as ValorLance from lance
+	where cd_anuncio = pAnuncio);
+end$$
 Delimiter ;

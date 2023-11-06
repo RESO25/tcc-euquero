@@ -17,7 +17,13 @@ namespace TCC_euquero
         {
             if (Session["email"] != null)
             {
+                GerenciarCadastroUsuario gerenciarCadastroUsuario = new GerenciarCadastroUsuario();
 
+                if (!gerenciarCadastroUsuario.VerificarValidacao(Session["email"].ToString()))
+                {
+                    Session.Abandon();
+                    Response.Redirect(Request.Url.ToString());
+                }
                 string caminhoBase = Request.PhysicalApplicationPath + @"imagens/fotosPerfis";
                 DirectoryInfo diretorio = new DirectoryInfo(caminhoBase);
                 FileInfo[] listaArquivos = diretorio.GetFiles();

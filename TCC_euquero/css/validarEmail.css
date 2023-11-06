@@ -1,4 +1,5 @@
-﻿@import "input.css";
+﻿@import "estiloGeral.css";
+@import "input.css";
 
 :root {
     /* Cores */
@@ -17,7 +18,7 @@ body {
 
 h1 {
     color: #fff;
-    margin-top: 0px;
+    margin: 0px;
     font-size: 45px;
 }
 
@@ -36,6 +37,18 @@ header {
     align-items: center;
     background: #FFF;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+}
+
+.texto {
+    color: var(--branco);
+    font-weight: 500;
+    width: 65%;
+    text-align: center;
+}
+
+.marginTop{
+    margin:0;
+    margin-top:20px;
 }
 
 .espaçoDF {
@@ -57,7 +70,7 @@ label {
     flex-direction: column;
     align-content: center;
     flex-wrap: nowrap;
-    align-items: flex-start;
+    align-items: center;
     padding: 30px;
 }
 
@@ -170,59 +183,10 @@ label {
     margin-right: 10px;
 }
 
-#RG {
-    width: 175px;
-}
-
-#Aniversario {
-    width: 173px;
-}
-
-#Email {
-    width: 728px;
-}
-
-#Senha {
-    width: 347px;
-}
-
-#CEP {
-    Width: 169px;
-}
-
-#UF {
-    width: 211px;
-}
-
-#Cidade {
-    width: 280px;
-}
-
-#Rua {
-    width: 648px;
-}
-
-.psrua {
-    width: 671px
-}
-
-#Número {
-    width: 45px;
-}
-
-.psnumero {
-    width: 66px;
-}
-
-#Complemento {
-    width: 728px;
-}
-
 .linha {
     border: solid 1px #bababa54;
     width: 100%;
     border-radius: 5px;
-    margin-bottom: 35px;
 }
 
 button {
@@ -248,14 +212,14 @@ input[typer=number] {
     -webkit-appearance: none;
 }
 
-#btnCadastrar {
+#btnValidar {
     font-family: 'Inter', sans-serif;
     color: var(--branco);
     background-color: var(--amarelo);
     font-weight: bolder;
     margin-bottom: 8px;
     border: solid var(--amarelo);
-    border-radius:7px;
+    border-radius: 7px;
     font-size: 20px;
     padding: 10px 20px;
 }

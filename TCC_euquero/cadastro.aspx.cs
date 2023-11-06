@@ -15,22 +15,15 @@ namespace TCC_euquero
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            litRespostaSistema.Text = "-";
+            
         }
 
         protected void CEP_TextChanged(object sender, EventArgs e)
         {
             Endereço endereço = new Endereço();
 
-            try
-            {
-                endereço = endereço.BuscarEndereço(CEP.Text);
-                litRespostaSistema.Text = "-";
-            }
-            catch
-            {
-                litRespostaSistema.Text = "O cep digitado é inválido.";
-            }
+            endereço = endereço.BuscarEndereço(CEP.Text);
+
 
             UF.Value = endereço.UF;
             Cidade.Value = endereço.Cidade;
@@ -63,7 +56,8 @@ namespace TCC_euquero
 
             if (Senha.Value == RepetirSenha.Value)
             {
-                litRespostaSistema.Text = usuario.CadastrarUsuario(Email.Value, CPF.Value, Nome.Value, Senha.Value, long.Parse(Telefone.Value), codTipoPessoa, CEP.Text, nomeEndereço, Número.Value, Complemento.Value);
+                usuario.CadastrarUsuario(Email.Value, CPF.Value, Nome.Value, Senha.Value, long.Parse(Telefone.Value), codTipoPessoa, CEP.Text, nomeEndereço, Número.Value, Complemento.Value);
+                Response.Redirect($"validarEmail.aspx?email={Email.Value}");
             }
             else
             {

@@ -53,9 +53,10 @@ h2 {
 
 
 .dias, .horas, .minutos {
-    padding-right: 10%;
     text-align: center;
     margin: auto;
+    width:90px;
+    font-weight:600;
 }
 
 
@@ -348,3 +349,25 @@ input:checked + .slider:before {
     align-items: center;
     margin-top: 10px;
 }
+
+#menos, #mais {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.inputMinMax {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+
+    .inputMinMax input {
+        border-radius: 7px;
+        border: 1px solid var(--amarelo);
+        height: 35px;
+        width: 235px;
+        font-family: 'Inter', sans-serif;
+        font-size: 25px;
+        color: var(--amarelo);
+    }
