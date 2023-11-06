@@ -61,6 +61,9 @@ namespace TCC_euquero
 
                 if (!gerenciarCadastroUsuario.VerificarValidacao(Email.Value))
                 {
+                    Endereço endereco = new Endereço();
+                    endereco.CadastrarEndereço(Email.Value, CEP.Text, Nome.Value, Número.Value, Complemento.Value, 1);
+
                     usuario.CadastrarUsuario(Email.Value, CPF.Value, Nome.Value, Senha.Value, long.Parse(Telefone.Value), codTipoPessoa, CEP.Text, nomeEndereço, Número.Value, Complemento.Value);
 
                     gerenciarCadastroUsuario.EnviarCodigoEmail(Email.Value);

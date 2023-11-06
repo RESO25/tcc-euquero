@@ -1,4 +1,5 @@
 ﻿using Correios;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -93,6 +94,19 @@ namespace TCC_euquero.Modelo
             endereço.Numero = correiosApi.consultaCEP(cep).complemento;
 
             return endereço;
+        }
+
+        public void BuscarEnderecoUsuario()
+        {
+            List<Parametro> parametros = new List<Parametro>();
+            parametros.Add(new Parametro("pEmailUsuario", EmailUsuario));
+
+            MySqlDataReader dados = ConsultarProcedure("BuscarEnderecoUsuario", parametros);
+
+            if (dados.Read())
+            {
+                //this.Codigo = dados.Get
+            }
         }
 
         #endregion

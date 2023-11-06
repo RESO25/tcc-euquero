@@ -61,6 +61,9 @@ namespace TCC_euquero
                     caminhoFoto = fi.Name;
             }
 
+            Endereço endereco = new Endereço();
+            endereco.BuscarEndereçoUsuario();
+
             litFotoPerfil.Text = $"<img src='imagens/fotosPerfis/{caminhoFoto}' class='imgPerfil'>";
 
             string[] nomes = usuario.Nome.Split(' ');

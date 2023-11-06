@@ -47,21 +47,27 @@
 
 
                                     <div class="CEP_Pais_UF_Cidade">
-                                        <h1 class="info">CEP: </h1> <h1 class="dadoInicial">11349-090</h1>
+                                        <h1 class="info">CEP: </h1> <h1 class="dadoInicial">
+                                            <asp:Literal ID="litCep" runat="server"></asp:Literal></h1>
 
                                         <h1 class="info">País: </h1> <h1 class="dadoInicial">Brasil</h1>
 
-                                        <h1 class="info">UF: </h1> <h1 class="dadoInicial">SSP-SP</h1>
+                                        <h1 class="info">UF: </h1> <h1 class="dadoInicial">
+                                            <asp:Literal ID="litUf" runat="server"></asp:Literal></h1>
 
-                                        <h1 class="info">Cidade: </h1> <h1 class="dado">Santos</h1>
+                                        <h1 class="info">Cidade: </h1> <h1 class="dado">
+                                            <asp:Literal ID="litCidade" runat="server"></asp:Literal></h1>
                                     </div>    
 
                                     <div class="RuaNumeroBloco">
-                                        <h1 class="info">Rua: </h1> <h1 class="dadoInicial">Rua saul de oliveira ventura</h1>
+                                        <h1 class="info">Rua: </h1> <h1 class="dadoInicial">
+                                            <asp:Literal ID="litRua" runat="server"></asp:Literal></h1>
 
-                                        <h1 class="info">Número: </h1> <h1 class="dadoInicial">9</h1>
+                                        <h1 class="info">Número: </h1> <h1 class="dadoInicial">
+                                            <asp:Literal ID="litNumero" runat="server"></asp:Literal></h1>
 
-                                        <h1 class="info">Bloco: </h1> <h1 class="dado">7</h1>
+                                        <h1 class="info">Complemento: </h1> <h1 class="dado">
+                                            <asp:Literal ID="litComplemento" runat="server"></asp:Literal></h1>
                                     </div>    
                             </div>
 

@@ -494,4 +494,23 @@ begin
 	return (select coalesce(max(vl_lance), vValorMin) as ValorLance from lance
 	where cd_anuncio = pAnuncio);
 end$$
+
+-- -----------------------------------------------------
+-- Buscar o endereço preferencial do usuário
+-- -----------------------------------------------------
+drop Procedure if exists BuscarEnderecoUsuario$$
+Create Procedure BuscarEnderecoUsuario(pEmailUsuario varchar(200))
+begin	
+
+	select * from endereco where nm_email_usuario = pEmailUsuario and ic_preferencial = true; 
+end$$
+
+
+
 Delimiter ;
+
+select * from endereco where nm_email_usuario = "andersonSilva1294@gmail.com" and ic_preferencial = true; 
+
+update endereco set ic_preferencial = true where nm_email_usuario = "beatlana7@gmail.com";
+
+select * from endereco;
