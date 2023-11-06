@@ -61,8 +61,14 @@ namespace TCC_euquero
                     caminhoFoto = fi.Name;
             }
 
-            Endereço endereco = new Endereço();
+            //Endereço endereco = new Endereço();
             //endereco.BuscarEnderecoUsuario();
+            //litCep.Text = endereco.Cep.ToString();
+            //litCidade.Text = endereco.Cidade;
+            //litComplemento.Text = endereco.Complemento;
+            //litNumero.Text = endereco.Numero.ToString();
+            //litRua.Text = endereco.Rua;
+            //litUf.Text = endereco.UF;
 
             litFotoPerfil.Text = $"<img src='imagens/fotosPerfis/{caminhoFoto}' class='imgPerfil'>";
 
@@ -110,19 +116,24 @@ namespace TCC_euquero
 
             List<Anuncio> anunciosUsuario = gerenciarAnuncios.ListarAnunciosUsuario(email);
 
+            litMeusAnuncios.Text = "";
             if (anunciosUsuario.Count > 0)
             {
                 foreach (Anuncio anuncio in anunciosUsuario)
                 {
                     TimeSpan diasRestantes = anuncio.DataEncerramento.Subtract(DateTime.Today);
-
+                    string dias = "";
+                    if (diasRestantes < TimeSpan.Zero)
+                        dias = "Encerrado";
+                    else
+                        dias = diasRestantes.Days.ToString() + " dias";
                     litMeusAnuncios.Text += $@"
                                             <div class='cardProduto'>
                                                 <a href='anuncio.aspx?codProduto={anuncio.Codigo}'> 
                                                     <img src='imagens/fotosAnuncios/{anuncio.Codigo}-1.jpeg' class='imgProduto'>
                 
                                                     <div class='infoEncerramento'>
-                                                        <h3 class='txtEncerra'>encerra em: </h3> <h4 class='txtDataEncerramento'>{diasRestantes.Days} dias</h4>
+                                                        <h3 class='txtEncerra'>encerra em: </h3> <h4 class='txtDataEncerramento'>{dias}</h4>
                                                     </div>
 
                                                     <div class='infoTituloProduto'>
@@ -148,11 +159,18 @@ namespace TCC_euquero
 
             List<Anuncio> anunciosParticipo = gerenciarAnuncios.ListarAnunciosUsuarioParticipa(email);
 
+            litAnunciosParticipo.Text = "";
             if (anunciosParticipo.Count > 0)
             {
                 foreach (Anuncio anuncio in anunciosParticipo)
                 {
                     TimeSpan diasRestantes = anuncio.DataEncerramento.Subtract(DateTime.Today);
+
+                    string dias = "";
+                    if (diasRestantes < TimeSpan.Zero)
+                        dias = "Encerrado";
+                    else
+                        dias = diasRestantes.Days.ToString() + " dias";
 
                     litAnunciosParticipo.Text += $@"
                                             <div class='cardProduto'>
@@ -160,7 +178,7 @@ namespace TCC_euquero
                                                     <img src='imagens/fotosAnuncios/{anuncio.Codigo}-1.jpeg' class='imgProduto'>
                 
                                                     <div class='infoEncerramento'>
-                                                        <h3 class='txtEncerra'>encerra em: </h3> <h4 class='txtDataEncerramento'>{diasRestantes.Days} dias</h4>
+                                                        <h3 class='txtEncerra'>encerra em: </h3> <h4 class='txtDataEncerramento'>{dias}</h4>
                                                     </div>
 
                                                     <div class='infoTituloProduto'>

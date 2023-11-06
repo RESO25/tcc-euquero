@@ -38,7 +38,7 @@
     <div class="nomeDesc">
         <div class="areaInput" id="areaNome">
             <h3>Nome</h3>
-            <input id="txtNomeProduto" class="nome" type="text" placeholder="nome completo do titular" runat="server"/>
+            <input id="txtNomeProduto" class="nome" type="text" placeholder="Nome do produto" runat="server"/>
         </div>
 
 

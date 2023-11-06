@@ -43,6 +43,7 @@ namespace TCC_euquero.Logica
             if (dados.Read())
                 validado = dados.GetBoolean(0);
 
+            dados.Close();
             Desconectar();
 
             return validado;
@@ -79,9 +80,11 @@ namespace TCC_euquero.Logica
             MySqlDataReader dados = ConsultarProcedure("ConsultarCodigoValidacao", parametros);
 
             if (dados.Read())
+            {
                 codigoValidacao = int.Parse(dados[0].ToString());
-                dados.Close();
+            }
 
+            dados.Close();
             Desconectar();
 
             return codigoValidacao;
@@ -98,7 +101,7 @@ namespace TCC_euquero.Logica
             mail.IsBodyHtml = true;
             mail.Body = $@"     <html>
                                     <body>
-                                        <div style={CSS}>
+                                        <div>
                                             <p> Você está a um passo de tornar sua conta válida! Para isso, insira o código abaixo na página do site que o solicita.</p>
                                             <p>{codigoValidacao}</p>
                                         </div>

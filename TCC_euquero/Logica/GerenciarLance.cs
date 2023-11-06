@@ -14,6 +14,7 @@ namespace TCC_euquero.Logica
     {
         List<Parametro> parametros = new List<Parametro>();
 
+
         public decimal ConsultarSaldo(string pEmail)
         {
             List<Parametro> lista = new List<Parametro>();
@@ -55,6 +56,7 @@ namespace TCC_euquero.Logica
                 emailUsuario = dados["EmailUsuarioCliente"].ToString();
             
             dados.Close();
+            Desconectar();
 
             if (String.IsNullOrEmpty(emailUsuario))
             {

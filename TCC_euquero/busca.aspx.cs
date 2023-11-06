@@ -39,6 +39,11 @@ namespace TCC_euquero
                 foreach (Anuncio anuncio in anuncios)
                 {
                     TimeSpan diasRestantes = anuncio.DataEncerramento.Subtract(DateTime.Today);
+                    string dias = "";
+                    if (diasRestantes < TimeSpan.Zero)
+                        dias = "Encerrado";
+                    else
+                        dias = diasRestantes.Days.ToString() + " dias";
 
                     litCardProduto.Text += $@"
                                         <div class='cardProduto'>
@@ -46,7 +51,7 @@ namespace TCC_euquero
                                                 <img src='imagens/fotosAnuncios/{anuncio.Codigo}-1.jpeg' class='imgProduto'>
                 
                                                 <div class='infoEncerramento'>
-                                                    <h3 class='txtEncerra'>encerra em: </h3> <h4 class='txtDataEncerramento'>{diasRestantes.Days} dias</h4>
+                                                    <h3 class='txtEncerra'>encerra em: </h3> <h4 class='txtDataEncerramento'>{dias}</h4>
                                                 </div>
 
                                                 <div class='infoTituloProduto'>

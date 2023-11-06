@@ -141,6 +141,8 @@
     <Content Include="css\login.css" />
     <Content Include="css\perfil.css" />
     <Content Include="css\validarEmail.css" />
+    <Content Include="imagens\anuncio\botaoMais.png" />
+    <Content Include="imagens\anuncio\botaoMenos.png" />
     <Content Include="imagens\anuncio\proximoLance.png" />
     <Content Include="imagens\U.png" />
     <Content Include="imagens\cadastro\paisagem_montanha.png" />
