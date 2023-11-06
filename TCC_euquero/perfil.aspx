@@ -133,7 +133,7 @@
         
         <%-- Meus Anúncios --------------------------------------------------------------------------------------------------------------------------------------------%>
 
-        <h2 class="Ttmp"> Meus anúncios</h2>
+        <h2 class="Ttmp"> <a href="cadastroAnuncio.aspx">Meus anúncios</a></h2>
 
         <div class="produtosCompreJa">
             <asp:Literal ID="litMeusAnuncios" runat="server"></asp:Literal>
