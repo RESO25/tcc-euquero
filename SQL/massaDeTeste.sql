@@ -8,22 +8,28 @@ call CadastrarUsuarioFisico("raiOli05@gmail.com", "73680241879", "Raissa Oliveir
 call CadastrarUsuarioFisico("jãoAlmeida@hotmail.com", "38625551866", "João Almeida da Silva", "qthyHNMofn");
 
 call CadastrarUsuarioFisico("raphaelresende10@gmail.com", "55502213269", "Raphael Resende", "amominhamulher");
+call ValidarConta("raphaelresende10@gmail.com");
 call CriarCartao("raphaelresende10@gmail.com", 1111222233334444, "Raphael Resende", "12/27", 265);
 call AdicionarSaldo("raphaelresende10@gmail.com", 100000);
 
 call CadastrarUsuarioFisico("fabimnhomaia@gmail.com", "22233344455", "Fábio Maia", "pepino123");
+call ValidarConta("fabimnhomaia@gmail.com");
 call AdicionarSaldo("fabimnhomaia@gmail.com", 100000);
 
 call CadastrarUsuarioFisico("kaikeleimig@gmail.com", "11122233344", "Kaike Leimig", "giulia<3");
+call ValidarConta("kaikeleimig@gmail.com");
 call AdicionarSaldo("kaikeleimig@gmail.com", 100000);
 
 call CadastrarUsuarioFisico("jeffersonsantos@outlook.com", "11122233344", "Jefferson Santos", "torta");
+call ValidarConta("jeffersonsantos@outlook.com");
 call AdicionarSaldo("jeffersonsantos@outlook.com", 10000);
 
 call CadastrarUsuarioFisico("anajj@gmail.com", "11122233344", "Ana Júlia", "lgtv");
+call ValidarConta("anajj@gmail.com");
 call AdicionarSaldo("anajj@gmail.com", 100000);
 
 call CadastrarUsuarioFisico("afonsoaa@outlook.com", "11122233344", "Afonso Anjos", "nicx");
+call ValidarConta("afonsoaa@outlook.com");
 call AdicionarSaldo("afonsoaa@outlook.com", 10000);
 
 call CadastrarUsuarioJuridico("estoque@antonellaeluciamarcenarialtda.com.br", "92007661000167", "Antonella e Lúcia Marcenaria Ltda", "2soOCN169G");

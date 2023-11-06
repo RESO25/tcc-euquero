@@ -486,3 +486,7 @@ begin
 	where cd_anuncio = pAnuncio);
 end$$
 Delimiter ;
+
+delete from usuario where nm_email_usuario = "raphaelresende25@outlook.com";
+delete from validacao where nm_email_usuario = "raphaelresende25@outlook.com";
+delete from endereco where nm_email_usuario = "raphaelresende25@outlook.com";
