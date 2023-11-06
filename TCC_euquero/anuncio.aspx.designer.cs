@@ -42,6 +42,15 @@ namespace TCC_euquero
         protected global::System.Web.UI.WebControls.Literal litImgExtras;
 
         /// <summary>
+        /// Controle litTermina.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litTermina;
+
+        /// <summary>
         /// Controle litDiasRestantes.
         /// </summary>
         /// <remarks>
@@ -105,6 +114,15 @@ namespace TCC_euquero
         protected global::System.Web.UI.WebControls.Literal litGanhador;
 
         /// <summary>
+        /// Controle litMin.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litMin;
+
+        /// <summary>
         /// Controle txtLance.
         /// </summary>
         /// <remarks>
@@ -112,6 +130,15 @@ namespace TCC_euquero
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtLance;
+
+        /// <summary>
+        /// Controle litMax.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litMax;
 
         /// <summary>
         /// Controle btnDarLance.

@@ -7,6 +7,7 @@ using System.Security.Cryptography;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using TCC_euquero.Logica;
 using TCC_euquero.Modelo;
 
 namespace TCC_euquero
@@ -56,8 +57,21 @@ namespace TCC_euquero
 
             if (Senha.Value == RepetirSenha.Value)
             {
-                usuario.CadastrarUsuario(Email.Value, CPF.Value, Nome.Value, Senha.Value, long.Parse(Telefone.Value), codTipoPessoa, CEP.Text, nomeEndereço, Número.Value, Complemento.Value);
-                Response.Redirect($"validarEmail.aspx?email={Email.Value}");
+                GerenciarCadastroUsuario gerenciarCadastroUsuario = new GerenciarCadastroUsuario();
+
+                if (!gerenciarCadastroUsuario.VerificarValidacao(Email.Value))
+                {
+                    usuario.CadastrarUsuario(Email.Value, CPF.Value, Nome.Value, Senha.Value, long.Parse(Telefone.Value), codTipoPessoa, CEP.Text, nomeEndereço, Número.Value, Complemento.Value);
+
+                    gerenciarCadastroUsuario.EnviarCodigoEmail(Email.Value);
+
+                    Response.Redirect($"validarEmail.aspx?email={Email.Value}");
+                }
+                else
+                {
+                    litRespostaSistema.Text = "Já existe uma conta cadastrada nesse email.";
+                }
+
             }
             else
             {

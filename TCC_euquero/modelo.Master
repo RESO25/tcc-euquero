@@ -81,7 +81,7 @@
         
                             <div id="criarConta">
                                 <p>Ainda não tem uma conta?</p>
-                                <button>Cadastrar</button>
+                                <a>Cadastrar</a>
                             </div>
                         </div>
                     </div>

@@ -18,78 +18,81 @@ namespace TCC_euquero
             Anuncio anuncio = new Anuncio();
             GerenciarAnuncios gerenciarAnuncios = new GerenciarAnuncios();
 
+            anuncio.ListarDadosAnuncio(int.Parse(Request["codProduto"]));
 
-            if (!anuncio.VerificarEstadoAnuncio(int.Parse(Request["codProduto"])))
+            //if (!(anuncio.DataEncerramento.Subtract(DateTime.Today).Days <= 0 && anuncio.DataEncerramento.Subtract(DateTime.UtcNow).Hours <= 0 && anuncio.DataEncerramento.Subtract(DateTime.UtcNow).Minutes <= 0))
+            //{
+            if (Session["email"] != null)
             {
-                anuncio.ListarDadosAnuncio(int.Parse(Request["codProduto"]));
+                txtLance.Enabled = true;
+            }
 
-                if (!(anuncio.DataEncerramento.Subtract(DateTime.Today).Days <= 0 && anuncio.DataEncerramento.Subtract(DateTime.UtcNow).Hours <= 0 && anuncio.DataEncerramento.Subtract(DateTime.UtcNow).Minutes <= 0))
-                {
-                    if (Session["email"] != null)
-                    {
-                        txtLance.Enabled = true;
-                    }
+            int totalAnuncios = gerenciarAnuncios.ContarAnuncios();
+            if (String.IsNullOrEmpty(Request["codProduto"]) || int.Parse(Request["codProduto"]) > totalAnuncios)
+                Response.Redirect("erro.aspx?codErro=1");
 
-                    int totalAnuncios = gerenciarAnuncios.ContarAnuncios();
-                    if (String.IsNullOrEmpty(Request["codProduto"]) || int.Parse(Request["codProduto"]) > totalAnuncios)
-                        Response.Redirect("erro.aspx?codErro=1");
+            litNomeProduto.Text = anuncio.NomeProduto;
+            litDescricao.Text = anuncio.DescricaoProduto;
+            litDiasRestantes.Text = anuncio.DataEncerramento.Subtract(DateTime.Today).Days.ToString();
+            litHorasRestantes.Text = anuncio.DataEncerramento.Subtract(DateTime.UtcNow).Hours.ToString();
+            litMinutosRestantes.Text = anuncio.DataEncerramento.Subtract(DateTime.UtcNow).Minutes.ToString();
+            litParticipantes.Text = anuncio.QntParticipantes.ToString();
+            litLances.Text = anuncio.QntLances.ToString();
+            litLeiloeiro.Text = anuncio.NomeUsuario;
+            litGanhador.Text = anuncio.GanhadorAtual;
+            litLanceAtual.Text = anuncio.LanceAtual.ToString("C", new CultureInfo("pt-br"));
+            litValorInicial.Text = anuncio.ValorMinimo.ToString("C", new CultureInfo("pt-br"));
 
-                    litNomeProduto.Text = anuncio.NomeProduto;
-                    litDescricao.Text = anuncio.DescricaoProduto;
-                    litDiasRestantes.Text = anuncio.DataEncerramento.Subtract(DateTime.Today).Days.ToString();
-                    litHorasRestantes.Text = anuncio.DataEncerramento.Subtract(DateTime.UtcNow).Hours.ToString();
-                    litMinutosRestantes.Text = anuncio.DataEncerramento.Subtract(DateTime.UtcNow).Minutes.ToString();
-                    litParticipantes.Text = anuncio.QntParticipantes.ToString();
-                    litLances.Text = anuncio.QntLances.ToString();
-                    litLeiloeiro.Text = anuncio.NomeUsuario;
-                    litGanhador.Text = anuncio.GanhadorAtual;
-                    litLanceAtual.Text = anuncio.LanceAtual.ToString("C", new CultureInfo("pt-br"));
-                    litValorInicial.Text = anuncio.ValorMinimo.ToString("C", new CultureInfo("pt-br"));
+            CarregarImagens();
 
-                    CarregarImagens();
+            List<Anuncio> anuncios = gerenciarAnuncios.ListarAnunciosCard();
 
-                    List<Anuncio> anuncios = gerenciarAnuncios.ListarAnunciosCard();
+            litCardProduto.Text = "";
 
-                    litCardProduto.Text = "";
+            for (int i = 0; i < anuncios.Count; i++)
+            {
+                TimeSpan diasRestantes = anuncios[i].DataEncerramento.Subtract(DateTime.Today);
 
-                    for (int i = 0; i < anuncios.Count; i++)
-                    {
-                        TimeSpan diasRestantes = anuncios[i].DataEncerramento.Subtract(DateTime.Today);
-
-                        litCardProduto.Text += $@"
-                                        <div class='cardProduto'>
-                                            <a href='anuncio.aspx?codProduto={anuncios[i].Codigo}'> 
-                                                <img src='imagens/fotosAnuncios/{anuncios[i].Codigo}-1.jpeg' class='imgProduto'>
+                litCardProduto.Text += $@"
+                                <div class='cardProduto'>
+                                    <a href='anuncio.aspx?codProduto={anuncios[i].Codigo}'> 
+                                        <img src='imagens/fotosAnuncios/{anuncios[i].Codigo}-1.jpeg' class='imgProduto'>
                 
-                                                <div class='infoEncerramento'>
-                                                    <h3 class='txtEncerra'>encerra em: </h3> <h4 class='txtDataEncerramento'>{diasRestantes.Days} dias</h4>
-                                                </div>
-
-                                                <div class='infoTituloProduto'>
-                                                    <h5>{anuncios[i].NomeProduto}</h5>
-                                                </div>
-
-                                                <div class='infoValorAtual'>
-                                                    <h6>valor a partir de:</h6>
-                                                    <p class='txtValorProduto'>{anuncios[i].LanceAtual.ToString("C", new CultureInfo("pt-br"))}</p>
-                                                </div>
-
-                                            </a>
+                                        <div class='infoEncerramento'>
+                                            <h3 class='txtEncerra'>encerra em: </h3> <h4 class='txtDataEncerramento'>{diasRestantes.Days} dias</h4>
                                         </div>
-                                        ";
-                    }
-                }
-                else
-                {
-                    anuncio.FecharAnuncio(int.Parse(Request["codProduto"]));
-                    Response.Redirect(Page.Request.Url.ToString());
-                }
+
+                                        <div class='infoTituloProduto'>
+                                            <h5>{anuncios[i].NomeProduto}</h5>
+                                        </div>
+
+                                        <div class='infoValorAtual'>
+                                            <h6>valor a partir de:</h6>
+                                            <p class='txtValorProduto'>{anuncios[i].LanceAtual.ToString("C", new CultureInfo("pt-br"))}</p>
+                                        </div>
+
+                                    </a>
+                                </div>
+                                ";
             }
-            else
+
+            if ((anuncio.DataEncerramento.Subtract(DateTime.Today).Days <= 0 && anuncio.DataEncerramento.Subtract(DateTime.UtcNow).Hours <= 0 && anuncio.DataEncerramento.Subtract(DateTime.UtcNow).Minutes <= 0))
             {
-                // FAZER POP-UP DIZENDO QUE O ANUNCIO JA FOI ENCERRADO E FALANDO O NOME DO VENCER OU AVISANDO O USUARIO QUE O ANUNCIO FOI ENCERRADO
-                litDiasRestantes.Text = "ACABOU MANO";
+                litTermina.Text = "Leilão encerrou há:";
+
+                litMin.Text = "<p style=text-align:center;>Leilão encerrado.</p>";
+                btnDarLance.Visible = false;
+                txtLance.Visible = false;
+                litMax.Text = "";
+
+                litDiasRestantes.Text = anuncio.DataEncerramento.Subtract(DateTime.Today).Days.ToString().Replace('-',' ');
+                litHorasRestantes.Text = anuncio.DataEncerramento.Subtract(DateTime.UtcNow).Hours.ToString().Replace('-', ' ');
+                litMinutosRestantes.Text = anuncio.DataEncerramento.Subtract(DateTime.UtcNow).Minutes.ToString().Replace('-', ' ');
+
+                if(!anuncio.VerificarEstadoAnuncio())
+                    anuncio.FecharAnuncio();
             }
+               
         }
 
         public void CarregarImagens()

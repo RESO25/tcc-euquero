@@ -67,7 +67,7 @@ main {
     box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     padding: 0px;
-    margin-right: 5px;
+    margin-right: 25px;
     margin-bottom: 55px;
 
 }
@@ -83,9 +83,9 @@ main {
 .produtosCompreJa {
     display: flex;
     margin-left: 0px;
-    justify-content: space-between;
+/*    justify-content: space-between;
     align-items: center;
-    align-content: center;
+    align-content: center;*/
     flex-wrap: wrap;
 
 }
@@ -178,3 +178,16 @@ a:visited{
     background-color: var(--amarelo);
     border-radius: 50px;
 }
+
+
+.form-group .form-field {
+    width: 317px;
+}
+
+#criarConta button {
+    background: none;
+    color: var(--amarelo);
+    text-decoration: underline;
+    border: unset;
+}
+

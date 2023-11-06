@@ -95,6 +95,19 @@ namespace TCC_euquero.Modelo
 
 
         #region Métodos
+        public void CriarAnuncio(string pEmailUsuario, string pDataEncerramento, string pNomeProduto, string pDescricao, string pValorMin, string pValorMax)
+        {
+            List<Parametro> parametros = new List<Parametro>();
+            parametros.Add(new Parametro("pEmail", pEmailUsuario));
+            parametros.Add(new Parametro("pEncerramento", pDataEncerramento));
+            parametros.Add(new Parametro("pNomeProduto", pNomeProduto));
+            parametros.Add(new Parametro("pDescricao", pDescricao));
+            parametros.Add(new Parametro("pValorMin", pValorMin));
+            parametros.Add(new Parametro("pValorMax", pValorMax));
+
+            ExecutarProcedure("CriarAnuncio", parametros);
+        }
+
         public void ListarDadosAnuncio(int pCodigoAnuncio)
         {
             Anuncio anuncio = new Anuncio();
@@ -120,36 +133,38 @@ namespace TCC_euquero.Modelo
             Desconectar();
         }
 
-        public bool VerificarEstadoAnuncio(int pCodigoAnuncio)
+        public bool VerificarEstadoAnuncio()
         {
             List<Parametro> parametros = new List<Parametro>();
-            parametros.Add(new Parametro("pCodigoAnuncio", pCodigoAnuncio.ToString()));
+            parametros.Add(new Parametro("pCodigoAnuncio", Codigo.ToString()));
 
             MySqlDataReader dados = ConsultarProcedure("ConsultarEstadoAnuncio", parametros);
             dados.Read();
 
             if (dados.GetBoolean("EstadoAnuncio"))
             {
+                //Anúncio encerrado
                 dados.Close();
                 Desconectar();
                 return true;
             }
             else
             {
+                //Anúncio aberto
                 dados.Close();
                 Desconectar();
                 return false;
             }
         }
 
-        public void FecharAnuncio(int pCodigoAnuncio)
+        public void FecharAnuncio()
         {
             EnvioDeEmail enviarEmail = new EnvioDeEmail();
             List<Parametro> parametros = new List<Parametro>();
-            parametros.Add(new Parametro("pCodigoAnuncio", pCodigoAnuncio.ToString()));
+            parametros.Add(new Parametro("pCodigoAnuncio", Codigo.ToString()));
 
             ExecutarProcedure("EncerrarAnuncio", parametros);
-            enviarEmail.NotificarVitoria(pCodigoAnuncio);
+            enviarEmail.NotificarVitoria(Codigo);
 
             return;
         }

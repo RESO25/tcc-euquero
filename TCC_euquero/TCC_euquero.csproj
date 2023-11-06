@@ -125,6 +125,8 @@
     <Content Include="anuncio.aspx" />
     <Content Include="busca.aspx" />
     <Content Include="cadastro.aspx" />
+    <Content Include="cadastroAnuncio.aspx" />
+    <Content Include="css\cadastroAnuncio.css" />
     <Content Include="categoria.aspx" />
     <Content Include="css\anuncio.css" />
     <Content Include="css\busca.css" />
@@ -193,6 +195,7 @@
     <Content Include="imagens\index\Tractor.png" />
     <Content Include="imagens\login\backgroundLogin.png" />
     <Content Include="imagens\logo.png" />
+    <Content Include="js\cpf-cnpj.js" />
     <Content Include="js\input.js" />
     <Content Include="js\login.js" />
     <Content Include="login.aspx" />
@@ -222,6 +225,13 @@
     </Compile>
     <Compile Include="cadastro.aspx.designer.cs">
       <DependentUpon>cadastro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="cadastroAnuncio.aspx.cs">
+      <DependentUpon>cadastroAnuncio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="cadastroAnuncio.aspx.designer.cs">
+      <DependentUpon>cadastroAnuncio.aspx</DependentUpon>
     </Compile>
     <Compile Include="categoria.aspx.cs">
       <DependentUpon>categoria.aspx</DependentUpon>

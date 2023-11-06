@@ -120,7 +120,7 @@
 
                             </div>
                             <div>
-                                <asp:Button ID="btnSair" CssClass="btnAdicionarSaldo" runat="server" Text="Sair" OnClick="btnSair_Click" />
+                                <asp:Button ID="btnSair" CssClass="btnsair" runat="server" Text="Sair" OnClick="btnSair_Click" />
                             </div>
                     </div>
         </div>

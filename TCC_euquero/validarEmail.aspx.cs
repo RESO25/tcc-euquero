@@ -17,15 +17,7 @@ namespace TCC_euquero
                 Response.Redirect("index.aspx");
 
             email = Request["email"].ToString();
-
-            GerenciarCadastroUsuario gerenciarCadastroUsuario = new GerenciarCadastroUsuario();
-
-            if (gerenciarCadastroUsuario.VerificarValidacao(email))
-                Response.Redirect("index.aspx");
-
             litEmailConfirmacao.Text = $"{email}.\n";
-
-            gerenciarCadastroUsuario.EnviarCodigoEmail(email);
         }
 
         protected void btnValidar_Click(object sender, EventArgs e)

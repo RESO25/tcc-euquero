@@ -1,42 +1,42 @@
 use euquero;
 
 -- USUARIO
-call CadastrarUsuarioFisico("andersonSilva1294@gmail.com", "37400050842", "Anderson Silva dos Anjos", "nUNUancAOU");
-call CadastrarUsuarioFisico("gusta2932@hotmail.com", "91442834820", "Gustavo Pereira dos Campos", "xZbKXjiILH");
-call CadastrarUsuarioFisico("vanessa.Andrade221@etec.sp.gov.br", "85606696800", "Vanessa de Andrade", "QfrlasQpSs");
-call CadastrarUsuarioFisico("raiOli05@gmail.com", "73680241879", "Raissa Oliveira dos Santos", "ni7sOj7TgD");
-call CadastrarUsuarioFisico("jãoAlmeida@hotmail.com", "38625551866", "João Almeida da Silva", "qthyHNMofn");
+call CadastrarUsuarioFisico("andersonSilva1294@gmail.com", "37400050842", "Anderson Silva dos Anjos", "nUNUancAOU", null);
+call CadastrarUsuarioFisico("gusta2932@hotmail.com", "91442834820", "Gustavo Pereira dos Campos", "xZbKXjiILH", null);
+call CadastrarUsuarioFisico("vanessa.Andrade221@etec.sp.gov.br", "85606696800", "Vanessa de Andrade", "QfrlasQpSs", null);
+call CadastrarUsuarioFisico("raiOli05@gmail.com", "73680241879", "Raissa Oliveira dos Santos", "ni7sOj7TgD", null);
+call CadastrarUsuarioFisico("jãoAlmeida@hotmail.com", "38625551866", "João Almeida da Silva", "qthyHNMofn", null);
 
-call CadastrarUsuarioFisico("raphaelresende10@gmail.com", "55502213269", "Raphael Resende", "amominhamulher");
+call CadastrarUsuarioFisico("raphaelresende10@gmail.com", "55502213269", "Raphael Resende", "amominhamulher", null);
 call ValidarConta("raphaelresende10@gmail.com");
 call CriarCartao("raphaelresende10@gmail.com", 1111222233334444, "Raphael Resende", "12/27", 265);
 call AdicionarSaldo("raphaelresende10@gmail.com", 100000);
 
-call CadastrarUsuarioFisico("fabimnhomaia@gmail.com", "22233344455", "Fábio Maia", "pepino123");
+call CadastrarUsuarioFisico("fabimnhomaia@gmail.com", "22233344455", "Fábio Maia", "pepino123", null);
 call ValidarConta("fabimnhomaia@gmail.com");
 call AdicionarSaldo("fabimnhomaia@gmail.com", 100000);
 
-call CadastrarUsuarioFisico("kaikeleimig@gmail.com", "11122233344", "Kaike Leimig", "giulia<3");
+call CadastrarUsuarioFisico("kaikeleimig@gmail.com", "11122233344", "Kaike Leimig", "giulia<3", null);
 call ValidarConta("kaikeleimig@gmail.com");
 call AdicionarSaldo("kaikeleimig@gmail.com", 100000);
 
-call CadastrarUsuarioFisico("jeffersonsantos@outlook.com", "11122233344", "Jefferson Santos", "torta");
+call CadastrarUsuarioFisico("jeffersonsantos@outlook.com", "11122233344", "Jefferson Santos", "torta", null);
 call ValidarConta("jeffersonsantos@outlook.com");
 call AdicionarSaldo("jeffersonsantos@outlook.com", 10000);
 
-call CadastrarUsuarioFisico("anajj@gmail.com", "11122233344", "Ana Júlia", "lgtv");
+call CadastrarUsuarioFisico("anajj@gmail.com", "11122233344", "Ana Júlia", "lgtv", null);
 call ValidarConta("anajj@gmail.com");
 call AdicionarSaldo("anajj@gmail.com", 100000);
 
-call CadastrarUsuarioFisico("afonsoaa@outlook.com", "11122233344", "Afonso Anjos", "nicx");
+call CadastrarUsuarioFisico("afonsoaa@outlook.com", "11122233344", "Afonso Anjos", "nicx", null);
 call ValidarConta("afonsoaa@outlook.com");
 call AdicionarSaldo("afonsoaa@outlook.com", 10000);
 
-call CadastrarUsuarioJuridico("estoque@antonellaeluciamarcenarialtda.com.br", "92007661000167", "Antonella e Lúcia Marcenaria Ltda", "2soOCN169G");
-call CadastrarUsuarioJuridico("desenvolvimento@cesareigorlocacoesdeautomoveisme.com.br", "09325630000100", "César e Igor Locações de Automóveis ME", "iUXLaAPdXC");
-call CadastrarUsuarioJuridico("juridico@ceciliaevitoradegaltda.com.br", "248434243377", "Cecília e Vitor Adega Ltda", "wJpxC2fpWq");
-call CadastrarUsuarioJuridico("faleconosco@agathaeantonioconstrucoesme.com.br", "950574620829", "Agatha e Antonio Construções ME", "DuEo02XoPl");
-call CadastrarUsuarioJuridico("juridico@nathaneantoniaferragensme.com.br", "327007532599", "Nathan e Antônia Ferragens ME", "RPO0wq86gn");
+call CadastrarUsuarioJuridico("estoque@antonellaeluciamarcenarialtda.com.br", "92007661000167", "Antonella e Lúcia Marcenaria Ltda", "2soOCN169G", null);
+call CadastrarUsuarioJuridico("desenvolvimento@cesareigorlocacoesdeautomoveisme.com.br", "09325630000100", "César e Igor Locações de Automóveis ME", "iUXLaAPdXC", null);
+call CadastrarUsuarioJuridico("juridico@ceciliaevitoradegaltda.com.br", "248434243377", "Cecília e Vitor Adega Ltda", "wJpxC2fpWq", null);
+call CadastrarUsuarioJuridico("faleconosco@agathaeantonioconstrucoesme.com.br", "950574620829", "Agatha e Antonio Construções ME", "DuEo02XoPl", null);
+call CadastrarUsuarioJuridico("juridico@nathaneantoniaferragensme.com.br", "327007532599", "Nathan e Antônia Ferragens ME", "RPO0wq86gn", null);
 
 
 -- ENDEREÇO

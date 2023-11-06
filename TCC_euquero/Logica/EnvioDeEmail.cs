@@ -18,7 +18,7 @@ namespace TCC_euquero.Logica
         {
             SmtpClient smtpClient = new SmtpClient("smtp.office365.com", 587);
             smtpClient.UseDefaultCredentials = false;
-            smtpClient.Credentials = new NetworkCredential("leilaoEuQuero@outlook.pt", "aafjkrTCC2023");
+            smtpClient.Credentials = new NetworkCredential("leilaoEuQuero@outlook.pt", "aafjkrTCC");
             smtpClient.EnableSsl = true;
             smtpClient.Send(mail);
         }

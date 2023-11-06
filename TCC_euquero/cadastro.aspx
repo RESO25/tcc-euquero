@@ -18,7 +18,7 @@
     </header>
 
 <body>
-    <form id="form1" runat="server">
+    <form id="form1" runat="server" defaultbutton="btnCadastrar">
         <div class="bgCadastro">
             <div class="formCadastro">
                 <div class="alinharConteudo">
@@ -29,8 +29,8 @@
 
                             <div class="form-inline">
                                 <div class="form-group">
-                                    <label for="CPF" class="labelinput">CPF</label>
-                                    <input required="" id="CPF" type="number" name="CPF" class="form-field" placeholder="Coloque o CPF" runat="server"/>
+                                    <label id="lblCpfCnpj" for="CPF" class="labelinput">CPF</label>
+                                    <input required="" id="CPF" type="number" name="CPF" class="form-field" placeholder="Coloque o documento sem pontuação" runat="server"/>
                                 </div>
                             </div>
                         
@@ -40,12 +40,12 @@
 
 
                             <div>
-                                <input id="PessoaFisica" type="radio" name="tipoPessoa" class="radioTipoPessoa" value="Física" runat="server"/>
+                                <input id="PessoaFisica" type="radio" name="tipoPessoa" class="radioTipoPessoa" value="Física" runat="server" checked="" onclick="cpf()"/>
                                 <label for="pessoaFisica">Pessoa Física</label>
                             </div>
                             
                             <div>    
-                                <input id="PessoaJuridica" type="radio" name="tipoPessoa" class="radioTipoPessoa" value="Jurídica" runat="server"/>
+                                <input id="PessoaJuridica" type="radio" name="tipoPessoa" class="radioTipoPessoa" value="Jurídica" runat="server" onclick="cnpj()"/>
                                 <label for="pessoaJuridica">Pessoa Jurídica</label>
                             </div>
 
@@ -173,6 +173,7 @@
                 </div>     
             </div>
         </div>
+        <script src="js/cpf-cnpj.js"></script>
     </form>
 </body>
 

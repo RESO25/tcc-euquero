@@ -1,0 +1,167 @@
+﻿@import "estiloGeral.css";
+@import "header.css";
+@import "footer.css";
+
+
+.conteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 15%;
+    padding-top: 2%;
+    padding-bottom: 5%;
+    width: 80%;
+}
+
+
+.areaInput {
+    padding-bottom: 2%;
+}
+
+/* 
+.tituloSubtitulo
+{
+    /* padding-top: 2%; */
+/* padding-left: 10%; 
+} */
+
+
+h1 {
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    color: black;
+    font-size: 2.5rem;
+}
+
+.tituloSubtitulo {
+    padding-bottom: 2%;
+}
+
+.subtitulo {
+    font-size: 1rem;
+    margin-top: -15px;
+    padding-left: 1%;
+    color: #9c9c9c;
+    font-weight: 900;
+}
+
+
+#email {
+    padding-right: 10%;
+}
+
+
+#descProduto {
+    height: 10rem;
+}
+
+
+.nomeDesc {
+    display: flex;
+    flex-direction: row;
+}
+
+
+.valores {
+    display: flex;
+    margin-top: -7%;
+}
+
+
+.valor {
+    width: 50%;
+}
+
+#areaNome {
+    padding-right: 9%;
+}
+
+
+
+input {
+    /* font-family: 'Almarai', sans-serif; */
+    /* font-weight: 600; */
+    font-size: 15px;
+    /* background-color: #fafafa; */
+    box-shadow: -1px 3px 5px -4px rgba(0,0,0,0.33);
+    border-radius: 8px;
+}
+
+
+    input[type=number]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
+
+    input[type=number] {
+        -moz-appearance: textfield;
+        appearance: textfield;
+        /* font-size: 20px; */
+        /* font-weight: 600; */
+    }
+
+
+    input:focus {
+        font-family: 'Almarai', sans-serif;
+        font-weight: 700;
+    }
+
+
+    input::placeholder {
+        color: rgb(65, 65, 65);
+        /* font-weight: 700;
+    font-family: 'Almarai', sans-serif; */
+        /* font-style: italic; */
+    }
+
+
+
+
+
+
+.emailDatas {
+    display: flex;
+}
+
+
+.datas {
+    display: flex;
+    flex-direction: row;
+}
+
+
+.inputData {
+    width: 10rem;
+}
+
+
+#inputComeco {
+    padding-right: 5%;
+}
+
+
+.areaBtn {
+    padding-top: 8%;
+    padding-left: 48rem;
+}
+
+
+.btnCriarAnuncio {
+    width: 10rem;
+    height: 45px;
+    background-color: #FFC000;
+    color: #ffffff;
+    font-weight: bold;
+    border: 0ch;
+    font-family: 'Almarai', sans-serif;
+    font-weight: bold;
+    font-size: 17px;
+    border-radius: 7px;
+    box-shadow: 0px 0px 9px 0px rgba(211, 211, 211, 0.932);
+}
+
+
+
+input:focus {
+    background-color: #ffffff;
+    border-color: #f2b705;
+}
