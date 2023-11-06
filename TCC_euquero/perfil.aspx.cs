@@ -62,7 +62,7 @@ namespace TCC_euquero
             }
 
             Endereço endereco = new Endereço();
-            endereco.BuscarEndereçoUsuario();
+            endereco.BuscarEnderecoUsuario();
 
             litFotoPerfil.Text = $"<img src='imagens/fotosPerfis/{caminhoFoto}' class='imgPerfil'>";
 

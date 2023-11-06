@@ -90,7 +90,7 @@ namespace TCC_euquero.Logica
         public void EnviarCodigoEmail(string emailUsuario)
         {
             MailMessage mail = new MailMessage("leilaoEuQuero@outlook.pt", emailUsuario);
-            EnviarEmail envioDeEmail = new EnviarEmail();
+            EnvioDeEmail envioDeEmail = new EnvioDeEmail();
 
             codigoValidacao = ConsultarCodigoValidacao(emailUsuario);
 

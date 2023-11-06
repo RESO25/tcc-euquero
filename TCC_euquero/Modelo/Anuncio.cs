@@ -115,12 +115,12 @@ namespace TCC_euquero.Modelo
 
         public void FecharAnuncio(int pCodigoAnuncio)
         {
-            EnviarEmail enviarEmail = new EnviarEmail();
+            EnvioDeEmail EnvioDeEmail = new EnvioDeEmail();
             List<Parametro> parametros = new List<Parametro>();
             parametros.Add(new Parametro("pCodigoAnuncio", pCodigoAnuncio.ToString()));
 
             ExecutarProcedure("EncerrarAnuncio", parametros);
-            enviarEmail.NotificarVitoria(pCodigoAnuncio);
+            EnvioDeEmail.NotificarVitoria(pCodigoAnuncio);
 
             return;
         }
