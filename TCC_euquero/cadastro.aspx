@@ -7,18 +7,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="../css/cadastro.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/imagens/U.png">
     <link href="../css/cadastro.css" rel="stylesheet">
     
     <title>Eu Quero | Cadastro</title>
 </head>
 
     <header>
-    <img class="euQueroLogo" src="../imagens/logo.png">
+    <a href="index.aspx"><img class="euQueroLogo" src="../imagens/logo.png"></a>
     </header>
 
 <body>
-    <form id="form1" runat="server">
+    <form id="form1" runat="server" defaultbutton="btnCadastrar">
         <div class="bgCadastro">
             <div class="formCadastro">
                 <div class="alinharConteudo">
@@ -29,8 +29,8 @@
 
                             <div class="form-inline">
                                 <div class="form-group">
-                                    <label for="CPF" class="labelinput">CPF</label>
-                                    <input required="" id="CPF" type="number" name="CPF" class="form-field" placeholder="Coloque o CPF" runat="server"/>
+                                    <label id="lblCpfCnpj" for="CPF" class="labelinput">CPF</label>
+                                    <input required="" id="CPF" type="number" name="CPF" class="form-field" placeholder="Coloque o documento sem pontuação" runat="server"/>
                                 </div>
                             </div>
                         
@@ -40,12 +40,12 @@
 
 
                             <div>
-                                <input id="PessoaFisica" type="radio" name="tipoPessoa" class="radioTipoPessoa" value="Física" runat="server"/>
+                                <input id="PessoaFisica" type="radio" name="tipoPessoa" class="radioTipoPessoa" value="Física" runat="server" checked="" onclick="cpf()"/>
                                 <label for="pessoaFisica">Pessoa Física</label>
                             </div>
                             
                             <div>    
-                                <input id="PessoaJuridica" type="radio" name="tipoPessoa" class="radioTipoPessoa" value="Jurídica" runat="server"/>
+                                <input id="PessoaJuridica" type="radio" name="tipoPessoa" class="radioTipoPessoa" value="Jurídica" runat="server" onclick="cnpj()"/>
                                 <label for="pessoaJuridica">Pessoa Jurídica</label>
                             </div>
 
@@ -168,11 +168,12 @@
                         <asp:Literal ID="litRespostaSistema" runat="server">-</asp:Literal>
 
                         <div class="btn">
-                            <asp:Button ID="btnCadastrar" runat="server" Text="Cadastrar" OnClick="btnCadastrar_Click"/>
+                            <asp:Button ID="btnCadastrar" runat="server" Text="Próximo" OnClick="btnCadastrar_Click"/>
                         </div>
                 </div>     
             </div>
         </div>
+        <script src="js/cpf-cnpj.js"></script>
     </form>
 </body>
 

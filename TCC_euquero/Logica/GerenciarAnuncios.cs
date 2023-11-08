@@ -13,9 +13,9 @@ namespace TCC_euquero.Logica
         public List<Anuncio> ListarAnunciosCard()
         {           
             MySqlDataReader dados = ConsultarProcedure("ListarAnunciosCard", null); ;
-
             List<Anuncio> anuncios = ListarAnuncios(dados);
 
+            dados.Close();
             Desconectar();
 
             return anuncios;
@@ -31,6 +31,7 @@ namespace TCC_euquero.Logica
 
             List<Anuncio> anuncios = ListarAnuncios(dados);
 
+            dados.Close();
             Desconectar();
 
             return anuncios;
@@ -46,6 +47,7 @@ namespace TCC_euquero.Logica
 
             List<Anuncio> anuncios = ListarAnuncios(dados);
 
+            dados.Close();
             Desconectar();
 
             return anuncios;
@@ -62,6 +64,7 @@ namespace TCC_euquero.Logica
 
             List<Anuncio> anuncios = ListarAnuncios(dados);
 
+            dados.Close();
             Desconectar();
 
             return anuncios;
@@ -78,6 +81,7 @@ namespace TCC_euquero.Logica
 
             List<Anuncio> anuncios = ListarAnuncios(dados);
 
+            dados.Close();
             Desconectar();
 
             return anuncios;
@@ -95,6 +99,7 @@ namespace TCC_euquero.Logica
             }
 
             dados.Close();
+            Desconectar();
 
             return anuncios;
         }

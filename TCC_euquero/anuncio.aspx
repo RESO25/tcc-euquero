@@ -19,7 +19,7 @@
             <div class="cardLeilao">
                 <section class="infoDataLeilao ">
                     <section class="dataEncerramentoLeilao">
-                        <h2>Leilão termina em: </h2>
+                        <h2><asp:Literal ID="litTermina" runat="server">Leilão termina em:</asp:Literal></h2>
                     </section>
 
                     <div class="diasHorasMinutos">
@@ -64,18 +64,23 @@
                 <section class="darLance">
                     <br />
 
+                <asp:Literal ID="litMin" runat="server">
                 <div class="inputMinMax">
                     <%--<asp:ImageButton ID="btnMenos" runat="server" ImageUrl="~/imagens/anuncio/botaoMenos.png" />--%>
                     <button type="button" id="menos" onclick="less()"><img src="/imagens/anuncio/botaoMenos.png" /></button>
-                    
+                </asp:Literal>
                     <div>
                         <asp:TextBox ID="txtLance" runat="server" CssClass="num"></asp:TextBox>
                     </div>
+
+                <asp:Literal ID="litMax" runat="server">
                     <%--<asp:ImageButton ID="btnMais" runat="server" ImageUrl="~/imagens/anuncio/botaoMais.png" />--%>
                     <button type="button" id="mais" onclick="more()"><img src="/imagens/anuncio/botaoMais.png" /></button>
                 </div>
-                      
-                    <asp:Button ID="btnDarLance" runat="server" Text="Dar Lance" CssClass="btnDarLance" OnClick="btnDarLance_Click" />
+                </asp:Literal>
+                
+                <asp:Button ID="btnDarLance" runat="server" Text="Dar Lance" CssClass="btnDarLance" OnClick="btnDarLance_Click" />
+
                 </section>
 
                 <%--<section class="icConfirmacaoLance">
@@ -117,13 +122,7 @@
                     <h2 class="txtDescricao"><asp:Literal ID="litDescricao" runat="server"></asp:Literal></h2>                    
                 </div>           
             </section>
-    
-            <div class="areaDocumentacao">
-                <section class="Documentacao">
-                    <h1> Documentação</h1>
-                    <div class="boxVerDocumentacao"></div>     
-                </section>    
-            </div>
+   
         </div>   
 
             <h1 class="tituloMaior">Compre já</h1>

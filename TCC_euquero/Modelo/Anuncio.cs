@@ -10,6 +10,7 @@ namespace TCC_euquero.Modelo
 {
     public class Anuncio : Banco
     {
+        #region Props
         public int Codigo { get; set; }
         public string EmailUsuario { get; set; }
         public string NomeUsuario { get; set; }
@@ -24,8 +25,10 @@ namespace TCC_euquero.Modelo
         public int QntLances { get; set; }
         public int QntParticipantes { get; set; }
         public bool Encerrado { get; set; }
+        #endregion
 
 
+        #region Construtores
         public Anuncio()
         {
         }
@@ -38,17 +41,41 @@ namespace TCC_euquero.Modelo
             LanceAtual       = lanceAtual;
         }
 
+        public Anuncio(int codigo, DateTime dataEncerramento, string nomeProduto, decimal lanceAtual, bool encerrado)
+        {
+            Codigo = codigo;
+            DataEncerramento = dataEncerramento;
+            NomeProduto = nomeProduto;
+            LanceAtual = lanceAtual;
+            Encerrado = encerrado;
+        }
+        #endregion
 
-        public void ListarDadosAnuncio(int CodigoAnuncio)
+
+        #region Métodos
+        public void CriarAnuncio(string pEmailUsuario, string pDataEncerramento, string pNomeProduto, string pDescricao, string pValorMin, string pValorMax)
+        {
+            List<Parametro> parametros = new List<Parametro>();
+            parametros.Add(new Parametro("pEmail", pEmailUsuario));
+            parametros.Add(new Parametro("pEncerramento", pDataEncerramento));
+            parametros.Add(new Parametro("pNomeProduto", pNomeProduto));
+            parametros.Add(new Parametro("pDescricao", pDescricao));
+            parametros.Add(new Parametro("pValorMin", pValorMin));
+            parametros.Add(new Parametro("pValorMax", pValorMax));
+
+            ExecutarProcedure("CriarAnuncio", parametros);
+        }
+
+        public void ListarDadosAnuncio(int pCodigoAnuncio)
         {
             Anuncio anuncio = new Anuncio();
-            List<Parametro> lista = new List<Parametro>();
-            lista.Add(new Parametro("pCodigoAnuncio", CodigoAnuncio.ToString()));
+            List<Parametro> parametros = new List<Parametro>();
+            parametros.Add(new Parametro("pCodigoAnuncio", pCodigoAnuncio.ToString()));
 
-            MySqlDataReader dados = ConsultarProcedure("ListarDadosAnuncio", lista);
+            MySqlDataReader dados = ConsultarProcedure("ListarDadosAnuncio", parametros);
             if (dados.Read())
             {
-                Codigo = CodigoAnuncio;
+                Codigo = pCodigoAnuncio;
                 NomeProduto = dados.GetString(0);
                 DescricaoProduto = dados.GetString(1);
                 DataEncerramento = dados.GetDateTime(2);
@@ -64,10 +91,10 @@ namespace TCC_euquero.Modelo
             Desconectar();
         }
 
-        public bool VerificarEstadoAnuncio(int CodigoAnuncio)
+        public bool VerificarEstadoAnuncio(int pCodigoAnuncio)
         {
             List<Parametro> parametros = new List<Parametro>();
-            parametros.Add(new Parametro("pCodigoAnuncio", CodigoAnuncio.ToString()));
+            parametros.Add(new Parametro("pCodigoAnuncio", pCodigoAnuncio.ToString()));
 
             MySqlDataReader dados = ConsultarProcedure("ConsultarEstadoAnuncio", parametros);
             dados.Read();
@@ -85,5 +112,18 @@ namespace TCC_euquero.Modelo
                 return false;
             }
         }
+
+        public void FecharAnuncio(int pCodigoAnuncio)
+        {
+            EnvioDeEmail EnvioDeEmail = new EnvioDeEmail();
+            List<Parametro> parametros = new List<Parametro>();
+            parametros.Add(new Parametro("pCodigoAnuncio", pCodigoAnuncio.ToString()));
+
+            ExecutarProcedure("EncerrarAnuncio", parametros);
+            EnvioDeEmail.NotificarVitoria(pCodigoAnuncio);
+
+            return;
+        }
+        #endregion
     }
 }

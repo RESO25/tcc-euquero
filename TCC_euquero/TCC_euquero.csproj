@@ -125,6 +125,8 @@
     <Content Include="anuncio.aspx" />
     <Content Include="busca.aspx" />
     <Content Include="cadastro.aspx" />
+    <Content Include="cadastroAnuncio.aspx" />
+    <Content Include="css\cadastroAnuncio.css" />
     <Content Include="categoria.aspx" />
     <Content Include="css\anuncio.css" />
     <Content Include="css\busca.css" />
@@ -138,6 +140,9 @@
     <Content Include="css\input.css" />
     <Content Include="css\login.css" />
     <Content Include="css\perfil.css" />
+    <Content Include="css\validarEmail.css" />
+    <Content Include="imagens\anuncio\botaoMais.png" />
+    <Content Include="imagens\anuncio\botaoMenos.png" />
     <Content Include="imagens\anuncio\proximoLance.png" />
     <Content Include="imagens\U.png" />
     <Content Include="imagens\cadastro\paisagem_montanha.png" />
@@ -192,10 +197,12 @@
     <Content Include="imagens\index\Tractor.png" />
     <Content Include="imagens\login\backgroundLogin.png" />
     <Content Include="imagens\logo.png" />
+    <Content Include="js\cpf-cnpj.js" />
     <Content Include="js\input.js" />
     <Content Include="js\login.js" />
     <Content Include="login.aspx" />
     <Content Include="perfil.aspx" />
+    <Content Include="validarEmail.aspx" />
     <Content Include="Web.config" />
     <Content Include="index.aspx" />
   </ItemGroup>
@@ -220,6 +227,13 @@
     </Compile>
     <Compile Include="cadastro.aspx.designer.cs">
       <DependentUpon>cadastro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="cadastroAnuncio.aspx.cs">
+      <DependentUpon>cadastroAnuncio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="cadastroAnuncio.aspx.designer.cs">
+      <DependentUpon>cadastroAnuncio.aspx</DependentUpon>
     </Compile>
     <Compile Include="categoria.aspx.cs">
       <DependentUpon>categoria.aspx</DependentUpon>
@@ -276,6 +290,13 @@
     </Compile>
     <Compile Include="index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="validarEmail.aspx.cs">
+      <DependentUpon>validarEmail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="validarEmail.aspx.designer.cs">
+      <DependentUpon>validarEmail.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

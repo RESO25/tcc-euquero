@@ -15,28 +15,22 @@ namespace TCC_euquero
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Anuncio anuncio = new Anuncio();
+            GerenciarAnuncios gerenciarAnuncios = new GerenciarAnuncios();
+
+            anuncio.ListarDadosAnuncio(int.Parse(Request["codProduto"]));
+
+            //if (!(anuncio.DataEncerramento.Subtract(DateTime.Today).Days <= 0 && anuncio.DataEncerramento.Subtract(DateTime.UtcNow).Hours <= 0 && anuncio.DataEncerramento.Subtract(DateTime.UtcNow).Minutes <= 0))
+            //{
             if (Session["email"] != null)
             {
-                GerenciarLance gerenciar = new GerenciarLance();
-
                 txtLance.Enabled = true;
             }
 
-            if (String.IsNullOrEmpty(Request["codProduto"]))
-                Response.Redirect("erro.aspx?codErro=1");
-
-            GerenciarAnuncios gerenciarAnuncios = new GerenciarAnuncios();
             int totalAnuncios = gerenciarAnuncios.ContarAnuncios();
-
-            if (int.Parse(Request["codProduto"]) > totalAnuncios)
+            if (String.IsNullOrEmpty(Request["codProduto"]) || int.Parse(Request["codProduto"]) > totalAnuncios)
                 Response.Redirect("erro.aspx?codErro=1");
 
-            Anuncio anuncio = new Anuncio();
-
-            if (anuncio.VerificarEstadoAnuncio(int.Parse(Request["codProduto"])))
-                Response.Redirect("erro.aspx?codErro=2");
-
-            anuncio.ListarDadosAnuncio(int.Parse(Request["codProduto"]));
             litNomeProduto.Text = anuncio.NomeProduto;
             litDescricao.Text = anuncio.DescricaoProduto;
             litDiasRestantes.Text = anuncio.DataEncerramento.Subtract(DateTime.Today).Days.ToString();
@@ -49,9 +43,7 @@ namespace TCC_euquero
             litLanceAtual.Text = anuncio.LanceAtual.ToString("C", new CultureInfo("pt-br"));
             litValorInicial.Text = anuncio.ValorMinimo.ToString("C", new CultureInfo("pt-br"));
 
-
             CarregarImagens();
-
 
             List<Anuncio> anuncios = gerenciarAnuncios.ListarAnunciosCard();
 
@@ -60,29 +52,52 @@ namespace TCC_euquero
             for (int i = 0; i < anuncios.Count; i++)
             {
                 TimeSpan diasRestantes = anuncios[i].DataEncerramento.Subtract(DateTime.Today);
+                string dias = "";
+                if (diasRestantes < TimeSpan.Zero)
+                    dias = "Encerrado";
+                else
+                    dias = diasRestantes.Days.ToString() + " dias";
 
                 litCardProduto.Text += $@"
-                                        <div class='cardProduto'>
-                                            <a href='anuncio.aspx?codProduto={anuncios[i].Codigo}'> 
-                                                <img src='imagens/fotosAnuncios/{anuncios[i].Codigo}-1.jpeg' class='imgProduto'>
+                                <div class='cardProduto'>
+                                    <a href='anuncio.aspx?codProduto={anuncios[i].Codigo}'> 
+                                        <img src='imagens/fotosAnuncios/{anuncios[i].Codigo}-1.jpeg' class='imgProduto'>
                 
-                                                <div class='infoEncerramento'>
-                                                    <h3 class='txtEncerra'>encerra em: </h3> <h4 class='txtDataEncerramento'>{diasRestantes.Days} dias</h4>
-                                                </div>
-
-                                                <div class='infoTituloProduto'>
-                                                    <h5>{anuncios[i].NomeProduto}</h5>
-                                                </div>
-
-                                                <div class='infoValorAtual'>
-                                                    <h6>valor a partir de:</h6>
-                                                    <p class='txtValorProduto'>{anuncios[i].LanceAtual.ToString("C", new CultureInfo("pt-br"))}</p>
-                                                </div>
-
-                                            </a>
+                                        <div class='infoEncerramento'>
+                                            <h3 class='txtEncerra'>encerra em: </h3> <h4 class='txtDataEncerramento'>{dias}</h4>
                                         </div>
-                                        ";
+
+                                        <div class='infoTituloProduto'>
+                                            <h5>{anuncios[i].NomeProduto}</h5>
+                                        </div>
+
+                                        <div class='infoValorAtual'>
+                                            <h6>valor a partir de:</h6>
+                                            <p class='txtValorProduto'>{anuncios[i].LanceAtual.ToString("C", new CultureInfo("pt-br"))}</p>
+                                        </div>
+
+                                    </a>
+                                </div>
+                                ";
             }
+
+            if ((anuncio.DataEncerramento.Subtract(DateTime.Today).Days <= 0 && anuncio.DataEncerramento.Subtract(DateTime.UtcNow).Hours <= 0 && anuncio.DataEncerramento.Subtract(DateTime.UtcNow).Minutes <= 0))
+            {
+                litTermina.Text = "Leilão encerrou há:";
+
+                litMin.Text = "<p style=text-align:center;>Leilão encerrado.</p>";
+                btnDarLance.Visible = false;
+                txtLance.Visible = false;
+                litMax.Text = "";
+
+                litDiasRestantes.Text = anuncio.DataEncerramento.Subtract(DateTime.Today).Days.ToString().Replace('-',' ');
+                litHorasRestantes.Text = anuncio.DataEncerramento.Subtract(DateTime.UtcNow).Hours.ToString().Replace('-', ' ');
+                litMinutosRestantes.Text = anuncio.DataEncerramento.Subtract(DateTime.UtcNow).Minutes.ToString().Replace('-', ' ');
+
+                if (!anuncio.VerificarEstadoAnuncio(int.Parse(Request["codProduto"].ToString())))
+                    anuncio.FecharAnuncio(int.Parse(Request["codProduto"].ToString()));
+            }
+               
         }
 
         public void CarregarImagens()

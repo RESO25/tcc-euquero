@@ -32,7 +32,7 @@ h1, .cardLeilao, .areaDocumentacao {
 
 .cardLeilao {
     width: 25%;
-    height: 50%;
+    height: 610px;
     box-shadow: 1px 1px 13px 2px #CECECE;
     border-radius: 8px;
 }
@@ -53,9 +53,10 @@ h2 {
 
 
 .dias, .horas, .minutos {
-    padding-right: 10%;
     text-align: center;
     margin: auto;
+    width:90px;
+    font-weight:600;
 }
 
 
@@ -127,15 +128,17 @@ h2 {
 }
 
 .maisfotoProduto {
+    background-color: var(--cinza);
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-content: flex-start;
-    height: 457px;
+    height: 608px;
     width: 303px;
     justify-content: space-between;
     align-items: stretch;
     margin-right: 3px;
+    border-radius: 5px 0px 0px 5px;
 }
 
 .fotinhas {
@@ -344,7 +347,29 @@ input:checked + .slider:before {
 
 .maisinfo {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     margin-top: 10px;
 }
+
+#menos, #mais {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.inputMinMax {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+
+    .inputMinMax input {
+        border-radius: 7px;
+        border: 1px solid var(--amarelo);
+        height: 35px;
+        width: 235px;
+        font-family: 'Inter', sans-serif;
+        font-size: 25px;
+        color: var(--amarelo);
+    }

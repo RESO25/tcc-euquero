@@ -33,6 +33,22 @@ namespace TCC_euquero.Logica
 
         #region Métodos
 
+        public bool VerificarValidacao(string pEmail)
+        {
+            parametros.Clear();
+            parametros.Add(new Parametro("pEmail", pEmail));
+
+            bool validado = false;
+            MySqlDataReader dados = ConsultarProcedure("VerificarValidacao", parametros);
+            if (dados.Read())
+                validado = dados.GetBoolean(0);
+
+            dados.Close();
+            Desconectar();
+
+            return validado;
+        }
+
         public bool VerificarDisponibilidadeEmail(string emailUsuario)
         {
             parametros.Clear();
@@ -57,16 +73,18 @@ namespace TCC_euquero.Logica
             }
         }
 
-        private int ConsultarCodigoValidacao(string emailUsuario)
+        public int ConsultarCodigoValidacao(string emailUsuario)
         {
             parametros.Clear();
             parametros.Add(new Parametro("pEmail", emailUsuario));
             MySqlDataReader dados = ConsultarProcedure("ConsultarCodigoValidacao", parametros);
 
             if (dados.Read())
+            {
                 codigoValidacao = int.Parse(dados[0].ToString());
-                dados.Close();
+            }
 
+            dados.Close();
             Desconectar();
 
             return codigoValidacao;
@@ -83,7 +101,7 @@ namespace TCC_euquero.Logica
             mail.IsBodyHtml = true;
             mail.Body = $@"     <html>
                                     <body>
-                                        <div style={CSS}>
+                                        <div>
                                             <p> Você está a um passo de tornar sua conta válida! Para isso, insira o código abaixo na página do site que o solicita.</p>
                                             <p>{codigoValidacao}</p>
                                         </div>
@@ -95,7 +113,7 @@ namespace TCC_euquero.Logica
             envioDeEmail.Enviar(mail);
         }
 
-        public string ValidarConta(string emailUsuario, int codigoDigitado)
+        public bool ValidarConta(string emailUsuario, int codigoDigitado)
         {
             codigoValidacao = ConsultarCodigoValidacao(emailUsuario);
 
@@ -106,11 +124,11 @@ namespace TCC_euquero.Logica
 
                 ExecutarProcedure("ValidarConta", parametros);
 
-                return "Sua conta na EuQuero foi validada com sucesso!";
+                return true;
             }
             else
             {
-                return "O código de validação está incorreto! Tente novamente.";
+                return false;
             }
         }
 

@@ -4,6 +4,12 @@ body {
     margin: 0;
 }
 
+.h1Perfil {
+    padding-left: 0px;
+    margin-left: 385px;
+    margin-top: 8px;
+}
+
 .cardsPai {
     width: 100%;
     display: flex;
@@ -231,15 +237,24 @@ body {
 }
 
 
+.btnsair {
+    margin-top: 50px;
+    width: 171px;
+    margin-left: 300px;
+    height: 45px;
+    background-color: #FFC000;
+    color: #ffffff;
+    border: 0ch;
+    font-family: 'Almarai', sans-serif;
+    font-weight: bold;
+    font-size: 17px;
+    border-radius: 7px;
+    box-shadow: 0px 0px 9px 0px rgba(194,194,194,0.50);
+}
 
-
-
-
-/* .areaBtnSelecionarCartao
-{
-  padding-top: 5%;
-} */
-
+.produtosCompreJa {
+    margin-left: 20%;
+}
 
 @import "estilogeral.css";
 

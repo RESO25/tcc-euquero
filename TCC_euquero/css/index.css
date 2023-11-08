@@ -148,8 +148,8 @@ p {
 .produtosCompreJa {
     display: flex;
     margin-left: 0px;
-    justify-content: space-between;
+/*    justify-content: space-between;
     align-items: center;
-    align-content: center;
+    align-content: center;*/
     flex-wrap: wrap;
 }

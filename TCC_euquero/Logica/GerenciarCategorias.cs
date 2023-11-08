@@ -22,6 +22,7 @@ namespace TCC_euquero.Logica
             if(dados.Read())
                 categoria = new Categoria(dados.GetInt32(0), dados.GetString(1));
 
+            dados.Close();
             Desconectar();
 
             return categoria;
@@ -38,11 +39,10 @@ namespace TCC_euquero.Logica
             if (dados.Read())
                 total = dados.GetInt32(0);
 
+            dados.Close();
             Desconectar();
 
             return total;
         }
-       
-
     }
 }
